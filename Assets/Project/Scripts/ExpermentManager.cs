@@ -38,10 +38,13 @@ public class ExpermentManager : MonoBehaviour
 
             m_GameStart = true;
 
-            m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
-
             SetPlayerToStartPosition();
         }      
+    }
+
+    public void Start()
+    {
+        m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
     }
 
     public void UnloadScene(int scene)

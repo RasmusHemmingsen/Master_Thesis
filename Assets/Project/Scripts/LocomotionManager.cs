@@ -55,8 +55,10 @@ public class LocomotionManager : MonoBehaviour
     public LocomotionTechinique GetDummyLocomotionTechnique()
     {
         TurnOffAllTechniques();
-        TurnOnBlinkStep();
-        return LocomotionTechinique.BlinkStep;
+        //TurnOnBlinkStep();
+        //return LocomotionTechinique.BlinkStep;
+        TurnOnSmoothLocomotion();
+        return LocomotionTechinique.SmoothLocomotion;
     }
 
     public LocomotionTechinique GetRandomLocomotionTechnique()
