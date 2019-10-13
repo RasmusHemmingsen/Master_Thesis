@@ -14,6 +14,8 @@ public class LocomotionManager : MonoBehaviour
     private GameObject m_gameObjectBlinkStep;
     private GameObject m_gameObjectDashStep;
 
+    private GameObject m_TeleportPointer = null;
+
     private List<LocomotionTechinique> m_UnusedLocomotionTechiniques = new List<LocomotionTechinique>();
 
     public enum LocomotionTechinique {
@@ -92,15 +94,15 @@ public class LocomotionManager : MonoBehaviour
     private void TurnOnTeleport()
     {
         m_gameObjectTeleport.GetComponent<Teleporter>().enabled = true;
-        if (m_TeleportPointerPrefab == null)
-            Instantiate(m_TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        if (m_TeleportPointer == null)
+            m_TeleportPointer = Instantiate(m_TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     private void TurnOffTeleport()
     {
         m_gameObjectTeleport.GetComponent<Teleporter>().enabled = false;
-        if (m_TeleportPointerPrefab != null)
-            Destroy(m_TeleportPointerPrefab);
+        if (m_TeleportPointer != null)
+            Destroy(m_TeleportPointer);
     }
 
     private void TurnOnSmoothLocomotion()
