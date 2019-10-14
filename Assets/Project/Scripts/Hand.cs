@@ -28,7 +28,7 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable"))
+        if (!other.gameObject.CompareTag("Interactable") || !other.gameObject.CompareTag("Door"))
             return;
 
         m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
@@ -36,16 +36,14 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable"))
+        if (!other.gameObject.CompareTag("Interactable") || !other.gameObject.CompareTag("Door"))
             return;
 
         m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
     }
 
-    public void Pickup(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
+    public void GrapClicked(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        print("Pickup");
-
         // Get nearest
         m_CurrentInteractable = GetNearestInteractable();
 
@@ -53,6 +51,19 @@ public class Hand : MonoBehaviour
         if (!m_CurrentInteractable)
             return;
 
+        if (m_CurrentInteractable.CompareTag("Interactable"))
+            Pickup(action, source);
+        else if (m_CurrentInteractable.CompareTag("Door"))
+            Door(action, source);
+    }
+
+    public void Door(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
+    {
+
+    }
+
+    public void Pickup(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
+    {
         // Already held, check
         if (m_CurrentInteractable.m_ActiveHand)
             m_CurrentInteractable.m_ActiveHand.Drop(action, source);
@@ -70,7 +81,6 @@ public class Hand : MonoBehaviour
 
     public void Drop(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        print("Drop");
         // Null check
         if (!m_CurrentInteractable)
             return;
