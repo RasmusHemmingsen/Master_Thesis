@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f32883eed859804dbb0c5fedac91496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisOfRotation: 1
+  axisOfRotation: 2
   childCollider: {fileID: 1787657698}
   linearMapping: {fileID: 0}
   hoverLock: 0
@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axisOfRotation: 2
-  childCollider: {fileID: 0}
+  childCollider: {fileID: 671573408}
   linearMapping: {fileID: 0}
   hoverLock: 0
   limited: 1
@@ -1590,7 +1590,7 @@ GameObject:
   - component: {fileID: 671573410}
   m_Layer: 0
   m_Name: DoorHandle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
