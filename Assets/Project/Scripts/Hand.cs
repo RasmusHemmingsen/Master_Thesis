@@ -28,15 +28,19 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable") || !other.gameObject.CompareTag("Door"))
+        if (!other.gameObject.CompareTag("Interactable") ||
+            !other.gameObject.CompareTag("Door") ||
+            !other.gameObject.CompareTag("Button"))
+        {
             return;
+        }
 
         m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable") || !other.gameObject.CompareTag("Door"))
+        if (!other.gameObject.CompareTag("Interactable"))
             return;
 
         m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
