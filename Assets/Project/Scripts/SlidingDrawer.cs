@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Interactable))]
-public class ButtonClick : MonoBehaviour
+public class SlidingDrawer : MonoBehaviour
 {
     Transform parent;
     public Transform m_PointA;
@@ -14,55 +13,18 @@ public class ButtonClick : MonoBehaviour
 
     private Interactable m_Interactable;
 
-    public UnityEvent m_HitPointA;
-    public UnityEvent m_HitPointB;
-    public UnityEvent m_ReleasedA;
-    public UnityEvent m_ReleasedB;
-
-
-    private int m_State = 0;
-    private int m_PrevState = 0;
-
     void Start()
     {
         m_Interactable = GetComponent<Interactable>();
     }
 
-
+    
     void Update()
     {
-        if (parent != null)
+        if( parent != null)
         {
             transform.position = ClosestPointOnLine(parent.position) - m_offset;
         }
-        else
-        {
-            transform.position = ClosestPointOnLine(transform.position);
-        }
-
-        if (transform.position == m_PointA.position)
-            m_State = 1;
-        else if (transform.position == m_PointB.position)
-            m_State = 2;
-        else
-            m_State = 0;
-
-        if (m_State == 1 && m_PrevState == 0)
-            m_HitPointA.Invoke();
-        else if (m_State == 2 && m_PrevState == 0)
-            m_HitPointB.Invoke();
-        else if (m_State == 0 && m_PrevState == 1)
-            m_ReleasedA.Invoke();
-        else if (m_State == 0 && m_PrevState == 2)
-            m_ReleasedB.Invoke();
-
-
-        m_PrevState = m_State;
-    }
-
-    public void Print(string text)
-    {
-        print(text);
     }
 
     public void PickUp()
