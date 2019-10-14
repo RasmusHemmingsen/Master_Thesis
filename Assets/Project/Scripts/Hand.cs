@@ -28,22 +28,24 @@ public class Hand : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable") ||
-            !other.gameObject.CompareTag("Door") ||
-            !other.gameObject.CompareTag("Button"))
+        if (other.gameObject.CompareTag("Interactable") ||
+            other.gameObject.CompareTag("Door") ||
+            other.gameObject.CompareTag("Button"))
         {
-            return;
+            m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
         }
 
-        m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.gameObject.CompareTag("Interactable"))
-            return;
-
-        m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
+        if (other.gameObject.CompareTag("Interactable") ||
+            other.gameObject.CompareTag("Door") ||
+            other.gameObject.CompareTag("Button"))
+        {
+            m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
+        }
     }
 
     public void GrapClicked(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
@@ -58,12 +60,19 @@ public class Hand : MonoBehaviour
         if (m_CurrentInteractable.CompareTag("Interactable"))
             Pickup(action, source);
         else if (m_CurrentInteractable.CompareTag("Door"))
-            Door(action, source);
+            Pickup(action, source);
     }
 
     public void Door(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
+        Vector3 targetDelta = transform.position - m_CurrentInteractable.transform.position;
+        targetDelta.y = 0;
 
+        float AngleDiff = Vector3.Angle(m_CurrentInteractable.transform.forward, targetDelta);
+
+        Vector3 cross = Vector3.Cross(m_CurrentInteractable.transform.forward, targetDelta);
+
+        
     }
 
     public void Pickup(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
