@@ -24,6 +24,8 @@ public class ExpermentManager : MonoBehaviour
     
     private LocomotionManager m_LocomotionManager;
     private LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
+    private SwitchShader m_SwitchShader;
+
     private bool m_GameStart;
 
     private void Awake()
@@ -35,11 +37,24 @@ public class ExpermentManager : MonoBehaviour
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
             m_LocomotionManager = FindObjectOfType<LocomotionManager>();
+            m_SwitchShader = FindObjectOfType<SwitchShader>();
 
             m_GameStart = true;
 
             SetPlayerToStartPosition();
         }      
+    }
+
+    public void HighlightCube(GameObject gameObject)
+    {
+        Renderer renderer =  gameObject.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToHighlightCube(renderer);
+    }
+
+    public void RemoveHighligtFromCube(GameObject gameObject)
+    {
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToStandardCube(renderer);
     }
 
     public void Start()
