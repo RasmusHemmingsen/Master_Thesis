@@ -33,17 +33,23 @@ public class Room2Manager : MonoBehaviour
 
     public void Button1Pressed()
     {
-        RemoveHighlightFromButton1();
-        CloseForRoom1();
-        HighlightButton2();
-        m_FirstButtonPressed = true;
+        if (!m_FirstButtonPressed)
+        {
+            RemoveHighlightFromButton1();
+            CloseForRoom1();
+            HighlightButton2();
+            m_FirstButtonPressed = true;
+        }
     }
 
     public void Button2Pressed()
     {
-        OpenForRoom3();
-        RemoveHighlightFromButton2();
-        m_SecondButtonPressed = true;
+        if (!m_SecondButtonPressed)
+        {
+            OpenForRoom3();
+            RemoveHighlightFromButton2();
+            m_SecondButtonPressed = true;
+        }
     }
 
     public bool BothButtonsPressed()
