@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &735827504
+--- !u!43 &1023330353
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 4467908566884917719}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0585866994864543b4831ca60f8d602, type: 3}
---- !u!21 &1498316440
+--- !u!21 &1405534362
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -482,6 +482,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MatHighlightCube: {fileID: 2100000, guid: 610d6f28335f6244d90bb324557731a1, type: 2}
   m_MatStandardCube: {fileID: 2100000, guid: e397803a70575b14da2715362935ca08, type: 2}
+  m_MatHighlightButtonTop: {fileID: 0}
+  m_MatHighlightButtonStand: {fileID: 0}
+  m_MatStandardButtonTop: {fileID: 0}
+  m_MatStandardButtonStand: {fileID: 0}
 --- !u!1 &1864489285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 656158630579896583, guid: 73c54063566a1544486433036b5de126,
@@ -579,16 +583,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1498316440}
+      objectReference: {fileID: 1405534362}
     - target: {fileID: 655459897086141401, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 735827504}
+      objectReference: {fileID: 1023330353}
     - target: {fileID: 655459897087138699, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655459897087138699, guid: 73c54063566a1544486433036b5de126,
         type: 3}
@@ -598,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 655459897087300013, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655459897087300013, guid: 73c54063566a1544486433036b5de126,
         type: 3}
@@ -608,12 +612,12 @@ PrefabInstance:
     - target: {fileID: 655459897087151047, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655459897087100063, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 655459897087292689, guid: 73c54063566a1544486433036b5de126,
         type: 3}

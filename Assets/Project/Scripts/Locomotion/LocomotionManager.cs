@@ -97,14 +97,21 @@ public class LocomotionManager : MonoBehaviour
     {
         m_gameObjectTeleport.GetComponent<Teleporter>().enabled = true;
         if (m_TeleportPointer == null)
+        {
             m_TeleportPointer = Instantiate(m_TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            m_gameObjectTeleport.GetComponent<Teleporter>().m_pointer = m_TeleportPointer;
+        }
+
     }
 
     private void TurnOffTeleport()
     {
         m_gameObjectTeleport.GetComponent<Teleporter>().enabled = false;
         if (m_TeleportPointer != null)
+        {
             Destroy(m_TeleportPointer);
+            m_gameObjectTeleport.GetComponent<Teleporter>().m_pointer = null;
+        }
     }
 
     private void TurnOnSmoothLocomotion()

@@ -8,6 +8,6 @@ public class OpenDoor : MonoBehaviour
 
     public void StartOpenDoorAnimation()
     {
-        m_Animator.SetBool("OpenDoor", true);
+        m_Animator.SetBool("HandleTriggered", true);
     }
 }
