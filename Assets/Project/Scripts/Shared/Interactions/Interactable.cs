@@ -12,6 +12,8 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public Rigidbody simulator;
 
+    public float m_DisconnectDistance = 0f;
+
     public UnityEvent m_PickUp;
     public UnityEvent m_Drop;
 
@@ -28,6 +30,16 @@ public class Interactable : MonoBehaviour
         if(m_ActiveHand != null)
         {
             simulator.velocity = (m_ActiveHand.transform.position - simulator.position) * 50f;
+
+            if (m_DisconnectDistance > 0f)
+            {
+                if(!GetComponent<Collider>().bounds.Contains(m_ActiveHand.transform.position) ||
+                    Vector3.Distance(GetComponent<Collider>().bounds.ClosestPoint(m_ActiveHand.transform.position),
+                    m_ActiveHand.transform.position) > m_DisconnectDistance)
+                {
+                    Drop();
+                }
+            }
         }
     }
 
@@ -55,7 +67,7 @@ public class Interactable : MonoBehaviour
         transform.parent = m_ActiveHand.transform;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().isKinematic = true;
     }
     
     public void DefaultDrop()

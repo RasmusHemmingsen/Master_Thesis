@@ -25,7 +25,7 @@ public class Hand : MonoBehaviour
         if (!other.gameObject.CompareTag("Interactable"))
             return;
 
-        m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());  
+        m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());   
     }
 
     private void OnTriggerExit(Collider other)
@@ -53,9 +53,7 @@ public class Hand : MonoBehaviour
         // Set active hand
         m_CurrentInteractable.m_ActiveHand = this;
 
-        m_CurrentInteractable.PickUp();
-
-        
+        m_CurrentInteractable.PickUp();  
     }
 
     public void Drop(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)

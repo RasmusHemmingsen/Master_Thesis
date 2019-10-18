@@ -51,23 +51,36 @@ public class ExpermentManager : MonoBehaviour
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
     }
 
-    public void HighlightCube(GameObject gameObject)
+    #region Highhight
+    public void HighlightCube(GameObject cube)
     {
-        Renderer renderer =  gameObject.GetComponent<Renderer>();
+        Renderer renderer = cube.GetComponent<Renderer>();
         m_SwitchShader.SwitchToHighlightCube(renderer);
     }
-
-    public void RemoveHighligtFromCube(GameObject gameObject)
-    {
-        Renderer renderer = gameObject.GetComponent<Renderer>();
-        m_SwitchShader.SwitchToStandardCube(renderer);
-    }
-
     public void HighlightButton(GameObject buttonTop, GameObject buttonStand)
     {
         Renderer rendererTop = buttonTop.GetComponent<Renderer>();
         Renderer rendererStand = buttonStand.GetComponent<Renderer>();
         m_SwitchShader.SwitchToHighlihtButton(rendererTop, rendererStand);
+    }
+    public void HighlightHandle(GameObject handle)
+    {
+        Renderer renderer = handle.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToHighlightHandle(renderer);
+    }
+
+    public void HighlightTable(GameObject table)
+    {
+        Renderer renderer = table.GetComponent<Renderer>();
+    }
+    #endregion
+
+    #region Remove Highlight
+
+    public void RemoveHighligtFromCube(GameObject gameObject)
+    {
+        Renderer renderer = gameObject.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToStandardCube(renderer);
     }
 
     public void RemoveHighligtFromButton(GameObject buttonTop, GameObject buttonStand)
@@ -76,6 +89,18 @@ public class ExpermentManager : MonoBehaviour
         Renderer rendererStand = buttonStand.GetComponent<Renderer>();
         m_SwitchShader.SwitchToStandardButton(rendererTop, rendererStand);
     }
+
+    public void RemoveHighlightFromHandle(GameObject handle)
+    {
+        Renderer renderer = handle.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToStandardHandle(renderer);
+    }
+
+    public void RemoveHighlightFromTable(GameObject table)
+    {
+        Renderer renderer = table.GetComponent<Renderer>();
+    }
+    #endregion
 
     public void UnloadScene(int scene)
     {
@@ -91,6 +116,7 @@ public class ExpermentManager : MonoBehaviour
 
     public void RestartWithNewTechnique()
     {
+        StopTimerRoom3();
         WriteTechniqueResults();
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
@@ -115,7 +141,6 @@ public class ExpermentManager : MonoBehaviour
     {
         if (!Directory.Exists(m_DirectoryPath))
         {
-
             Directory.CreateDirectory(m_DirectoryPath);
         }
 
@@ -131,6 +156,7 @@ public class ExpermentManager : MonoBehaviour
         return System.Text.Encoding.UTF8.GetBytes("test");
     }
 
+    #region Timers
     public void StartTimerRoom1()
     {
         if(m_Room1StartTime == 0f)
@@ -165,4 +191,5 @@ public class ExpermentManager : MonoBehaviour
     {
         m_Room3Time = Time.time - m_Room3StartTime;
     }
+    #endregion
 }

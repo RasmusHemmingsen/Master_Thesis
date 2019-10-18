@@ -175,7 +175,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45275661}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -401,73 +401,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541321444}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &704771263
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 704771264}
-  - component: {fileID: 704771267}
-  - component: {fileID: 704771266}
-  - component: {fileID: 704771265}
-  m_Layer: 0
-  m_Name: TriggerToStopTime
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &704771264
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704771263}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21, y: 1.25, z: 23.5}
-  m_LocalScale: {x: 3, y: 2.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1000190776}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &704771265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704771263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb19a1a97b525f41abd54d20216d257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 0}
---- !u!65 &704771266
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704771263}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &704771267
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704771263}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &735827504
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +574,6 @@ Transform:
   - {fileID: 1736276557}
   - {fileID: 824365934107036103}
   - {fileID: 824365934561885580}
-  - {fileID: 704771264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1195,7 +1127,7 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 5
+  m_Spring: 10
   m_Damper: 0.2
   m_MinDistance: 0
   m_MaxDistance: 0
@@ -1310,6 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActiveHand: {fileID: 0}
   simulator: {fileID: 0}
+  m_DisconnectDistance: 0
   m_PickUp:
     m_PersistentCalls:
       m_Calls:
@@ -1663,7 +1596,7 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 5
+  m_Spring: 10
   m_Damper: 0.2
   m_MinDistance: 0
   m_MaxDistance: 0
@@ -1688,6 +1621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActiveHand: {fileID: 0}
   simulator: {fileID: 0}
+  m_DisconnectDistance: 0
   m_PickUp:
     m_PersistentCalls:
       m_Calls:

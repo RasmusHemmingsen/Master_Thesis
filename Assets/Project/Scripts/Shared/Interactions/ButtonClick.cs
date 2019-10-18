@@ -60,11 +60,6 @@ public class ButtonClick : MonoBehaviour
         m_PrevState = m_State;
     }
 
-    public void Print(string text)
-    {
-        print(text);
-    }
-
     public void PickUp()
     {
         parent = m_Interactable.m_ActiveHand.transform;
