@@ -10,11 +10,12 @@ public class ExpermentManager : MonoBehaviour
     public static ExpermentManager m_ExpermentManager;
     public GameObject m_Player;
 
-    private int NumberOfExperimentRun = 0;
+    public Vector3 m_PlayerStartPosition = new Vector3(-3.5f, 0f, -3.5f);
+    public Quaternion m_PlayerStartRotaion = new Quaternion(0, 0, 0, 1);
 
-    private float m_Room1StartTime;
-    private float m_Room2StartTime;
-    private float m_Room3StartTime;
+    private float m_Room1StartTime = 0f;
+    private float m_Room2StartTime = 0f;
+    private float m_Room3StartTime = 0f;
     
     private float m_Room1Time;
     private float m_Room2Time;
@@ -45,6 +46,11 @@ public class ExpermentManager : MonoBehaviour
         }      
     }
 
+    public void Start()
+    {
+        m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
+    }
+
     public void HighlightCube(GameObject gameObject)
     {
         Renderer renderer =  gameObject.GetComponent<Renderer>();
@@ -57,9 +63,18 @@ public class ExpermentManager : MonoBehaviour
         m_SwitchShader.SwitchToStandardCube(renderer);
     }
 
-    public void Start()
+    public void HighlightButton(GameObject buttonTop, GameObject buttonStand)
     {
-        m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
+        Renderer rendererTop = buttonTop.GetComponent<Renderer>();
+        Renderer rendererStand = buttonStand.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToHighlihtButton(rendererTop, rendererStand);
+    }
+
+    public void RemoveHighligtFromButton(GameObject buttonTop, GameObject buttonStand)
+    {
+        Renderer rendererTop = buttonTop.GetComponent<Renderer>();
+        Renderer rendererStand = buttonStand.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToStandardButton(rendererTop, rendererStand);
     }
 
     public void UnloadScene(int scene)
@@ -85,8 +100,8 @@ public class ExpermentManager : MonoBehaviour
 
     private void SetPlayerToStartPosition()
     {
-        m_Player.transform.position = new Vector3(-3.5f, 0f, -4f);
-        m_Player.transform.rotation = new Quaternion(0, 0, 0, 1);
+        m_Player.transform.position = m_PlayerStartPosition;
+        m_Player.transform.rotation = m_PlayerStartRotaion;
     }
 
     private void WriteTechniqueResults()
@@ -105,7 +120,7 @@ public class ExpermentManager : MonoBehaviour
         }
 
         // Write user path to file
-        File.WriteAllBytes(m_DirectoryPath + "/" + m_CurrentLocomotionTechnique + "Experimentroom" + numberOfExperimentRoom + "path", getPathData());
+        //File.WriteAllBytes(m_DirectoryPath + "/" + m_CurrentLocomotionTechnique + "Experimentroom" + numberOfExperimentRoom + "path", getPathData());
 
         // Write recording to file 
         File.WriteAllBytes(m_DirectoryPath + "/" + m_CurrentLocomotionTechnique + "Experimentroom" + numberOfExperimentRoom + "time", BitConverter.GetBytes(time));
@@ -118,27 +133,32 @@ public class ExpermentManager : MonoBehaviour
 
     public void StartTimerRoom1()
     {
-        m_Room1StartTime = Time.time;
+        if(m_Room1StartTime == 0f)
+            m_Room1StartTime = Time.time;
     }
 
     public void StartTimerRoom2()
     {
-        m_Room2StartTime = Time.time;
+        if (m_Room2StartTime == 0f)
+            m_Room2StartTime = Time.time;
     }
 
     public void StartTimerRoom3()
     {
-        m_Room3StartTime = Time.time;
+        if (m_Room3StartTime == 0f)
+            m_Room3StartTime = Time.time;
     }
 
     public void StopTimerRoom1()
     {
         m_Room1Time = Time.time - m_Room1StartTime;
+        print(m_Room1Time);
     }
 
     public void StopTimerRoom2()
     {
         m_Room2Time = Time.time - m_Room2StartTime;
+        print(m_Room2Time);
     }
 
     public void StopTimerRoom3()

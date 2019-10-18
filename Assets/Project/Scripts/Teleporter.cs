@@ -76,7 +76,7 @@ public class Teleporter : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
 
         // If it is a hit
-        if(Physics.Raycast(ray, out hit) && hit.distance < m_TeleportMaxRange && hit.collider.tag != "NoTeleport")
+        if(Physics.Raycast(ray, out hit) && hit.distance < m_TeleportMaxRange && hit.collider.CompareTag("CanTeleport"))
         {
             m_pointer.transform.position = hit.point;
             return true;
