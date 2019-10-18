@@ -82,7 +82,7 @@ public class ExpermentManager : MonoBehaviour
         StartCoroutine(Unload(scene));
     }
 
-    IEnumerator Unload(int scene)
+    private IEnumerator Unload(int scene)
     {
         yield return null;
 

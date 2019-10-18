@@ -13,9 +13,17 @@ public class Room2Manager : MonoBehaviour
     public bool m_FirstButtonPressed = false;
     public bool m_SecondButtonPressed = false;
 
-    public void Startimer()
+    private void Start()
     {
+        HighlightButton1();
+        StartCoroutine(Startimer());
+    }
+    
+    private IEnumerator Startimer()
+    {
+        yield return new WaitForSeconds(2);
         ExpermentManager.m_ExpermentManager.StartTimerRoom2();
+
     }
 
     public void StopTimer()
@@ -25,11 +33,16 @@ public class Room2Manager : MonoBehaviour
 
     public void Button1Pressed()
     {
+        RemoveHighlightFromButton1();
+        CloseForRoom1();
+        HighlightButton2();
         m_FirstButtonPressed = true;
     }
 
     public void Button2Pressed()
     {
+        OpenForRoom3();
+        RemoveHighlightFromButton2();
         m_SecondButtonPressed = true;
     }
 
@@ -45,22 +58,22 @@ public class Room2Manager : MonoBehaviour
         ExpermentManager.m_ExpermentManager.HighlightButton(m_Button1.transform.GetChild(0).gameObject, m_Button1.transform.GetChild(1).gameObject);
     }
 
-    public void RemoveHighlightFromButton1()
+    private void RemoveHighlightFromButton1()
     {
         ExpermentManager.m_ExpermentManager.RemoveHighligtFromButton(m_Button1.transform.GetChild(0).gameObject, m_Button1.transform.GetChild(1).gameObject);
     }
 
-    public void HighlightButton2()
+    private void HighlightButton2()
     {
         ExpermentManager.m_ExpermentManager.HighlightButton(m_Button2.transform.GetChild(0).gameObject, m_Button2.transform.GetChild(1).gameObject);
     }
 
-    public void RemoveHighlightFromButton2()
+    private void RemoveHighlightFromButton2()
     {
         ExpermentManager.m_ExpermentManager.RemoveHighligtFromButton(m_Button2.transform.GetChild(0).gameObject, m_Button2.transform.GetChild(1).gameObject);
     }
 
-    public void OpenForRoom3()
+    private void OpenForRoom3()
     {
         if (m_FirstButtonPressed)
         {
@@ -81,7 +94,7 @@ public class Room2Manager : MonoBehaviour
         SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
     }
 
-    public void CloseForRoom1()
+    private void CloseForRoom1()
     {
         EnableWallToRoom1();
         UnloadScene1();

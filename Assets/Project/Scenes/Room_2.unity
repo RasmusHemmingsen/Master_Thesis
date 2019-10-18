@@ -401,73 +401,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541321444}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &601039700
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 601039701}
-  - component: {fileID: 601039704}
-  - component: {fileID: 601039702}
-  - component: {fileID: 601039703}
-  m_Layer: 0
-  m_Name: TriggerToStartTime
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &601039701
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601039700}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24, y: 1.25, z: -25.5}
-  m_LocalScale: {x: 3, y: 2.5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1000190776}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &601039702
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601039700}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &601039703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601039700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92e65533d4a3804495c1d07c6b5823c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 735827506}
---- !u!33 &601039704
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601039700}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &704771263
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +432,7 @@ Transform:
   m_LocalScale: {x: 3, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1000190776}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &704771265
 MonoBehaviour:
@@ -582,6 +515,8 @@ MonoBehaviour:
   m_WallToRoom3: {fileID: 45275661}
   m_Button1: {fileID: 824365934107036096}
   m_Button2: {fileID: 824365934561885579}
+  m_FirstButtonPressed: 0
+  m_SecondButtonPressed: 0
 --- !u!1 &767144878
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +641,6 @@ Transform:
   - {fileID: 1736276557}
   - {fileID: 824365934107036103}
   - {fileID: 824365934561885580}
-  - {fileID: 601039701}
   - {fileID: 704771264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1463,18 +1397,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 735827506}
-        m_MethodName: OpenForRoom3
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 735827506}
-        m_MethodName: RemoveHighlightFromButton2
+        m_MethodName: Button2Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1489,18 +1412,7 @@ MonoBehaviour:
       m_Calls: []
   m_ReleasedB:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 735827506}
-        m_MethodName: Button2Pressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!136 &824365935294011680
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1616,18 +1528,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 735827506}
-        m_MethodName: CloseForRoom1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 735827506}
-        m_MethodName: RemoveHighlightFromButton1
+        m_MethodName: Button1Pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1642,29 +1543,7 @@ MonoBehaviour:
       m_Calls: []
   m_ReleasedB:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 735827506}
-        m_MethodName: Button1Pressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 735827506}
-        m_MethodName: HighlightButton2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &824365935767288773
 Transform:
   m_ObjectHideFlags: 0
