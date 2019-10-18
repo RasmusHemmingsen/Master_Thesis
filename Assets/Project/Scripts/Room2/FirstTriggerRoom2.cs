@@ -9,7 +9,7 @@ public class FirstTriggerRoom2 : MonoBehaviour
     private bool m_Triggered = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (!m_Triggered && other.CompareTag("Controller"))
+        if (!m_Triggered && other.CompareTag("Player"))
         {
             m_RoomManager.Startimer();
             m_RoomManager.HighlightButton1();

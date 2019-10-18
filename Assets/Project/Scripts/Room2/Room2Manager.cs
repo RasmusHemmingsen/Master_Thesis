@@ -10,8 +10,8 @@ public class Room2Manager : MonoBehaviour
     public GameObject m_Button1;
     public GameObject m_Button2;
     
-    private bool m_FirstButtonPressed = false;
-    private bool m_SecondButtonPressed = false;
+    public bool m_FirstButtonPressed = false;
+    public bool m_SecondButtonPressed = false;
 
     public void Startimer()
     {
@@ -96,6 +96,6 @@ public class Room2Manager : MonoBehaviour
 
     private void UnloadScene1()
     {
-        SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        ExpermentManager.m_ExpermentManager.UnloadScene(1);
     }
 }
