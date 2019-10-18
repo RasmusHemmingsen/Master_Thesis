@@ -12,7 +12,6 @@ public class Room3Manager : MonoBehaviour
 
     private int m_NumberOfCubesCurrectPlaced = 0;
     
-    // Start is called before the first frame update
     void Start()
     {
         HighlightHandle();
@@ -42,12 +41,17 @@ public class Room3Manager : MonoBehaviour
 
     public void CurrentCubePlacedCorrectly()
     {
+        if(m_NumberOfCubesCurrectPlaced == 0)
+        {
+            m_Handle.GetComponent<Door>().StartCloseDoorAnimation();
+            ExpermentManager.m_ExpermentManager.UnloadScene(2);
+        }
         RemoveHighlightFromCurrentCube();
-        m_NumberOfCubesCurrectPlaced += 1;
+        m_NumberOfCubesCurrectPlaced++;
         if (m_NumberOfCubesCurrectPlaced <= m_ListOfCubes.Count)
         {
             m_CurrentCube = m_NextCube;
-            m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
+            m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
             HighlightCurrentCube();
         }
         else
