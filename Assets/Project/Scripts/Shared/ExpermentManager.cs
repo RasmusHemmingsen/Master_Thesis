@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 using System.Globalization;
+using System.Text;
 
 public class ExpermentManager : MonoBehaviour
 {
@@ -160,14 +161,13 @@ public class ExpermentManager : MonoBehaviour
             System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        FileStream fileStream = new FileStream(m_WholePath,
-                                       FileMode.OpenOrCreate,
-                                       FileAccess.ReadWrite,
-                                       FileShare.None);
-
-        using (BinaryWriter write = new BinaryWriter(fileStream))
+        using (FileStream fileStream = new FileStream(m_WholePath, FileMode.OpenOrCreate, FileAccess.Write))
         {
-            write.Write(data);
+            StreamWriter sw = new StreamWriter(fileStream);
+            long endPoint = fileStream.Length;
+            fileStream.Seek(endPoint, SeekOrigin.Begin);
+            sw.WriteLine(data);
+            sw.Flush();
         }
 
         // Write user path to file
