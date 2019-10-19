@@ -55,9 +55,8 @@ public class ExpermentManager : MonoBehaviour
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
         if (m_Filename == null)
         {
-            m_Filename = "Experiment" + System.DateTime.Now.ToString("s", CultureInfo.CreateSpecificCulture("en-US"));
+            m_Filename = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + ".txt";
             m_WholePath = m_DirectoryPath + "/" + m_Filename;
-            System.IO.File.Create(m_WholePath);
         }
     }
 
@@ -161,8 +160,15 @@ public class ExpermentManager : MonoBehaviour
             System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        StreamWriter writer = System.IO.File.AppendText(m_WholePath);
-        writer.Write(data);
+        FileStream fileStream = new FileStream(m_WholePath,
+                                       FileMode.OpenOrCreate,
+                                       FileAccess.ReadWrite,
+                                       FileShare.None);
+
+        using (BinaryWriter write = new BinaryWriter(fileStream))
+        {
+            write.Write(data);
+        }
 
         // Write user path to file
     }

@@ -58,10 +58,10 @@ public class Room3Manager : MonoBehaviour
         }
         RemoveHighlightFromCurrentCube();
         m_NumberOfCubesCurrectPlaced += 1;
-        if (m_NumberOfCubesCurrectPlaced <= m_CubeListSize)
+        if (m_NumberOfCubesCurrectPlaced < m_CubeListSize)
         {
             m_CurrentCube = m_NextCube;
-            m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
+            m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
             HighlightCurrentCube();
         }
         else
