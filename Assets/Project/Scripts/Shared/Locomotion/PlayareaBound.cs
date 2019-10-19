@@ -9,8 +9,11 @@ public class PlayareaBound : MonoBehaviour
 
     private bool m_Isblack = false;
 
-    private float m_OffsetX = -3.5f;
-    private float m_OffsetZ = -3.5f;
+    private float m_OffsetX = 3.5f;
+    private float m_OffsetZ = 3.5f;
+
+    private float m_XMax = 0.7f;
+    private float m_ZMax = 0.7f;
 
     private GameObject m_ActiveCamera;
 
@@ -22,8 +25,11 @@ public class PlayareaBound : MonoBehaviour
 
     void Update()
     {
-        float distance = Mathf.Pow(GetXValue(), 2f) * Mathf.Pow(GetZValue(), 2f);
-        if(distance > m_PlayArea)
+        float xValue = GetXValue();
+        float zValue = GetZValue();
+
+        float distance = Mathf.Pow(xValue, 2f) * Mathf.Pow(zValue, 2f);
+        if(distance > m_PlayArea || xValue > m_XMax || zValue > m_ZMax )
         {
             if(!m_Isblack)
             {
@@ -39,16 +45,12 @@ public class PlayareaBound : MonoBehaviour
     private float GetXValue()
     {
         float xPosition = m_ActiveCamera.transform.position.x + m_OffsetX;
-        if (xPosition == 0)
-            return 0.0001f;
         return xPosition;
     }
 
     private float GetZValue()
     {
         float zPosition = m_ActiveCamera.transform.position.z + m_OffsetZ;
-        if (zPosition == 0)
-            return 0.0001f;
         return zPosition;
     }
 
