@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
+using System.Globalization;
 
 public class ExpermentManager : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class ExpermentManager : MonoBehaviour
     {
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
         if (m_Filename == null)
-            m_Filename = "Experiment" + System.DateTime.Now;
+            m_Filename = "Experiment" + System.DateTime.Now.ToString("s", CultureInfo.CreateSpecificCulture("en-US"));
     }
 
     #region Highhight
