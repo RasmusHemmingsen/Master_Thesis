@@ -29,7 +29,7 @@ public class PlayareaBound : MonoBehaviour
         float zValue = GetZValue();
 
         float distance = Mathf.Pow(xValue, 2f) * Mathf.Pow(zValue, 2f);
-        if(distance > m_PlayArea || xValue > m_XMax || zValue > m_ZMax )
+        if(distance > m_PlayArea || xValue > m_XMax || zValue > m_ZMax || xValue < -m_XMax || zValue < m_ZMax)
         {
             if(!m_Isblack)
             {
