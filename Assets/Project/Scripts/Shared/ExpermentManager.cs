@@ -25,6 +25,7 @@ public class ExpermentManager : MonoBehaviour
 
     private string m_DirectoryPath = "ExperimentResults";
     private string m_Filename;
+    private string m_WholePath;
     
     private LocomotionManager m_LocomotionManager;
     private LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
@@ -53,7 +54,11 @@ public class ExpermentManager : MonoBehaviour
     {
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
         if (m_Filename == null)
+        {
             m_Filename = "Experiment" + System.DateTime.Now.ToString("s", CultureInfo.CreateSpecificCulture("en-US"));
+            m_WholePath = m_DirectoryPath + "/" + m_Filename;
+            System.IO.File.Create(m_WholePath);
+        }
     }
 
     #region Highhight
@@ -156,7 +161,7 @@ public class ExpermentManager : MonoBehaviour
             System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        StreamWriter writer = System.IO.File.AppendText(m_DirectoryPath + "/" + m_Filename);
+        StreamWriter writer = System.IO.File.AppendText(m_WholePath);
         writer.Write(data);
 
         // Write user path to file
