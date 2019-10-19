@@ -201,13 +201,11 @@ public class ExpermentManager : MonoBehaviour
     public void StopTimerRoom1()
     {
         m_Room1Time = Time.time - m_Room1StartTime;
-        print(m_Room1Time);
     }
 
     public void StopTimerRoom2()
     {
         m_Room2Time = Time.time - m_Room2StartTime;
-        print(m_Room2Time);
     }
 
     public void StopTimerRoom3()

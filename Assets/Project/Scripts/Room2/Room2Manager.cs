@@ -10,8 +10,8 @@ public class Room2Manager : MonoBehaviour
     public GameObject m_Button1;
     public GameObject m_Button2;
     
-    public bool m_FirstButtonPressed = false;
-    public bool m_SecondButtonPressed = false;
+    private bool m_FirstButtonPressed = false;
+    private bool m_SecondButtonPressed = false;
 
     private void Start()
     {

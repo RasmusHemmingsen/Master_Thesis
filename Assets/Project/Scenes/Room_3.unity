@@ -1422,7 +1422,6 @@ MonoBehaviour:
   - {fileID: 333547171}
   - {fileID: 704986580}
   m_Handle: {fileID: 1625472186}
-  m_NumberOfCubesCurrectPlaced: 0
 --- !u!1 &1442686293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1605,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1353168808}
+        m_MethodName: StopTimerForRoom2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Drop:
     m_PersistentCalls:
       m_Calls:
@@ -1631,6 +1641,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_OldParent: {fileID: 0}
 --- !u!114 &1625472190
 MonoBehaviour:
   m_ObjectHideFlags: 0

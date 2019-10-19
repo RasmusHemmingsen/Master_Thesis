@@ -7,8 +7,8 @@ public class Room3Manager : MonoBehaviour
     public List<GameObject> m_ListOfCubes;
     public GameObject m_Handle;
 
-    private GameObject m_CurrentCube;
-    private GameObject m_NextCube;
+    public GameObject m_CurrentCube;
+    public GameObject m_NextCube;
 
     private int m_NumberOfCubesCurrectPlaced = 0;
     private int m_CubeListSize;
@@ -26,6 +26,10 @@ public class Room3Manager : MonoBehaviour
         ExpermentManager.m_ExpermentManager.StartTimerRoom3();
     }
 
+    public void StopTimerForRoom2()
+    {
+        ExpermentManager.m_ExpermentManager.StopTimerRoom2();
+    }
 
     #region Highlighting
     private void HighlightHandle()
