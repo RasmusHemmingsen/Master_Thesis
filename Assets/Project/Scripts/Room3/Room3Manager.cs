@@ -7,17 +7,17 @@ public class Room3Manager : MonoBehaviour
     public List<GameObject> m_ListOfCubes;
     public GameObject m_Handle;
 
-    public GameObject m_CurrentCube;
-    public GameObject m_NextCube;
+    private GameObject m_CurrentCube;
+    private GameObject m_NextCube;
 
-    public int m_NumberOfCubesCurrectPlaced = 0;
-    public int m_CubeListSize;
+    private int m_NumberOfCubesCurrectPlaced = 0;
+    private int m_CubeListSize;
 
     void Start()
     {
         HighlightHandle();
         m_CurrentCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
-        m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
+        m_NextCube = GetNextCubeIfThereIsOne();
         m_CubeListSize = m_ListOfCubes.Count;
     }
 
@@ -56,19 +56,30 @@ public class Room3Manager : MonoBehaviour
             m_Handle.GetComponent<Door>().StartCloseDoorAnimation();
             ExpermentManager.m_ExpermentManager.UnloadScene(2);
         }
+
         RemoveHighlightFromCurrentCube();
         m_NumberOfCubesCurrectPlaced += 1;
-        if (m_NumberOfCubesCurrectPlaced < m_CubeListSize)
-        {
-            m_CurrentCube = m_NextCube;
-            m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
-            HighlightCurrentCube();
-        }
-        else
+        if (m_NumberOfCubesCurrectPlaced >= m_CubeListSize)
         {
             ExpermentManager.m_ExpermentManager.StopTimerRoom3();
             ExpermentManager.m_ExpermentManager.RestartWithNewTechnique();
+            
         }
+
+        if(m_NextCube != null)
+        {
+            m_CurrentCube = m_NextCube;
+            m_NextCube = GetNextCubeIfThereIsOne();
+        }
+        HighlightCurrentCube();
+
+    }
+
+    private GameObject GetNextCubeIfThereIsOne()
+    {
+        if (m_NumberOfCubesCurrectPlaced + 1 >= m_CubeListSize)
+            return null;
+        return m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
     }
 
     public bool IsCurrentCube(GameObject gameObject)
