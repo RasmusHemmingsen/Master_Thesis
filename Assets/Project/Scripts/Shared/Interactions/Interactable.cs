@@ -17,6 +17,8 @@ public class Interactable : MonoBehaviour
     public UnityEvent m_PickUp;
     public UnityEvent m_Drop;
 
+    public Transform m_OldParent;
+
     private void Start()
     {
         simulator = new GameObject().AddComponent<Rigidbody>();
@@ -64,6 +66,7 @@ public class Interactable : MonoBehaviour
 
     public void DefaultPickUp()
     {
+        m_OldParent = transform.parent;
         transform.parent = m_ActiveHand.transform;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -72,7 +75,7 @@ public class Interactable : MonoBehaviour
     
     public void DefaultDrop()
     {
-        transform.parent = null;
+        transform.parent = m_OldParent;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().velocity = simulator.velocity;
         m_ActiveHand = null;     

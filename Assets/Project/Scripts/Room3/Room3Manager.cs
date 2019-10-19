@@ -7,16 +7,18 @@ public class Room3Manager : MonoBehaviour
     public List<GameObject> m_ListOfCubes;
     public GameObject m_Handle;
 
-    private GameObject m_CurrentCube;
-    private GameObject m_NextCube;
+    public GameObject m_CurrentCube;
+    public GameObject m_NextCube;
 
     public int m_NumberOfCubesCurrectPlaced = 0;
-    
+    public int m_CubeListSize;
+
     void Start()
     {
         HighlightHandle();
         m_CurrentCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
         m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
+        m_CubeListSize = m_ListOfCubes.Count;
     }
 
     public void Startimer()
@@ -55,8 +57,8 @@ public class Room3Manager : MonoBehaviour
             ExpermentManager.m_ExpermentManager.UnloadScene(2);
         }
         RemoveHighlightFromCurrentCube();
-        m_NumberOfCubesCurrectPlaced++;
-        if (m_NumberOfCubesCurrectPlaced <= m_ListOfCubes.Count)
+        m_NumberOfCubesCurrectPlaced += 1;
+        if (m_NumberOfCubesCurrectPlaced <= m_CubeListSize)
         {
             m_CurrentCube = m_NextCube;
             m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
