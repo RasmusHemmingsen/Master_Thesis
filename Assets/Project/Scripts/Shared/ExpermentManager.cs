@@ -155,9 +155,8 @@ public class ExpermentManager : MonoBehaviour
             System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        StreamWriter writer = new StreamWriter(m_DirectoryPath + "/" + m_Filename, true);
+        StreamWriter writer = System.IO.File.AppendText(m_DirectoryPath + "/" + m_Filename);
         writer.Write(data);
-        writer.Close();
 
         // Write user path to file
     }
