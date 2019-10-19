@@ -15,10 +15,10 @@ public class Room3Manager : MonoBehaviour
 
     void Start()
     {
+        m_CubeListSize = m_ListOfCubes.Count;
         HighlightHandle();
         m_CurrentCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced];
-        m_NextCube = GetNextCubeIfThereIsOne();
-        m_CubeListSize = m_ListOfCubes.Count;
+        m_NextCube = GetNextCubeIfThereIsOne();   
     }
 
     public void Startimer()
