@@ -8,6 +8,7 @@ public class Teleporter : MonoBehaviour
 {
     public GameObject m_pointer = null;
     public SteamVR_Action_Boolean m_TeleportAction = null;
+    public GameObject m_Player;
 
     private SteamVR_Behaviour_Pose m_Pose = null;
     private bool m_HasPosition = false;
@@ -45,11 +46,11 @@ public class Teleporter : MonoBehaviour
         Vector3 translateVector = m_pointer.transform.position - groundPosition;
 
         // Move 
-        StartCoroutine(MoveRig(cameraRig, translateVector));
+        StartCoroutine(Move(m_Player.transform, translateVector));
 
     }
 
-    private IEnumerator MoveRig(Transform cameraRig, Vector3 translation)
+    private IEnumerator Move(Transform player, Vector3 translation)
     {
         // Flag 
         m_IsTeleporting = true;
@@ -59,7 +60,7 @@ public class Teleporter : MonoBehaviour
 
         // Apply translation 
         yield return new WaitForSeconds(m_FadeTime);
-        cameraRig.position += translation;
+        player.position += translation;
 
         // Fade to clear
         SteamVR_Fade.Start(Color.clear, m_FadeTime, true);

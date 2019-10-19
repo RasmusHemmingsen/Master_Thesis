@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
@@ -21,7 +22,8 @@ public class ExpermentManager : MonoBehaviour
     private float m_Room2Time;
     private float m_Room3Time;
 
-    private string m_DirectoryPath = "C:/ExperimentResults";
+    private string m_DirectoryPath = "ExperimentResults";
+    private string m_Filename;
     
     private LocomotionManager m_LocomotionManager;
     private LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
@@ -49,6 +51,8 @@ public class ExpermentManager : MonoBehaviour
     public void Start()
     {
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
+        if (m_Filename == null)
+            m_Filename = "Experiment" + System.DateTime.Now;
     }
 
     #region Highhight
@@ -132,23 +136,31 @@ public class ExpermentManager : MonoBehaviour
 
     private void WriteTechniqueResults()
     {
-        WriteDataToFile(1, m_Room1Time);
-        WriteDataToFile(2, m_Room2Time);
-        WriteDataToFile(3, m_Room3Time);
+        string data = PepareTimeDataForWiriteTofile();
+        WriteDataToFile(data);
     }
 
-    private void WriteDataToFile(int numberOfExperimentRoom, float time)
+    private string PepareTimeDataForWiriteTofile()
     {
-        if (!Directory.Exists(m_DirectoryPath))
+        string data = m_CurrentLocomotionTechnique + "\n" +
+            "Room 1 Time: " + m_Room1Time + "\n" +
+            "Room 2 Time: " + m_Room2Time + "\n" +
+            "Room 3 Time: " + m_Room3Time + "\n\n";
+        return data;
+    }
+
+    private void WriteDataToFile(string data)
+    {
+        if (!System.IO.Directory.Exists(m_DirectoryPath))
         {
-            Directory.CreateDirectory(m_DirectoryPath);
+            System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        // Write user path to file
-        //File.WriteAllBytes(m_DirectoryPath + "/" + m_CurrentLocomotionTechnique + "Experimentroom" + numberOfExperimentRoom + "path", getPathData());
+        StreamWriter writer = new StreamWriter(m_DirectoryPath + "/" + m_Filename, true);
+        writer.Write(data);
+        writer.Close();
 
-        // Write recording to file 
-        File.WriteAllBytes(m_DirectoryPath + "/" + m_CurrentLocomotionTechnique + "Experimentroom" + numberOfExperimentRoom + "time", BitConverter.GetBytes(time));
+        // Write user path to file
     }
 
     private byte[] getPathData()

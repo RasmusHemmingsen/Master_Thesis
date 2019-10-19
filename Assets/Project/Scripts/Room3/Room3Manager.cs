@@ -10,7 +10,7 @@ public class Room3Manager : MonoBehaviour
     private GameObject m_CurrentCube;
     private GameObject m_NextCube;
 
-    private int m_NumberOfCubesCurrectPlaced = 0;
+    public int m_NumberOfCubesCurrectPlaced = 0;
     
     void Start()
     {
@@ -19,6 +19,13 @@ public class Room3Manager : MonoBehaviour
         m_NextCube = m_ListOfCubes[m_NumberOfCubesCurrectPlaced + 1];
     }
 
+    public void Startimer()
+    {
+        ExpermentManager.m_ExpermentManager.StartTimerRoom3();
+    }
+
+
+    #region Highlighting
     private void HighlightHandle()
     {
         ExpermentManager.m_ExpermentManager.HighlightHandle(m_Handle);
@@ -38,6 +45,7 @@ public class Room3Manager : MonoBehaviour
     {
         ExpermentManager.m_ExpermentManager.RemoveHighligtFromCube(m_CurrentCube);
     }
+    #endregion
 
     public void CurrentCubePlacedCorrectly()
     {
@@ -56,6 +64,7 @@ public class Room3Manager : MonoBehaviour
         }
         else
         {
+            ExpermentManager.m_ExpermentManager.StopTimerRoom3();
             ExpermentManager.m_ExpermentManager.RestartWithNewTechnique();
         }
     }
