@@ -120,7 +120,6 @@ public class ExpermentManager : MonoBehaviour
 
     public void RestartWithNewTechnique()
     {
-        StopTimerRoom3();
         WriteTechniqueResults();
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
