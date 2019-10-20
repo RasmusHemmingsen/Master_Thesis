@@ -5,9 +5,11 @@ public class PlayareaBound : MonoBehaviour
     public GameObject m_Camera;
     public GameObject m_CameraBlack;
 
-    public float m_PlayArea = 0.1f;
+    public float m_PlayArea = 1f;
 
     private bool m_Isblack = false;
+
+    private float m_FadeTime = 0.5f;
 
     private float m_OffsetX = 3.5f;
     private float m_OffsetZ = 3.5f;
@@ -50,6 +52,8 @@ public class PlayareaBound : MonoBehaviour
 
     private void EnableBlackScreen()
     {
+        // SteamVR_Fade.Start(Color.black, m_FadeTime, true); 
+
         m_Camera.SetActive(false);
         m_CameraBlack.SetActive(true);
         m_Isblack = true;
@@ -58,6 +62,8 @@ public class PlayareaBound : MonoBehaviour
 
     private void EnableNormalScreen()
     {
+        // SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
+
         m_Camera.SetActive(true);
         m_CameraBlack.SetActive(false);
         m_Isblack = false;

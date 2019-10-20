@@ -6,9 +6,12 @@ using Valve.VR;
 
 public class Teleporter : MonoBehaviour
 {
-    public GameObject m_pointer = null;
     public SteamVR_Action_Boolean m_TeleportAction = null;
     public GameObject m_Player;
+    public Transform m_Controller;
+
+    [HideInInspector]
+    public GameObject m_pointer = null;
 
     private SteamVR_Behaviour_Pose m_Pose = null;
     private bool m_HasPosition = false;
@@ -74,7 +77,7 @@ public class Teleporter : MonoBehaviour
         RaycastHit hit;
 
         // Ray from the controller
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(m_Controller.position, m_Controller.forward);
 
         // If it is a hit
         if(Physics.Raycast(ray, out hit) && hit.distance < m_TeleportMaxRange && hit.collider.CompareTag("CanTeleport"))

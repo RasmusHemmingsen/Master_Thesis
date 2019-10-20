@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 655459897010590422}
-  - component: {fileID: 655459897010590420}
   - component: {fileID: 655459897010590423}
   m_Layer: 0
   m_Name: Player
@@ -29,30 +28,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5367140541651974564}
   - {fileID: 655459897086875907}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &655459897010590420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655459897010590417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56761baf64b841641aa57f9e8c5bd8d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Sensitivity: 0.1
-  m_MaxSpeed: 1
-  m_MovePress:
-    actionPath: /actions/default/in/Teleport
-    needsReinit: 0
-  m_MoveValue:
-    actionPath: /actions/default/in/TouchpadPosition
-    needsReinit: 0
 --- !u!143 &655459897010590423
 CharacterController:
   m_ObjectHideFlags: 0
@@ -130,22 +110,6 @@ MonoBehaviour:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
   m_ContactInteractables: []
---- !u!114 &655459897087292699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655459897087138699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b53362b3ff99c342874e1e752595401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_pointer: {fileID: 0}
-  m_TeleportAction:
-    actionPath: /actions/default/in/Teleport
-    needsReinit: 0
 --- !u!54 &655459897087292692
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -244,6 +208,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87adf97b7e39dd44bb0bead1789b6e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7048305302766973117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5367140541651974564}
+  - component: {fileID: 7405270956323979862}
+  - component: {fileID: 621963602798453376}
+  m_Layer: 0
+  m_Name: Locomotion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5367140541651974564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048305302766973117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 655459897010590422}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7405270956323979862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048305302766973117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b53362b3ff99c342874e1e752595401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pointer: {fileID: 0}
+  m_TeleportAction:
+    actionPath: /actions/default/in/Teleport
+    needsReinit: 0
+  m_Player: {fileID: 655459897010590417}
+--- !u!114 &621963602798453376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048305302766973117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56761baf64b841641aa57f9e8c5bd8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sensitivity: 0.1
+  m_MaxSpeed: 1.5
+  m_MovePress:
+    actionPath: /actions/default/in/Teleport
+    needsReinit: 0
+  m_MoveValue:
+    actionPath: /actions/default/in/TouchpadPosition
+    needsReinit: 0
 --- !u!1001 &655459897087292719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -281,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -298,6 +331,14 @@ PrefabInstance:
     - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
       propertyPath: m_Name
       value: '[CameraRig]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}

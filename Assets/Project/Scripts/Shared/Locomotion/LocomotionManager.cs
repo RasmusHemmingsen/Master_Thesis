@@ -7,12 +7,7 @@ public class LocomotionManager : MonoBehaviour
 {
     public GameObject m_TeleportPointerPrefab;
 
-    private GameObject m_gameObjectTeleport;
-    private GameObject m_gameObjectSmoothLocomotion;
-    private GameObject m_gameObjectCybershoes;
-    private GameObject m_gameObjectArmswing;
-    private GameObject m_gameObjectBlinkStep;
-    private GameObject m_gameObjectDashStep;
+    private GameObject m_gameObjectLocomotion;
 
     private GameObject m_TeleportPointer = null;
 
@@ -35,21 +30,16 @@ public class LocomotionManager : MonoBehaviour
 
     private void FillListOfLocomotionTecniques()
     {
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Cybershoes);
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
+        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
+        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Cybershoes);
+        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.SmoothLocomotion);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Teleport);
     }
 
     private void GetGameObjectsWithScripts()
     {
-        m_gameObjectSmoothLocomotion = GameObject.Find("Player");
-        m_gameObjectTeleport = GameObject.Find("Controller (right)");
-        //m_gameObjectArmswing = GameObject.Find("");
-        //m_gameObjectBlinkStep = GameObject.Find("");
-        //m_gameObjectDashStep = GameObject.Find("");
-        //m_gameObjectCybershoes = GameObject.Find("");
+        m_gameObjectLocomotion = GameObject.Find("Locomotion");
     }
 
     public LocomotionTechinique GetDummyLocomotionTechnique()
@@ -97,73 +87,72 @@ public class LocomotionManager : MonoBehaviour
 
     private void TurnOnTeleport()
     {
-        m_gameObjectTeleport.GetComponent<Teleporter>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<Teleporter>().enabled = true;
         if (m_TeleportPointer == null)
         {
             m_TeleportPointer = Instantiate(m_TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            m_gameObjectTeleport.GetComponent<Teleporter>().m_pointer = m_TeleportPointer;
+            m_gameObjectLocomotion.GetComponent<Teleporter>().m_pointer = m_TeleportPointer;
         }
-
     }
 
     private void TurnOffTeleport()
     {
-        m_gameObjectTeleport.GetComponent<Teleporter>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<Teleporter>().enabled = false;
         if (m_TeleportPointer != null)
         {
             Destroy(m_TeleportPointer);
-            m_gameObjectTeleport.GetComponent<Teleporter>().m_pointer = null;
+            m_gameObjectLocomotion.GetComponent<Teleporter>().m_pointer = null;
         }
     }
 
     private void TurnOnSmoothLocomotion()
     {
-        m_gameObjectSmoothLocomotion.GetComponent<Smooth_locomotion>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = true;
     }
 
     private void TurnOffSmoothLocomotion()
     {
-        m_gameObjectSmoothLocomotion.GetComponent<Smooth_locomotion>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = false;
     }
 
     private void TurnOnArmswing()
     {
-        //m_gameObjectArmswing.GetComponent<>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<Armswing>().enabled = true;
     }
 
     private void TurnOffArmswing()
     {
-        //m_gameObjectArmswing.GetComponent<>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<Armswing>().enabled = false;
     }
 
     private void TurnOnCybershoes()
     {
-        //m_gameObjectCybershoes.GetComponent<>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<Cybershoes>().enabled = true;
     }
 
     private void TurnOffCybershoes()
     {
-        //m_gameObjectCybershoes.GetComponent<>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<Cybershoes>().enabled = false;
     }
 
     private void TurnOnDashStep()
     {
-        //m_gameObjectDashStep.GetComponent<>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<DashStep>().enabled = true;
     }
 
     private void TurnOffDashStep()
     {
-        //m_gameObjectDashStep.GetComponent<>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<DashStep>().enabled = false;
     }
 
     private void TurnOnBlinkStep()
     {
-        //m_gameObjectBlinkStep.GetComponent<>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = true;
     }
 
     private void TurnOffBlinkStep()
     {
-        //m_gameObjectBlinkStep.GetComponent<>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = false;
     }
 
     private void TurnOffAllTechniques()

@@ -19,7 +19,7 @@ public class Smooth_locomotion : MonoBehaviour
 
     private void Awake()
     {
-        m_CharacterController = GetComponent<CharacterController>();
+        m_CharacterController = gameObject.transform.parent.GetComponent<CharacterController>();
     }
 
     private void Start()
@@ -74,8 +74,6 @@ public class Smooth_locomotion : MonoBehaviour
 
         // Apply
         m_CharacterController.Move(movement);
-
-
     }
 
     private void HandleHeight()
