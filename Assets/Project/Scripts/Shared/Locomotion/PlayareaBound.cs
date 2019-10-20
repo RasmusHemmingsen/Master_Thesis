@@ -42,8 +42,8 @@ public class PlayareaBound : MonoBehaviour
 
     private void UpdateOffset()
     {
-        m_OffsetX = m_Player.position.x;
-        m_OffsetZ = m_Player.position.z;
+        m_OffsetX = -m_Player.position.x;
+        m_OffsetZ = -m_Player.position.z;
     }
 
     private float GetXValue()
