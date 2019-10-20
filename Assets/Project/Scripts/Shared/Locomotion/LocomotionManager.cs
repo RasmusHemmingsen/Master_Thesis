@@ -138,11 +138,13 @@ public class LocomotionManager : MonoBehaviour
     private void TurnOnDashStep()
     {
         m_gameObjectLocomotion.GetComponent<DashStep>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<DashStep>().m_IsEnabled = true;
     }
 
     private void TurnOffDashStep()
     {
         m_gameObjectLocomotion.GetComponent<DashStep>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<DashStep>().m_IsEnabled = false;
     }
 
     private void TurnOnBlinkStep()

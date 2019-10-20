@@ -12,6 +12,7 @@ public class DashStep : MonoBehaviour
 
     public float m_DashRange = 0.5f;
     public float m_DashTime = 0.2f;
+    public bool m_IsEnabled = false;
 
     [SerializeField]
     private Animator maskAnimator;
@@ -25,6 +26,9 @@ public class DashStep : MonoBehaviour
 
     private void TryDash(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
+        if (!m_IsEnabled)
+            return;
+
         RaycastHit hit;
         Ray ray = new Ray(m_Player.transform.position, m_Player.transform.forward);
 
