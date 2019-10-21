@@ -448,8 +448,6 @@ MonoBehaviour:
   m_WallToRoom3: {fileID: 45275661}
   m_Button1: {fileID: 824365934107036096}
   m_Button2: {fileID: 824365934561885579}
-  m_FirstButtonPressed: 0
-  m_SecondButtonPressed: 0
 --- !u!1 &767144878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1269,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_OldParent: {fileID: 0}
 --- !u!1 &824365935045054349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1649,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_OldParent: {fileID: 0}
 --- !u!65 &824365935767288782
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
     public UnityEvent m_PickUp;
     public UnityEvent m_Drop;
 
-    public Transform m_OldParent;
+    private Transform m_OldParent;
 
     private void Start()
     {

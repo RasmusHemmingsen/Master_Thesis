@@ -24,12 +24,12 @@ public class Room1Manager : MonoBehaviour
 
     public void Startimer()
     {
-        ExpermentManager.m_ExpermentManager.StartTimerRoom1();
+        TimeManager.m_TimeManager.StartTimerRoom1();
     }
 
     public void StopTimer()
     {
-        ExpermentManager.m_ExpermentManager.StopTimerRoom1();
+        TimeManager.m_TimeManager.StopTimerRoom1();
     }
 
     public void LoadScene2()

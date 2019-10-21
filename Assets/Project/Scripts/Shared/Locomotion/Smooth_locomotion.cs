@@ -11,6 +11,8 @@ public class Smooth_locomotion : MonoBehaviour
     public SteamVR_Action_Boolean m_MovePress = null;
     public SteamVR_Action_Vector2 m_MoveValue = null;
 
+    public Transform m_Player;
+
     private float m_Speed = 0.0f;
 
     private CharacterController m_CharacterController = null;
@@ -19,7 +21,7 @@ public class Smooth_locomotion : MonoBehaviour
 
     private void Awake()
     {
-        m_CharacterController = gameObject.transform.parent.GetComponent<CharacterController>();
+        m_CharacterController = m_Player.GetComponent<CharacterController>();
     }
 
     private void Start()
@@ -42,7 +44,7 @@ public class Smooth_locomotion : MonoBehaviour
         Quaternion oldRotation = m_CameraRig.rotation;
 
         // Rotation
-        transform.eulerAngles = new Vector3(0.0f, m_Head.rotation.eulerAngles.y, 0.0f);
+        m_Player.eulerAngles = new Vector3(0.0f, m_Head.rotation.eulerAngles.y, 0.0f);
 
         // Restore
         m_CameraRig.position = oldPosition;
@@ -52,7 +54,7 @@ public class Smooth_locomotion : MonoBehaviour
     private void CalculateMovement()
     {
         // Figure out movement orientation 
-        Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y, 0);
+        Vector3 orientationEuler = new Vector3(0, m_Player.eulerAngles.y, 0);
         Quaternion orientation = Quaternion.Euler(orientationEuler);
         Vector3 movement = Vector3.zero;
 
@@ -92,7 +94,7 @@ public class Smooth_locomotion : MonoBehaviour
         newCenter.z = m_Head.localPosition.z;
 
         // Rotate
-        newCenter = Quaternion.Euler(0, -transform.eulerAngles.y, 0) * newCenter;
+        newCenter = Quaternion.Euler(0, -m_Player.eulerAngles.y, 0) * newCenter;
 
         // Apply
         m_CharacterController.center = newCenter;

@@ -22,13 +22,13 @@ public class Room2Manager : MonoBehaviour
     private IEnumerator Startimer()
     {
         yield return new WaitForSeconds(2);
-        ExpermentManager.m_ExpermentManager.StartTimerRoom2();
+        TimeManager.m_TimeManager.StartTimerRoom2();
 
     }
 
-    public void StopTimer()
+    private void StopTimerBotton(int button)
     {
-        ExpermentManager.m_ExpermentManager.StopTimerRoom2();
+        TimeManager.m_TimeManager.StopTimerRoom2Button(button);
     }
 
     public void Button1Pressed()
@@ -38,15 +38,17 @@ public class Room2Manager : MonoBehaviour
             RemoveHighlightFromButton1();
             CloseForRoom1();
             HighlightButton2();
+            StopTimerBotton(1);
             m_FirstButtonPressed = true;
         }
     }
 
     public void Button2Pressed()
     {
-        if (!m_SecondButtonPressed)
+        if (!m_SecondButtonPressed && m_FirstButtonPressed)
         {
             OpenForRoom3();
+            StopTimerBotton(2);
             RemoveHighlightFromButton2();
             m_SecondButtonPressed = true;
         }

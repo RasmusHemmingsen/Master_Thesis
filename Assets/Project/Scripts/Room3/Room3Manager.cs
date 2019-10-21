@@ -6,9 +6,10 @@ public class Room3Manager : MonoBehaviour
 {
     public List<GameObject> m_ListOfCubes;
     public GameObject m_Handle;
+    public GameObject m_table;
 
-    public GameObject m_CurrentCube;
-    public GameObject m_NextCube;
+    private GameObject m_CurrentCube;
+    private GameObject m_NextCube;
 
     private int m_NumberOfCubesCurrectPlaced = 0;
     private int m_CubeListSize;
@@ -23,23 +24,18 @@ public class Room3Manager : MonoBehaviour
 
     public void Startimer()
     {
-        ExpermentManager.m_ExpermentManager.StartTimerRoom3();
+        TimeManager.m_TimeManager.StartTimerRoom3();
     }
 
-    public void StopTimerForRoom2()
-    {
-        ExpermentManager.m_ExpermentManager.StopTimerRoom2();
-    }
-
-    #region Highlighting
     private void HighlightHandle()
     {
         ExpermentManager.m_ExpermentManager.HighlightHandle(m_Handle);
     }
 
-    public void RemoveHighlightFromHandle()
+    public void HandlePressed()
     {
         ExpermentManager.m_ExpermentManager.RemoveHighlightFromHandle(m_Handle);
+        TimeManager.m_TimeManager.StopTimerRoom2();
     }
 
     public void HighlightCurrentCube()
@@ -47,11 +43,16 @@ public class Room3Manager : MonoBehaviour
         ExpermentManager.m_ExpermentManager.HighlightCube(m_CurrentCube);
     }
 
-    private void RemoveHighlightFromCurrentCube()
+    private void RemoveHighlightFromCurrentCubeAndTable()
     {
         ExpermentManager.m_ExpermentManager.RemoveHighligtFromCube(m_CurrentCube);
+        ExpermentManager.m_ExpermentManager.RemoveHighlightFromTable(m_table);
     }
-    #endregion
+
+    public void HighlightTable()
+    {
+        ExpermentManager.m_ExpermentManager.HighlightTable(m_table);
+    }
 
     public void CurrentCubePlacedCorrectly()
     {
@@ -61,13 +62,14 @@ public class Room3Manager : MonoBehaviour
             ExpermentManager.m_ExpermentManager.UnloadScene(2);
         }
 
-        RemoveHighlightFromCurrentCube();
-        m_NumberOfCubesCurrectPlaced += 1;
+        RemoveHighlightFromCurrentCubeAndTable();
+        m_NumberOfCubesCurrectPlaced += 1;      
+
+        TimeManager.m_TimeManager.StopTimerRoom3Cube(m_NumberOfCubesCurrectPlaced, false);
+
         if (m_NumberOfCubesCurrectPlaced >= m_CubeListSize)
         {
-            ExpermentManager.m_ExpermentManager.StopTimerRoom3();
-            ExpermentManager.m_ExpermentManager.RestartWithNewTechnique();
-            
+            ExpermentManager.m_ExpermentManager.RestartWithNewTechnique(); 
         }
 
         if(m_NextCube != null)
@@ -75,8 +77,8 @@ public class Room3Manager : MonoBehaviour
             m_CurrentCube = m_NextCube;
             m_NextCube = GetNextCubeIfThereIsOne();
         }
-        HighlightCurrentCube();
 
+        HighlightCurrentCube();
     }
 
     private GameObject GetNextCubeIfThereIsOne()

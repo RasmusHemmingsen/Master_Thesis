@@ -11,8 +11,9 @@ public class BlinkStep : MonoBehaviour
     private SteamVR_Behaviour_Pose m_Pose = null;
     private bool m_CanBlink = false;
     private bool m_IsBlinking = false;
-    private float m_FadeTime = 0.5f;
-    private float m_BlinkRange = 1.0f;
+    private float m_FadeTime = 0.2f;
+    private float m_BlinkRange = 0.5f;
+    public bool m_IsEnabled = false;
 
     private void Awake()
     {
@@ -21,23 +22,27 @@ public class BlinkStep : MonoBehaviour
         m_BlinkAction[SteamVR_Input_Sources.Any].onStateUp += TryBlink;
     }
 
-    private void Update()
-    {
-        m_CanBlink = CanBlink();
-    }
-
     private void TryBlink(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        // Check for valid position, and if already blinking
-        if (!m_CanBlink || m_IsBlinking)
+        if (!m_IsEnabled)
             return;
 
-        // Move 
-        StartCoroutine(Move(m_Player.transform));
+        Vector3 orientationEuler = new Vector3(0, m_Player.transform.eulerAngles.y, 0);
+        Quaternion orientation = Quaternion.Euler(orientationEuler);
 
+        RaycastHit hit;
+        Ray ray = new Ray(m_Player.transform.position, orientation * m_Player.transform.forward);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.distance > m_BlinkRange)
+            {
+                StartCoroutine(DoDash(orientation));
+            }
+        }
     }
 
-    private IEnumerator Move(Transform player)
+    private IEnumerator DoDash(Quaternion orientation)
     {
         // Flag 
         m_IsBlinking = true;
@@ -47,29 +52,12 @@ public class BlinkStep : MonoBehaviour
 
         // Apply translation 
         yield return new WaitForSeconds(m_FadeTime);
-        player.position += player.transform.forward * m_BlinkRange;
+        m_Player.transform.position += (orientation * (m_BlinkRange * Vector3.forward));
 
         // Fade to clear
         SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
 
         // De-flag
         m_IsBlinking = false;
-    }
-
-    private bool CanBlink()
-    {
-        RaycastHit hit;
-
-        // Cast Ray
-        Ray ray = new Ray(m_Player.transform.position, m_Player.transform.forward);
-
-        // If it is a hit
-        if (Physics.Raycast(ray, out hit) && hit.distance > m_BlinkRange)
-        {
-            return true;
-        }
-
-        // If not a hit
-        return false;
     }
 }

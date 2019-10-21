@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows;
-using System.Globalization;
-using System.Text;
-using Valve.VR;
 
 public class ExpermentManager : MonoBehaviour
 {
@@ -16,22 +9,11 @@ public class ExpermentManager : MonoBehaviour
 
     public Vector3 m_PlayerStartPosition = new Vector3(-3.5f, 0f, -3.5f);
     public Quaternion m_PlayerStartRotaion = new Quaternion(0, 0, 0, 1);
-
-    private float m_Room1StartTime = 0f;
-    private float m_Room2StartTime = 0f;
-    private float m_Room3StartTime = 0f;
-    
-    private float m_Room1Time;
-    private float m_Room2Time;
-    private float m_Room3Time;
-
-    private string m_DirectoryPath = "ExperimentResults";
-    private string m_Filename;
-    private string m_WholePath;
     
     private LocomotionManager m_LocomotionManager;
     private LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
     private SwitchShader m_SwitchShader;
+    private WriteToFile m_WriteToFile;
 
     private bool m_GameStart;
 
@@ -45,6 +27,7 @@ public class ExpermentManager : MonoBehaviour
 
             m_LocomotionManager = FindObjectOfType<LocomotionManager>();
             m_SwitchShader = FindObjectOfType<SwitchShader>();
+            m_WriteToFile = gameObject.AddComponent<WriteToFile>();         
 
             m_GameStart = true;
 
@@ -55,11 +38,6 @@ public class ExpermentManager : MonoBehaviour
     public void Start()
     {
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
-        if (m_Filename == null)
-        {
-            m_Filename = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + ".txt";
-            m_WholePath = m_DirectoryPath + "/" + m_Filename;
-        }
     }
 
     #region Highhight
@@ -127,7 +105,7 @@ public class ExpermentManager : MonoBehaviour
 
     public void RestartWithNewTechnique()
     {
-        WriteTechniqueResults();
+        m_WriteToFile.WriteAllDataToFile(m_CurrentLocomotionTechnique);
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         SetPlayerToStartPosition();
@@ -139,78 +117,4 @@ public class ExpermentManager : MonoBehaviour
         m_Player.transform.position = m_PlayerStartPosition;
         m_Player.transform.rotation = m_PlayerStartRotaion;
     }
-
-    private void WriteTechniqueResults()
-    {
-        string data = PepareTimeDataForWiriteTofile();
-        WriteDataToFile(data);
-    }
-
-    private string PepareTimeDataForWiriteTofile()
-    {
-        string data = m_CurrentLocomotionTechnique + "\n" +
-            "Room 1 Time: " + m_Room1Time + "\n" +
-            "Room 2 Time: " + m_Room2Time + "\n" +
-            "Room 3 Time: " + m_Room3Time + "\n\n";
-        return data;
-    }
-
-    private void WriteDataToFile(string data)
-    {
-        if (!System.IO.Directory.Exists(m_DirectoryPath))
-        {
-            System.IO.Directory.CreateDirectory(m_DirectoryPath);
-        }
-
-        using (FileStream fileStream = new FileStream(m_WholePath, FileMode.OpenOrCreate, FileAccess.Write))
-        {
-            StreamWriter sw = new StreamWriter(fileStream);
-            long endPoint = fileStream.Length;
-            fileStream.Seek(endPoint, SeekOrigin.Begin);
-            sw.WriteLine(data);
-            sw.Flush();
-        }
-
-        // Write user path to file
-    }
-
-    private byte[] getPathData()
-    {
-        return System.Text.Encoding.UTF8.GetBytes("test");
-    }
-
-    #region Timers
-    public void StartTimerRoom1()
-    {
-        if(m_Room1StartTime == 0f)
-            m_Room1StartTime = Time.time;
-    }
-
-    public void StartTimerRoom2()
-    {
-        if (m_Room2StartTime == 0f)
-            m_Room2StartTime = Time.time;
-    }
-
-    public void StartTimerRoom3()
-    {
-        if (m_Room3StartTime == 0f)
-            m_Room3StartTime = Time.time;
-    }
-
-    public void StopTimerRoom1()
-    {
-        m_Room1Time = Time.time - m_Room1StartTime;
-    }
-
-    public void StopTimerRoom2()
-    {
-        m_Room2Time = Time.time - m_Room2StartTime;
-    }
-
-    public void StopTimerRoom3()
-    {
-        m_Room3Time = Time.time - m_Room3StartTime;
-    }
-    #endregion
 }

@@ -32,7 +32,7 @@ public class LocomotionManager : MonoBehaviour
     {
         //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
         //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Cybershoes);
-        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
+        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.SmoothLocomotion);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Teleport);
     }

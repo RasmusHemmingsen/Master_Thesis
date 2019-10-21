@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
 public class Hand : MonoBehaviour
 {
     public SteamVR_Action_Boolean m_GrabAction = null;
+    public SteamVR_Action_Vibration m_Haptic = null;
 
     private Interactable m_CurrentInteractable = null;
     public List<Interactable> m_ContactInteractables = new List<Interactable>();
@@ -18,7 +18,6 @@ public class Hand : MonoBehaviour
         // Up
         m_GrabAction[SteamVR_Input_Sources.Any].onStateUp += Drop;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,7 +52,9 @@ public class Hand : MonoBehaviour
         // Set active hand
         m_CurrentInteractable.m_ActiveHand = this;
 
-        m_CurrentInteractable.PickUp();  
+        m_CurrentInteractable.PickUp();
+
+        Pulse(1, 150, 75, source);
     }
 
     public void Drop(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
@@ -71,13 +72,10 @@ public class Hand : MonoBehaviour
     {
         Interactable nearest = null;
         float minDistance = float.MaxValue;
-        float distance = 0.0f;
-
-        foreach(Interactable interactable in m_ContactInteractables)
+        foreach (Interactable interactable in m_ContactInteractables)
         {
-            distance = (interactable.transform.position - transform.position).sqrMagnitude;
-
-            if(distance < minDistance)
+            float distance = (interactable.transform.position - transform.position).sqrMagnitude;
+            if (distance < minDistance)
             {
                 minDistance = distance;
                 nearest = interactable;
@@ -85,5 +83,10 @@ public class Hand : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
+    {
+        m_Haptic.Execute(0, duration, frequency, amplitude, source);
     }
 }

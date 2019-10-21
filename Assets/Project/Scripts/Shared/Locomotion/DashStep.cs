@@ -29,19 +29,23 @@ public class DashStep : MonoBehaviour
         if (!m_IsEnabled)
             return;
 
+        Vector3 orientationEuler = new Vector3(0, m_Player.transform.eulerAngles.y, 0);
+        Quaternion orientation = Quaternion.Euler(orientationEuler);
+
+
         RaycastHit hit;
-        Ray ray = new Ray(m_Player.transform.position, m_Player.transform.forward);
+        Ray ray = new Ray(m_Player.transform.position, orientation * m_Player.transform.forward);
 
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.distance > m_DashRange)
             {
-                StartCoroutine(DoDash());
+                StartCoroutine(DoDash(orientation));
             }
         }
     }
 
-    private IEnumerator DoDash()
+    private IEnumerator DoDash(Quaternion orientation)
     {
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", true);
@@ -57,7 +61,7 @@ public class DashStep : MonoBehaviour
             elapsed += Time.deltaTime;
             float elapsedPct = elapsed / m_DashTime;
 
-            m_Player.transform.position = Vector3.Lerp(startPoint, m_Player.transform.position* m_DashRange, elapsedPct);
+            m_Player.transform.position = Vector3.Lerp(startPoint, startPoint + (orientation * (m_DashRange * Vector3.forward)), elapsedPct);
             yield return null;
         }
 
