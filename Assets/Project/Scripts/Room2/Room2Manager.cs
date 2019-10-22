@@ -21,7 +21,7 @@ public class Room2Manager : MonoBehaviour
     
     private IEnumerator Startimer()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         TimeManager.m_TimeManager.StartTimerRoom2();
 
     }

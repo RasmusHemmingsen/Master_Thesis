@@ -43,7 +43,6 @@ public class TimeManager : MonoBehaviour
 
     public void StartTimerRoom1()
     {
-        if (m_Room1StartTime == 0f)
             m_Room1StartTime = Time.time;
     }
 
@@ -54,11 +53,8 @@ public class TimeManager : MonoBehaviour
 
     public void StartTimerRoom2()
     {
-        if (m_Room2StartTime == 0f)
-        {
             m_Room2StartTime = Time.time;
             m_LastCheckpointTotal = m_Room2StartTime;
-        }
     }
 
     public void StopTimerRoom2Button(int button)
@@ -80,17 +76,16 @@ public class TimeManager : MonoBehaviour
 
     public void StopTimerRoom2()
     {
-        m_Room2Time = Time.time - m_Room2StartTime;
-        m_Room2LastSection = m_Room2Time - m_LastCheckpointTotal;
+        float time = Time.time;
+
+        m_Room2Time = time - m_Room2StartTime;
+        m_Room2LastSection = time - m_LastCheckpointTotal;
     }
 
     public void StartTimerRoom3()
     {
-        if (m_Room3StartTime == 0f)
-        {
             m_Room3StartTime = Time.time;
             m_LastCheckpointTotal = m_Room3StartTime;
-        }
     }
 
     public void StopTimerRoom3Cube(int cube, bool grap)
@@ -147,7 +142,7 @@ public class TimeManager : MonoBehaviour
                 else
                 {
                     m_Room3DeliverCube8 = time - m_LastCheckpointTotal;
-                    m_Room3Time = m_LastCheckpointTotal + m_Room3DeliverCube8;
+                    m_Room3Time = time - m_Room3StartTime;
                 }
                     
                 break;
