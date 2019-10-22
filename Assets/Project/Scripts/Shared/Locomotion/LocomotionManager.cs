@@ -11,6 +11,8 @@ public class LocomotionManager : MonoBehaviour
 
     private GameObject m_TeleportPointer = null;
 
+    private int m_NumberOfRandomMethod = 0;
+
     private List<LocomotionTechinique> m_UnusedLocomotionTechiniques = new List<LocomotionTechinique>();
 
     public enum LocomotionTechinique {
@@ -19,7 +21,8 @@ public class LocomotionManager : MonoBehaviour
         DashStep,
         Armswing,
         SmoothLocomotion,
-        Cybershoes
+        Cybershoes,
+        None
     }
 
     private void Awake()
@@ -57,6 +60,9 @@ public class LocomotionManager : MonoBehaviour
         int randomNumber = UnityEngine.Random.Range(0, m_UnusedLocomotionTechiniques.Count);
 
         TurnOffAllTechniques();
+
+        if (++m_NumberOfRandomMethod == m_UnusedLocomotionTechiniques.Count)
+            return LocomotionTechinique.None;
 
         LocomotionTechinique locomotionTechinique = m_UnusedLocomotionTechiniques[randomNumber];
 

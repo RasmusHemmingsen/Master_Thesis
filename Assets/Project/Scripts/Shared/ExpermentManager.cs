@@ -107,6 +107,9 @@ public class ExpermentManager : MonoBehaviour
     {
         m_WriteToFile.WriteAllDataToFile(m_CurrentLocomotionTechnique);
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
+
+        if (m_CurrentLocomotionTechnique == LocomotionManager.LocomotionTechinique.None)
+            Application.Quit();
         StartCoroutine(RestartScenes());
     }
 
