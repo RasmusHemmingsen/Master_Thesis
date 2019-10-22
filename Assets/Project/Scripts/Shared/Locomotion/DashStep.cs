@@ -25,13 +25,6 @@ public class DashStep : MonoBehaviour
         m_DashAction[SteamVR_Input_Sources.Any].onStateUp += TryDash;
     }
 
-    private void Update()
-    {
-        Vector3 direction = m_Camera.forward;
-        direction.y = 0;
-        Debug.DrawLine(m_Player.transform.position, m_DashRange * direction);
-    }
-
     private void TryDash(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
         if (!m_IsEnabled)
