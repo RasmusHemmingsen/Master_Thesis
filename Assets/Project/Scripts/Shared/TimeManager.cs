@@ -12,7 +12,6 @@ public class TimeManager : MonoBehaviour
     private float m_Room1Time;
 
     private float m_Room2StartTime = 0f;
-    private float m_Room2LastCheckpointTotal = 0f;
     private float m_Room2FirstButton;
     private float m_Room2SecondButton;
     private float m_Room2LastSection;
@@ -82,7 +81,7 @@ public class TimeManager : MonoBehaviour
     public void StopTimerRoom2()
     {
         m_Room2Time = Time.time - m_Room2StartTime;
-        m_Room2LastSection = m_Room2Time - m_Room2LastCheckpointTotal;
+        m_Room2LastSection = m_Room2Time - m_LastCheckpointTotal;
     }
 
     public void StartTimerRoom3()

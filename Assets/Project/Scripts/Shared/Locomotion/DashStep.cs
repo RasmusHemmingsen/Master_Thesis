@@ -7,10 +7,11 @@ public class DashStep : MonoBehaviour
 {
     public SteamVR_Action_Boolean m_DashAction = null;
     public GameObject m_Player;
+    public Transform m_Camera;
 
     private SteamVR_Behaviour_Pose m_Pose = null;
 
-    public float m_DashRange = 0.5f;
+    public float m_DashRange = 1.5f;
     public float m_DashTime = 0.2f;
     public bool m_IsEnabled = false;
 
@@ -24,28 +25,29 @@ public class DashStep : MonoBehaviour
         m_DashAction[SteamVR_Input_Sources.Any].onStateUp += TryDash;
     }
 
+    private void Update()
+    {
+        Vector3 direction = m_Camera.forward;
+        direction.y = 0;
+        Debug.DrawLine(m_Player.transform.position, m_DashRange * direction);
+    }
+
     private void TryDash(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
         if (!m_IsEnabled)
             return;
 
-        Vector3 orientationEuler = new Vector3(0, m_Player.transform.eulerAngles.y, 0);
-        Quaternion orientation = Quaternion.Euler(orientationEuler);
+        Vector3 direction = m_Camera.forward;
+        direction.y = 0;
 
-
-        RaycastHit hit;
-        Ray ray = new Ray(m_Player.transform.position, orientation * m_Player.transform.forward);
-
-        if (Physics.Raycast(ray, out hit))
+        Ray ray = new Ray(m_Player.transform.position, direction);
+        if (!Physics.Raycast(ray, out _, m_DashRange))
         {
-            if (hit.distance > m_DashRange)
-            {
-                StartCoroutine(DoDash(orientation));
-            }
+                StartCoroutine(DoDash(direction));
         }
     }
 
-    private IEnumerator DoDash(Quaternion orientation)
+    private IEnumerator DoDash(Vector3 direction)
     {
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", true);
@@ -61,7 +63,7 @@ public class DashStep : MonoBehaviour
             elapsed += Time.deltaTime;
             float elapsedPct = elapsed / m_DashTime;
 
-            m_Player.transform.position = Vector3.Lerp(startPoint, startPoint + (orientation * (m_DashRange * Vector3.forward)), elapsedPct);
+            m_Player.transform.position = Vector3.Lerp(startPoint, startPoint + (m_DashRange * direction), elapsedPct);
             yield return null;
         }
 

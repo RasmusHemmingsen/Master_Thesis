@@ -13,10 +13,12 @@ public class Hand : MonoBehaviour
     private void Awake()
     {
         // Down 
-        m_GrabAction[SteamVR_Input_Sources.Any].onStateDown += Pickup;
+        m_GrabAction[SteamVR_Input_Sources.RightHand].onStateDown += Pickup;
+        m_GrabAction[SteamVR_Input_Sources.LeftHand].onStateDown += Pickup;
 
         // Up
-        m_GrabAction[SteamVR_Input_Sources.Any].onStateUp += Drop;
+        m_GrabAction[SteamVR_Input_Sources.RightHand].onStateUp += Drop;
+        m_GrabAction[SteamVR_Input_Sources.LeftHand].onStateUp += Drop;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +56,7 @@ public class Hand : MonoBehaviour
 
         m_CurrentInteractable.PickUp();
 
-        Pulse(1, 150, 75, source);
+        Pulse(0.5f, 150, 60, source);
     }
 
     public void Drop(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
