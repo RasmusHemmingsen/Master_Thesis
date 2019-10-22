@@ -164,7 +164,7 @@ public class LocomotionManager : MonoBehaviour
         TurnOffCybershoes();
         TurnOffSmoothLocomotion();
         TurnOffTeleport();
-        TurnOffArmswing();
+        //TurnOffArmswing();
         TurnOffBlinkStep();
     }
 
