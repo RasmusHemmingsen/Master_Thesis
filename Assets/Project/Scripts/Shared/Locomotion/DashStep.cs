@@ -34,7 +34,7 @@ public class DashStep : MonoBehaviour
         direction.y = 1;
 
         Ray ray = new Ray(m_Player.transform.position, direction);
-        if (Physics.Raycast(ray, out _, m_DashRange))
+        if (!Physics.Raycast(ray, out _, m_DashRange))
         {
                 StartCoroutine(DoDash(direction));
         }
