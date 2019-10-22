@@ -107,7 +107,13 @@ public class ExpermentManager : MonoBehaviour
     {
         m_WriteToFile.WriteAllDataToFile(m_CurrentLocomotionTechnique);
         m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
+        StartCoroutine(RestartScenes());
+    }
+
+    private IEnumerator RestartScenes()
+    {
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        yield return new WaitForSeconds(2);
         SetPlayerToStartPosition();
         UnloadScene(3);
     }
