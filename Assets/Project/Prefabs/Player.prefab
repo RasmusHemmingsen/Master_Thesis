@@ -109,6 +109,9 @@ MonoBehaviour:
   m_GrabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  m_Haptic:
+    actionPath: 
+    needsReinit: 0
   m_ContactInteractables: []
 --- !u!54 &655459897087292692
 Rigidbody:
@@ -168,6 +171,9 @@ MonoBehaviour:
   m_GrabAction:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  m_Haptic:
+    actionPath: 
+    needsReinit: 0
   m_ContactInteractables: []
 --- !u!114 &655459896947372496
 MonoBehaviour:
@@ -181,21 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad1e469d4e3e04489f9a36419f1a4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &655459896947372499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656158630579896583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 0}
-  _ears: {fileID: 0}
-  wireframe: 0
 --- !u!114 &655459896947372502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,11 +243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b53362b3ff99c342874e1e752595401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pointer: {fileID: 0}
   m_TeleportAction:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
   m_Player: {fileID: 655459897010590417}
+  m_Controller: {fileID: 0}
+  m_pointer: {fileID: 0}
 --- !u!114 &621963602798453376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +269,7 @@ MonoBehaviour:
   m_MoveValue:
     actionPath: /actions/default/in/TouchpadPosition
     needsReinit: 0
+  m_Player: {fileID: 0}
 --- !u!1001 &655459897087292719
 PrefabInstance:
   m_ObjectHideFlags: 0

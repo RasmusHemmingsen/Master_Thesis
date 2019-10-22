@@ -22,6 +22,8 @@ public class Smooth_locomotion : MonoBehaviour
     private void Awake()
     {
         m_CharacterController = m_Player.GetComponent<CharacterController>();
+ 
+        m_MovePress[SteamVR_Input_Sources.LeftHand].onStateDown += Move;
     }
 
     private void Start()
@@ -34,7 +36,10 @@ public class Smooth_locomotion : MonoBehaviour
     {
         HandleHead();
         HandleHeight();
-        CalculateMovement();
+        if (!m_CharacterController.isGrounded)
+        {
+            m_CharacterController.Move(-m_Player.up * 9.8f);
+        }
     }
 
     private void HandleHead()
@@ -51,31 +56,28 @@ public class Smooth_locomotion : MonoBehaviour
         m_CameraRig.rotation = oldRotation;
     }
 
-    private void CalculateMovement()
+    private void Move(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        // Figure out movement orientation 
-        Vector3 orientationEuler = new Vector3(0, m_Player.eulerAngles.y, 0);
-        Quaternion orientation = Quaternion.Euler(orientationEuler);
-        Vector3 movement = Vector3.zero;
-
-
-        // If not moving 
-        if (m_MovePress.GetStateUp(SteamVR_Input_Sources.LeftHand))
-            m_Speed = 0;
-
-        // If button pressed
-        if (m_MovePress[SteamVR_Input_Sources.LeftHand].state)
+        do
         {
+            // Figure out movement orientation 
+            Vector3 orientationEuler = new Vector3(0, m_Player.eulerAngles.y, 0);
+            Quaternion orientation = Quaternion.Euler(orientationEuler);
+            Vector3 movement = Vector3.zero;
+
             // Add, clamp
             m_Speed += m_MoveValue.axis.y * m_Sensitivity;
             m_Speed = Mathf.Clamp(m_Speed, -m_MaxSpeed, m_MaxSpeed);
 
             // Orientation
             movement += orientation * (m_Speed * Vector3.forward) * Time.deltaTime;
-        }
 
-        // Apply
-        m_CharacterController.Move(movement);
+            // Apply
+            m_CharacterController.Move(movement);
+
+        } while (m_MovePress[SteamVR_Input_Sources.LeftHand].state);
+
+        m_Speed = 0;
     }
 
     private void HandleHeight()
