@@ -11,7 +11,7 @@ public class BlinkStep : MonoBehaviour
 
     private SteamVR_Behaviour_Pose m_Pose = null;
     private readonly float m_FadeTime = 0.2f;
-    private readonly float m_BlinkRange = 1.5f;
+    public float m_BlinkRange = 1.5f;
     public bool m_IsEnabled = false;
     public bool m_IsBlinking = false;
 

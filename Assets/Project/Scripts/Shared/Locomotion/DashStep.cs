@@ -12,7 +12,7 @@ public class DashStep : MonoBehaviour
     private SteamVR_Behaviour_Pose m_Pose = null;
 
     public float m_DashRange = 1.5f;
-    public float m_DashTime = 0.2f;
+    public float m_DashTime = 0.1f;
     public bool m_IsEnabled = false;
 
     [SerializeField]
@@ -34,7 +34,7 @@ public class DashStep : MonoBehaviour
         direction.y = 0;
 
         Ray ray = new Ray(m_Player.transform.position, direction);
-        if (!Physics.Raycast(ray, out _, m_DashRange))
+        if (Physics.Raycast(ray, out _, m_DashRange))
         {
                 StartCoroutine(DoDash(direction));
         }
