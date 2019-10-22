@@ -154,10 +154,6 @@ public class Armswing : MonoBehaviour
     //// Controllers ////
     public GameObject leftControllerGameObject;
     public GameObject rightControllerGameObject;
-    private SteamVR_TrackedObject leftControllerTrackedObj;
-    private SteamVR_TrackedObject rightControllerTrackedObj;
-    private int leftControllerIndex;
-    private int rightControllerIndex;
 
     // Wall Clip tracking
     [HideInInspector]
@@ -185,9 +181,6 @@ public class Armswing : MonoBehaviour
     /****** INITIALIZATION ******/
     void Awake()
     {
-        leftControllerTrackedObj = leftControllerGameObject.GetComponent<SteamVR_TrackedObject>();
-        rightControllerTrackedObj = rightControllerGameObject.GetComponent<SteamVR_TrackedObject>();
-
         m_ArmSwingButton[SteamVR_Input_Sources.LeftHand].onStateUp += LeftRelease;
         m_ArmSwingButton[SteamVR_Input_Sources.LeftHand].onStateDown += LeftPushed;
         m_ArmSwingButton[SteamVR_Input_Sources.RightHand].onStateUp += RightRelease;
