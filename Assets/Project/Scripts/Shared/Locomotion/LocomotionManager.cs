@@ -45,17 +45,16 @@ public class LocomotionManager : MonoBehaviour
     public LocomotionTechinique GetDummyLocomotionTechnique()
     {
         TurnOffAllTechniques();
-        //TurnOnBlinkStep();
-        //return LocomotionTechinique.BlinkStep;
+        TurnOnBlinkStep();
         //TurnOnSmoothLocomotion();
-        //return LocomotionTechinique.SmoothLocomotion;
-        TurnOnTeleport();
-        return LocomotionTechinique.Teleport;
+        //TurnOnTeleport();
+        return LocomotionTechinique.BlinkStep;
+
     }
 
     public LocomotionTechinique GetRandomLocomotionTechnique()
     {
-        int randomNumber = UnityEngine.Random.Range(0, m_UnusedLocomotionTechiniques.Count + 1);
+        int randomNumber = UnityEngine.Random.Range(0, m_UnusedLocomotionTechiniques.Count);
 
         TurnOffAllTechniques();
 
