@@ -30,7 +30,7 @@ public class LocomotionManager : MonoBehaviour
 
     private void FillListOfLocomotionTecniques()
     {
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
+        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
         //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Cybershoes);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
         m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.SmoothLocomotion);
@@ -149,11 +149,13 @@ public class LocomotionManager : MonoBehaviour
     private void TurnOnBlinkStep()
     {
         m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = true;
+        m_gameObjectLocomotion.GetComponent<BlinkStep>().m_IsEnabled = true;
     }
 
     private void TurnOffBlinkStep()
     {
         m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = false;
+        m_gameObjectLocomotion.GetComponent<BlinkStep>().m_IsEnabled = false;
     }
 
     private void TurnOffAllTechniques()
