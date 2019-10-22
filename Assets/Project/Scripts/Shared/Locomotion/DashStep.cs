@@ -11,7 +11,7 @@ public class DashStep : MonoBehaviour
 
     private SteamVR_Behaviour_Pose m_Pose = null;
 
-    public float m_DashRange = 1.5f;
+    public float m_DashRange = 1f;
     public float m_DashTime = 0.1f;
     public bool m_IsEnabled = false;
 
@@ -31,7 +31,7 @@ public class DashStep : MonoBehaviour
             return;
 
         Vector3 direction = m_Camera.forward;
-        direction.y = 0;
+        direction.y = 1;
 
         Ray ray = new Ray(m_Player.transform.position, direction);
         if (Physics.Raycast(ray, out _, m_DashRange))
@@ -42,6 +42,7 @@ public class DashStep : MonoBehaviour
 
     private IEnumerator DoDash(Vector3 direction)
     {
+        direction.y = 0;
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", true);
 
