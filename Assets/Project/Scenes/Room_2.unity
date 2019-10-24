@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: dd15618408fa59a41974dae073018b3f,
+  m_LightingDataAsset: {fileID: 112000004, guid: 97f203a1b49a1464d85c5b54f8b5af35,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &45275662
 Transform:
@@ -815,7 +815,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2083273920
 Transform:
@@ -1269,7 +1269,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OldParent: {fileID: 0}
 --- !u!1 &824365935045054349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1648,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_OldParent: {fileID: 0}
 --- !u!65 &824365935767288782
 BoxCollider:
   m_ObjectHideFlags: 0
