@@ -11,7 +11,8 @@ public class ExpermentManager : MonoBehaviour
     public Quaternion m_PlayerStartRotaion = new Quaternion(0, 0, 0, 1);
     
     private LocomotionManager m_LocomotionManager;
-    private LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
+    [HideInInspector]
+    public LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
     private SwitchShader m_SwitchShader;
     private WriteToFile m_WriteToFile;
 
