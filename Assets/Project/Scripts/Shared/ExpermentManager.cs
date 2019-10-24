@@ -61,6 +61,7 @@ public class ExpermentManager : MonoBehaviour
     public void HighlightTable(GameObject table)
     {
         Renderer renderer = table.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToHighlightTable(renderer);
     }
     #endregion
 
@@ -88,6 +89,7 @@ public class ExpermentManager : MonoBehaviour
     public void RemoveHighlightFromTable(GameObject table)
     {
         Renderer renderer = table.GetComponent<Renderer>();
+        m_SwitchShader.SwitchToStandardTable(renderer);
     }
     #endregion
 

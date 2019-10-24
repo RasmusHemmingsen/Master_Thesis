@@ -90,8 +90,13 @@ public class Room3Manager : MonoBehaviour
 
     public bool IsCurrentCube(GameObject gameObject)
     {
+        print(gameObject + " " + m_CurrentCube);
         if (GameObject.ReferenceEquals(gameObject, m_CurrentCube))
+        {
+            print("true");
             return true;
+        }
+            
         return false;
     }
 }
