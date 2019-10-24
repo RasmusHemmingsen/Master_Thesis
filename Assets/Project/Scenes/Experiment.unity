@@ -436,6 +436,11 @@ PrefabInstance:
       propertyPath: m_PlayerStartRotaion.w
       value: 0.70710677
       objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartPosition.z
+      value: -3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0585866994864543b4831ca60f8d602, type: 3}
 --- !u!1 &1411301973
