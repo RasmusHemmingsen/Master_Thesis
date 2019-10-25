@@ -49,8 +49,6 @@ public class LocomotionManager : MonoBehaviour
     {
         TurnOffAllTechniques();
         TurnOnBlinkStep();
-        //TurnOnSmoothLocomotion();
-        //TurnOnTeleport();
         return LocomotionTechinique.BlinkStep;
 
     }
@@ -61,7 +59,9 @@ public class LocomotionManager : MonoBehaviour
 
         TurnOffAllTechniques();
 
-        if (++m_NumberOfRandomMethod == m_UnusedLocomotionTechiniques.Count)
+        m_NumberOfRandomMethod += 1;
+
+        if (m_NumberOfRandomMethod > m_UnusedLocomotionTechiniques.Count)
             return LocomotionTechinique.None;
 
         LocomotionTechinique locomotionTechinique = m_UnusedLocomotionTechiniques[randomNumber];
