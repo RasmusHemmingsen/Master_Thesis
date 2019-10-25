@@ -87,6 +87,7 @@ Pass{
 	Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 	Blend SrcAlpha OneMinusSrcAlpha
 	ZWrite Off
+	ZTest Always
 	Cull Back
 	CGPROGRAM
 

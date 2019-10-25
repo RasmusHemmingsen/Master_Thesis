@@ -1417,8 +1417,8 @@ MonoBehaviour:
   m_PickUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2124556770}
-        m_MethodName: LoadScene2
+      - m_Target: {fileID: 326680700253367387}
+        m_MethodName: StartOpenDoorAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1428,8 +1428,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 326680700253367387}
-        m_MethodName: StartOpenDoorAnimation
+      - m_Target: {fileID: 2124556770}
+        m_MethodName: HandleGrabed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1443,18 +1443,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2124556770}
-        m_MethodName: StopTimer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2124556770}
-        m_MethodName: DisableDoorhandle
+        m_MethodName: HandleDroped
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 326680700253367385}
