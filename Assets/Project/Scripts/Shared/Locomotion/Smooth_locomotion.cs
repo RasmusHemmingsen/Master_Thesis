@@ -35,7 +35,7 @@ public class Smooth_locomotion : MonoBehaviour
 
     private void Update()
     {
-        HandleHeight();
+        //HandleHeight();
         CalculateMovement();
     }
 

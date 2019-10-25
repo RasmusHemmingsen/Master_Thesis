@@ -13,7 +13,7 @@ public class BlinkStep : MonoBehaviour
     private readonly float m_FadeTime = 0.2f;
     public float m_BlinkRange = 1.5f;
     public bool m_IsEnabled = false;
-    public bool m_IsBlinking = false;
+    private bool m_IsBlinking = false;
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class BlinkStep : MonoBehaviour
 
     private void TryBlink(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        if (!m_IsEnabled)
+        if (!m_IsEnabled || m_IsBlinking)
             return;
 
         Vector3 direction = m_Camera.forward;

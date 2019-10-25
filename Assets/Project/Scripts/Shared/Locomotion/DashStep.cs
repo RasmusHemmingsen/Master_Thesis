@@ -14,6 +14,7 @@ public class DashStep : MonoBehaviour
     public float m_DashRange = 1f;
     public float m_DashTime = 0.1f;
     public bool m_IsEnabled = false;
+    private bool m_IsDashing = false;
 
     [SerializeField]
     private Animator maskAnimator;
@@ -27,7 +28,7 @@ public class DashStep : MonoBehaviour
 
     private void TryDash(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        if (!m_IsEnabled)
+        if (!m_IsEnabled || m_IsDashing)
             return;
 
         Vector3 direction = m_Camera.forward;
@@ -42,6 +43,8 @@ public class DashStep : MonoBehaviour
 
     private IEnumerator DoDash(Vector3 direction)
     {
+        m_IsDashing = true;
+
         direction.y = 0;
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", true);
@@ -63,5 +66,8 @@ public class DashStep : MonoBehaviour
 
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", false);
+
+        m_IsDashing = false;
     }
+
 }
