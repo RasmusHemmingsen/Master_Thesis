@@ -15,6 +15,7 @@ public class ExpermentManager : MonoBehaviour
     public Quaternion m_PlayerStartDefaultRotaion = new Quaternion(0, 0, 0, 1);
 
     private LocomotionManager m_LocomotionManager;
+    private DescriptionManager m_DescriptionManager;
     [HideInInspector]
     public LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
     private SwitchShader m_SwitchShader;
@@ -36,6 +37,7 @@ public class ExpermentManager : MonoBehaviour
             m_ExpermentManager = this;
 
             m_LocomotionManager = FindObjectOfType<LocomotionManager>();
+            m_DescriptionManager = FindObjectOfType<DescriptionManager>();
             m_SwitchShader = FindObjectOfType<SwitchShader>();
             m_WriteToFile = gameObject.AddComponent<WriteToFile>();         
 
@@ -174,8 +176,10 @@ public class ExpermentManager : MonoBehaviour
             m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
             m_First = false;
         }
+        else
+            m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
 
-        m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
+        m_DescriptionManager.SwitchDescription(m_CurrentLocomotionTechnique);
         if (m_CurrentLocomotionTechnique == LocomotionManager.LocomotionTechinique.None)
             Application.Quit();
         StartCoroutine(StartTest());
