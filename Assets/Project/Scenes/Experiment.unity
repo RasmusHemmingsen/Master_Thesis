@@ -122,7 +122,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &468652582
+--- !u!21 &469610924
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!43 &827851999
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,6 +475,36 @@ PrefabInstance:
       propertyPath: m_PlayerStartPosition.z
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartTestRotaion.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartTestRotaion.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartTestPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartDefaultRotaion.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartDefaultRotaion.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388361669194531332, guid: c0585866994864543b4831ca60f8d602,
+        type: 3}
+      propertyPath: m_PlayerStartDefaultPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0585866994864543b4831ca60f8d602, type: 3}
 --- !u!1 &1411301973
@@ -557,40 +621,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411301973}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &1571227710
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1803524185 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4171747662643786823, guid: c0585866994864543b4831ca60f8d602,
@@ -609,6 +639,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9997fcb9f80f70146820fa2e79d66b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1803524187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803524185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb70f32381f6cc479a3e670a37c35d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Player: {fileID: 4467908566884917730}
+  m_RoomActiveForDistance: 0
 --- !u!114 &1803524188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,12 +804,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1571227710}
+      objectReference: {fileID: 469610924}
     - target: {fileID: 655459897086141401, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 468652582}
+      objectReference: {fileID: 827851999}
     - target: {fileID: 655459897087138699, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
@@ -957,7 +1001,6 @@ MonoBehaviour:
   m_Camera: {fileID: 1864489286}
   m_BlinkRange: 1.25
   m_IsEnabled: 0
-  m_IsBlinking: 0
 --- !u!114 &4467908566884917728
 MonoBehaviour:
   m_ObjectHideFlags: 0

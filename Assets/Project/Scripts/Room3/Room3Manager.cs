@@ -36,6 +36,7 @@ public class Room3Manager : MonoBehaviour
     {
         ExpermentManager.m_ExpermentManager.RemoveHighlightFromHandle(m_Handle);
         TimeManager.m_TimeManager.StopTimerRoom2();
+        DistanceManager.m_DistanceManager.SetActiveRoomForDistance(3);
     }
 
     public void HighlightCurrentCube()
@@ -69,7 +70,7 @@ public class Room3Manager : MonoBehaviour
 
         if (m_NumberOfCubesCurrectPlaced >= m_CubeListSize)
         {
-            ExpermentManager.m_ExpermentManager.RestartWithNewTechnique(); 
+            ExpermentManager.m_ExpermentManager.GotoDefaultroom(); 
         }
 
         if(m_NextCube != null)

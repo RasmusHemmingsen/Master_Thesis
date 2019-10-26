@@ -23,6 +23,7 @@ public class Room2Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         TimeManager.m_TimeManager.StartTimerRoom2();
+        DistanceManager.m_DistanceManager.SetActiveRoomForDistance(2);
 
     }
 

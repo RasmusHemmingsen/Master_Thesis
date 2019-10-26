@@ -8,23 +8,28 @@ using UnityEngine;
 public class WriteToFile : MonoBehaviour
 {
     private string m_DirectoryPath = "ExperimentResults";
-    private string m_Filename;
-    private string m_WholePath;
+    private string m_FilenameTime;
+    private string m_FilenameDistance;
+    private string m_WholePathTime;
 
     private void Start()
     {
-        if (m_Filename == null)
-        {
-            m_Filename = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + ".txt";
-            m_WholePath = m_DirectoryPath + "/" + m_Filename;
-        }
+        m_FilenameTime = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + "Time.txt";
+        m_WholePathTime = m_DirectoryPath + "/" + m_FilenameTime;
+        m_FilenameDistance = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US"));
     }
 
 
     public void WriteAllDataToFile(LocomotionManager.LocomotionTechinique techinique)
     {
-        string data = PepareTimeDataForWiriteTofile(techinique);
-        WriteTimeDataToFile(data);
+        string filenameDistanceRoom1 = m_FilenameDistance + "Room_1_" + techinique + "Distance.csv";
+        string filenameDistanceRoom2 = m_FilenameDistance + "Room_2_" + techinique + "Distance.csv";
+        string filenameDistanceRoom3 = m_FilenameDistance + "Room_3_" + techinique + "Distance.csv";
+
+        WriteDataToFile(PepareTimeDataForWiriteTofile(techinique), m_WholePathTime);
+        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom1(), filenameDistanceRoom1);
+        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom2(), filenameDistanceRoom2);
+        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom3(), filenameDistanceRoom3);
     }
 
     private string PepareTimeDataForWiriteTofile(LocomotionManager.LocomotionTechinique technique)
@@ -59,14 +64,14 @@ public class WriteToFile : MonoBehaviour
         return data;
     }
 
-    private void WriteTimeDataToFile(string data)
+    private void WriteDataToFile(string data, string path)
     {
         if (!System.IO.Directory.Exists(m_DirectoryPath))
         {
             System.IO.Directory.CreateDirectory(m_DirectoryPath);
         }
 
-        using (FileStream fileStream = new FileStream(m_WholePath, FileMode.OpenOrCreate, FileAccess.Write))
+        using (FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
         {
             StreamWriter sw = new StreamWriter(fileStream);
             long endPoint = fileStream.Length;

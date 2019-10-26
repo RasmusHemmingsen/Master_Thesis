@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Room1Manager : MonoBehaviour
 {
-    private bool m_HandlePressed;
+    private bool m_HandlePressed = false;
     private void Start()
     {
         Startimer();
-        m_HandlePressed = false;
     }
 
     public void HandleGrabed()

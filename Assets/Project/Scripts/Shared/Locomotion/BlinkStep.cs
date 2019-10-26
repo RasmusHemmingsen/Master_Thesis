@@ -22,6 +22,14 @@ public class BlinkStep : MonoBehaviour
         m_BlinkAction[SteamVR_Input_Sources.Any].onStateUp += TryBlink;
     }
 
+    private void Update()
+    {
+        Vector3 direction = m_Camera.forward;
+        direction.y = 1;
+
+        Debug.DrawRay(m_Player.transform.position, direction * m_BlinkRange, Color.green);
+    }
+
     private void TryBlink(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
         if (!m_IsEnabled || m_IsBlinking)

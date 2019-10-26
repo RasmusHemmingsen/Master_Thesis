@@ -1,22 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR;
 
 public class ExpermentManager : MonoBehaviour
 {
     public static ExpermentManager m_ExpermentManager;
     public GameObject m_Player;
 
-    public Vector3 m_PlayerStartPosition = new Vector3(-3.5f, 0f, -3.5f);
-    public Quaternion m_PlayerStartRotaion = new Quaternion(0, 0, 0, 1);
-    
+    public Vector3 m_PlayerStartTestPosition = new Vector3(-3.5f, 1f, -3f);
+    public Quaternion m_PlayerStartTestRotaion = new Quaternion(0, -90, 0, 1);
+
+    public Vector3 m_PlayerStartDefaultPosition = new Vector3(-11.5f, 0f, -12f);
+    public Quaternion m_PlayerStartDefaultRotaion = new Quaternion(0, 0, 0, 1);
+
     private LocomotionManager m_LocomotionManager;
     [HideInInspector]
     public LocomotionManager.LocomotionTechinique m_CurrentLocomotionTechnique;
     private SwitchShader m_SwitchShader;
     private WriteToFile m_WriteToFile;
 
+    private float m_FadeTime = 0.5f;
+
+    private Vector3 m_PlayerResetRoom1 = new Vector3(0, 0, 0);
+    private Vector3 m_PlayerResetRoom2 = new Vector3(20.8f, 0, 31.2f);
+    private Vector3 m_PlayerResetRoom3 = new Vector3(41, 0, 60.4f);
+
     private bool m_GameStart;
+    private bool m_First = true;
 
     private void Awake()
     {
@@ -24,21 +35,57 @@ public class ExpermentManager : MonoBehaviour
         {
             m_ExpermentManager = this;
 
-            SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-
             m_LocomotionManager = FindObjectOfType<LocomotionManager>();
             m_SwitchShader = FindObjectOfType<SwitchShader>();
             m_WriteToFile = gameObject.AddComponent<WriteToFile>();         
 
             m_GameStart = true;
 
-            SetPlayerToStartPosition();
         }      
     }
 
-    public void Start()
+    private void Start()
     {
-        m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
+        GotoDefaultroom();
+    }
+
+    private void Update()
+    {
+        CheckForResetPlayer();
+    }
+
+    private void CheckForResetPlayer()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            switch (DistanceManager.m_DistanceManager.GetActiveRoom())
+            {
+                case 3:
+                    StartCoroutine(ResetPlayer(m_PlayerResetRoom3));
+                    break;
+                case 2:
+                    StartCoroutine(ResetPlayer(m_PlayerResetRoom2));
+                    break;
+                case 1:
+                    StartCoroutine(ResetPlayer(m_PlayerResetRoom1));
+                    break;
+                case 0:
+                    StartCoroutine(ResetPlayer(m_PlayerStartDefaultPosition));
+                    break;
+            }
+        }
+    }
+
+    private IEnumerator ResetPlayer(Vector3 position)
+    {
+        SteamVR_Fade.Start(Color.black, m_FadeTime, true);
+
+        // Apply translation 
+        yield return new WaitForSeconds(m_FadeTime);
+        m_Player.transform.position = position;
+
+        // Fade to clear
+        SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
     }
 
     #region Highhight
@@ -106,27 +153,52 @@ public class ExpermentManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(scene);
     }
 
-    public void RestartWithNewTechnique()
+    public void GotoDefaultroom()
     {
-        m_WriteToFile.WriteAllDataToFile(m_CurrentLocomotionTechnique);
-        m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
+        DistanceManager.m_DistanceManager.SetActiveRoomForDistance(0);
+        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+        m_LocomotionManager.TurnOffAllTechniques();
+        if (!m_First)
+        {
+            m_WriteToFile.WriteAllDataToFile(m_CurrentLocomotionTechnique);
+            UnloadScene(3);
+        }
+        SetPlayerToDefaultStartPosition();
+    }
 
+    public void StartTestWithNewTechnique()
+    {
+        DistanceManager.m_DistanceManager.ResetDistanceData();
+        if (m_First)
+        {
+            m_CurrentLocomotionTechnique = m_LocomotionManager.GetDummyLocomotionTechnique();
+            m_First = false;
+        }
+
+        m_CurrentLocomotionTechnique = m_LocomotionManager.GetRandomLocomotionTechnique();
         if (m_CurrentLocomotionTechnique == LocomotionManager.LocomotionTechinique.None)
             Application.Quit();
-        StartCoroutine(RestartScenes());
+        StartCoroutine(StartTest());
     }
 
-    private IEnumerator RestartScenes()
+    private IEnumerator StartTest()
     {
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-        yield return new WaitForSeconds(2);
-        SetPlayerToStartPosition();
-        UnloadScene(3);
+        yield return new WaitForSeconds(0.5f);
+        SetPlayerToTestStartPosition();
+        DistanceManager.m_DistanceManager.SetActiveRoomForDistance(1);
+        Unload(4);
     }
 
-    private void SetPlayerToStartPosition()
+    private void SetPlayerToTestStartPosition()
     {
-        m_Player.transform.position = m_PlayerStartPosition;
-        m_Player.transform.rotation = m_PlayerStartRotaion;
+        m_Player.transform.position = m_PlayerStartTestPosition;
+        m_Player.transform.rotation = m_PlayerStartTestRotaion;
+    }
+
+    private void SetPlayerToDefaultStartPosition()
+    {
+        m_Player.transform.position = m_PlayerStartDefaultPosition;
+        m_Player.transform.rotation = m_PlayerStartDefaultRotaion;
     }
 }
