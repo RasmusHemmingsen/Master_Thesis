@@ -6,9 +6,19 @@ using UnityEngine.SceneManagement;
 public class Room1Manager : MonoBehaviour
 {
     private bool m_HandlePressed = false;
+
+    private DescriptionManager m_DescriptionManager;
+
+    private void Awake()
+    {
+
+        m_DescriptionManager = FindObjectOfType<DescriptionManager>();
+    }
+
     private void Start()
     {
         Startimer();
+        m_DescriptionManager.SwitchDescription(ExpermentManager.m_ExpermentManager.m_CurrentLocomotionTechnique);
     }
 
     public void HandleGrabed()
