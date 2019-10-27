@@ -14,9 +14,9 @@ public class WriteToFile : MonoBehaviour
 
     private void Start()
     {
-        m_FilenameTime = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + "Time.txt";
+        m_FilenameTime = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + " Time.txt";
         m_WholePathTime = m_DirectoryPath + "/" + m_FilenameTime;
-        m_FilenameDistance = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US"));
+        m_FilenameDistance = m_DirectoryPath + "/Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US"));
     }
 
 
