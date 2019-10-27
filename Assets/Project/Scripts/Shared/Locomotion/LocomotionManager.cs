@@ -11,7 +11,9 @@ public class LocomotionManager : MonoBehaviour
 
     private GameObject m_TeleportPointer = null;
 
-    private int m_NumberOfRandomMethod = 0;
+    private int m_NumberOfRandomTechnique = 0;
+
+    private int m_NumberOfTechniques = 0;
 
     private List<LocomotionTechinique> m_UnusedLocomotionTechiniques = new List<LocomotionTechinique>();
 
@@ -28,7 +30,12 @@ public class LocomotionManager : MonoBehaviour
     private void Awake()
     {
         GetGameObjectsWithScripts();
+    }
+
+    private void Start()
+    {
         FillListOfLocomotionTecniques();
+        m_NumberOfTechniques = m_UnusedLocomotionTechiniques.Count;
     }
 
     private void FillListOfLocomotionTecniques()
@@ -55,13 +62,14 @@ public class LocomotionManager : MonoBehaviour
 
     public LocomotionTechinique GetRandomLocomotionTechnique()
     {
-        int randomNumber = UnityEngine.Random.Range(0, m_UnusedLocomotionTechiniques.Count);
+        var random = new System.Random();
+        int randomNumber = random.Next(0, m_UnusedLocomotionTechiniques.Count);
 
         TurnOffAllTechniques();
 
-        m_NumberOfRandomMethod += 1;
+        m_NumberOfRandomTechnique += 1;
 
-        if (m_NumberOfRandomMethod > m_UnusedLocomotionTechiniques.Count)
+        if (m_NumberOfRandomTechnique > m_NumberOfTechniques)
             return LocomotionTechinique.None;
 
         LocomotionTechinique locomotionTechinique = m_UnusedLocomotionTechiniques[randomNumber];
