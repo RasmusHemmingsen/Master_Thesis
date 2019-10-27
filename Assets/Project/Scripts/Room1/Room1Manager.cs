@@ -44,7 +44,7 @@ public class Room1Manager : MonoBehaviour
 
     private IEnumerator DisableCollider(Collider collider)
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
         collider.enabled = false;
     }
 
