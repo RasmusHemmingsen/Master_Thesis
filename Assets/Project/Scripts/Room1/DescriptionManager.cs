@@ -8,11 +8,6 @@ public class DescriptionManager : MonoBehaviour
 
     public Text m_Text;
 
-    private void Start()
-    {
-        m_Text.text = "";
-    }
-
     public void SwitchDescription(LocomotionManager.LocomotionTechinique techinique)
     {
         switch (techinique)
@@ -43,39 +38,33 @@ public class DescriptionManager : MonoBehaviour
 
     private void SetToTeleportDescription()
     {
-        m_Text.text =
-            "Teleport \n";
+        m_Text.text = "Teleport \n";
     }
 
     private void SetToDashStepDescription()
     {
-        m_Text.text =
-            "Dash Step \n";
+        m_Text.text = "Dash Step \n";
     }
 
     private void SetToBlinkStepDescription()
     {
-        m_Text.text =
-            "Blink Step \n";
+        m_Text.text = "Blink Step \n";
     }
 
     private void SetToArmswingDescription()
     {
-        m_Text.text =
-            "Armswing \n";
+        m_Text.text = "Armswing \n";
     }
 
     private void SetToCybershoesDescription()
     {
-        m_Text.text =
-            "Cybershoes \n";
+        m_Text.text = "Cybershoes \n";
 
     }
 
     private void SetToSmoothLocomotionDescription()
     {
-        m_Text.text =
-            "Smooth locomotion \n";
+        m_Text.text = "Smooth locomotion \n";
     }
 
 }
