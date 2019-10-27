@@ -188,7 +188,7 @@ public class ExpermentManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         SetPlayerToTestStartPosition();
         DistanceManager.m_DistanceManager.SetActiveRoomForDistance(1);
-        Unload(4);
+        UnloadScene(4);
     }
 
     private void SetPlayerToTestStartPosition()
