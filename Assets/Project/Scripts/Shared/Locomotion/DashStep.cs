@@ -32,9 +32,11 @@ public class DashStep : MonoBehaviour
             return;
 
         Vector3 direction = m_Camera.forward;
-        direction.y = 1;
+        direction.y = 0;
+        Vector3 rayPosition = m_Player.transform.position;
+        rayPosition.y = 1;
 
-        Ray ray = new Ray(m_Player.transform.position, direction);
+        Ray ray = new Ray(rayPosition, direction);
         if (!Physics.Raycast(ray, out _, m_DashRange))
         {
                 StartCoroutine(DoDash(direction));
@@ -45,7 +47,6 @@ public class DashStep : MonoBehaviour
     {
         m_IsDashing = true;
 
-        direction.y = 0;
         if (maskAnimator != null)
             maskAnimator.SetBool("Mask", true);
 
