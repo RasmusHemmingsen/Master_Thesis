@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Statue : MonoBehaviour
 {
-    private bool triggered = false;
-    private void OnTriggerEnter(Collider other)
+    public void Pickup()
     {
-        if(!triggered)
-        {
-            triggered = true;
-            ExpermentManager.m_ExpermentManager.StartTestWithNewTechnique();
-        }
+        ExpermentManager.m_ExpermentManager.StartTestWithNewTechnique();
     }
+
+    public void Drop()
+    {
+
+    }
+    
 }
