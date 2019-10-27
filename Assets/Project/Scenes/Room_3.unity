@@ -729,6 +729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -757,6 +762,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 333547172}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &333547170 stripped
@@ -783,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &371213077
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +1001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -994,6 +1034,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 391409598}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &391409596 stripped
@@ -1020,7 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &452477697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -1216,6 +1291,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 704986581}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &704986579 stripped
@@ -1242,7 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &738715151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,11 +1446,105 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 901685101}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 901685101}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Drop
+      objectReference: {fileID: 0}
+    - target: {fileID: 714941178123584246, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: DropEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361146254602984377, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PointA
+      value: 
+      objectReference: {fileID: 901685103}
+    - target: {fileID: 3361146254602984377, guid: 5777b8b4a966bd148a63618cf3f68842,
+        type: 3}
+      propertyPath: PointB
+      value: 
+      objectReference: {fileID: 901685102}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5777b8b4a966bd148a63618cf3f68842, type: 3}
 --- !u!4 &901685100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7501992309820006011, guid: 5777b8b4a966bd148a63618cf3f68842,
+    type: 3}
+  m_PrefabInstance: {fileID: 901685099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &901685101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3361146254602984377, guid: 5777b8b4a966bd148a63618cf3f68842,
+    type: 3}
+  m_PrefabInstance: {fileID: 901685099}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8faeadab4bcc9094eb20555e866de1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &901685102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7501992310439428540, guid: 5777b8b4a966bd148a63618cf3f68842,
+    type: 3}
+  m_PrefabInstance: {fileID: 901685099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &901685103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7501992309114258003, guid: 5777b8b4a966bd148a63618cf3f68842,
     type: 3}
   m_PrefabInstance: {fileID: 901685099}
   m_PrefabAsset: {fileID: 0}
@@ -1684,6 +1883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -1712,6 +1916,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 953147343}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &953147341 stripped
@@ -1738,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &965051299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +2186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703663a757ac1a94983a13252ea4a7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!65 &1190087892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2069,17 +2303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f498407faea49a46b2986a6b48a5a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ListOfCubes:
-  - {fileID: 391409597}
-  - {fileID: 704986580}
-  - {fileID: 333547171}
-  - {fileID: 2032038859}
-  - {fileID: 953147342}
-  - {fileID: 2096372830}
-  - {fileID: 1755341640}
-  - {fileID: 2107368098}
-  m_Handle: {fileID: 1625472186}
-  m_table: {fileID: 1190087889}
+  ListOfCubes: []
+  Handle: {fileID: 1625472186}
+  Table: {fileID: 1190087889}
 --- !u!1 &1442686293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,23 +2461,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea94755cf7f74a7418ac65705e9dd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActiveHand: {fileID: 0}
-  simulator: {fileID: 0}
-  m_DisconnectDistance: 0
-  m_PickUp:
+  ActiveHand: {fileID: 0}
+  Simulator: {fileID: 0}
+  DisconnectDistance: 0
+  PickUpEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1625472190}
-        m_MethodName: StartOpenDoorAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1353168808}
         m_MethodName: HandlePressed
         m_Mode: 1
@@ -2263,22 +2478,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_Drop:
+  DropEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1353168808}
         m_MethodName: HighlightCurrentCube
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1353168808}
-        m_MethodName: Startimer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2300,7 +2504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b6c71523f9de4da561abc476083c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 926834394}
+  Animator: {fileID: 926834394}
 --- !u!54 &1625472191
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2597,6 +2801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -2625,6 +2834,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1755341641}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &1755341639 stripped
@@ -2651,7 +2890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &1981328228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +3058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -2847,6 +3091,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2032038860}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &2032038858 stripped
@@ -2873,7 +3147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &2036007820
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,6 +3594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -3348,6 +3627,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2096372831}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &2096372829 stripped
@@ -3374,7 +3683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1001 &2107368096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3449,6 +3758,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
         type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
       objectReference: {fileID: 0}
@@ -3477,6 +3791,36 @@ PrefabInstance:
       propertyPath: m_PickUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2107368099}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PickUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735672876404981763, guid: dfc441e1148a0fd4cb445a6d58578f1b,
+        type: 3}
+      propertyPath: PickUpEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfc441e1148a0fd4cb445a6d58578f1b, type: 3}
 --- !u!4 &2107368097 stripped
@@ -3503,7 +3847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d21a5abaa789dd4383372106e17f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RoomManager: {fileID: 1353168808}
+  RoomManager: {fileID: 1353168808}
 --- !u!1 &2121052009
 GameObject:
   m_ObjectHideFlags: 0

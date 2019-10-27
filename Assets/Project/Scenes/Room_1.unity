@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ebff0a6ab49d24da4399d41545fc0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Text: {fileID: 1214123651}
+  Text: {fileID: 1214123651}
 --- !u!1 &326680700253367385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,10 +1425,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea94755cf7f74a7418ac65705e9dd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActiveHand: {fileID: 0}
-  simulator: {fileID: 0}
-  m_DisconnectDistance: 0
-  m_PickUp:
+  ActiveHand: {fileID: 0}
+  Simulator: {fileID: 0}
+  DisconnectDistance: 0
+  PickUpEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 326680700253367387}
@@ -1443,7 +1443,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2124556770}
-        m_MethodName: HandleGrabed
+        m_MethodName: HandleGrapped
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1453,11 +1453,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_Drop:
+  DropEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2124556770}
-        m_MethodName: HandleDroped
+        m_MethodName: HandleDropped
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 326680700253367385}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b6c71523f9de4da561abc476083c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 5233335934136502595}
+  Animator: {fileID: 5233335934136502595}
 --- !u!54 &326680700253367388
 Rigidbody:
   m_ObjectHideFlags: 0

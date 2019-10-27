@@ -444,10 +444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ed9efe9d963894fbf450db7d4416c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_WallToRoom1: {fileID: 2083273919}
-  m_WallToRoom3: {fileID: 45275661}
-  m_Button1: {fileID: 824365934107036096}
-  m_Button2: {fileID: 824365934561885579}
+  WallToRoom1: {fileID: 2083273919}
+  WallToRoom3: {fileID: 45275661}
+  Button1: {fileID: 824365934107036096}
+  Button2: {fileID: 824365934561885579}
 --- !u!1 &767144878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,37 +1330,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea94755cf7f74a7418ac65705e9dd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActiveHand: {fileID: 0}
-  simulator: {fileID: 0}
-  m_DisconnectDistance: 0
-  m_PickUp:
+  ActiveHand: {fileID: 0}
+  Simulator: {fileID: 0}
+  DisconnectDistance: 0
+  PickUpEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 824365935045054351}
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_Drop:
+      m_Calls: []
+  DropEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 824365935045054351}
-        m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &824365935045054349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,12 +1389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e316fc27190571943920e09583195f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PointA: {fileID: 824365934344672049}
-  m_PointB: {fileID: 824365934213448097}
-  m_HitPointA:
+  PointA: {fileID: 824365934344672049}
+  PointB: {fileID: 824365934213448097}
+  HitPointA:
     m_PersistentCalls:
       m_Calls: []
-  m_HitPointB:
+  HitPointB:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 735827506}
@@ -1430,10 +1408,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_ReleasedA:
+  ReleasedA:
     m_PersistentCalls:
       m_Calls: []
-  m_ReleasedB:
+  ReleasedB:
     m_PersistentCalls:
       m_Calls: []
 --- !u!136 &824365935294011680
@@ -1542,12 +1520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e316fc27190571943920e09583195f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PointA: {fileID: 824365934797940602}
-  m_PointB: {fileID: 824365934933554666}
-  m_HitPointA:
+  PointA: {fileID: 824365934797940602}
+  PointB: {fileID: 824365934933554666}
+  HitPointA:
     m_PersistentCalls:
       m_Calls: []
-  m_HitPointB:
+  HitPointB:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 735827506}
@@ -1561,10 +1539,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_ReleasedA:
+  ReleasedA:
     m_PersistentCalls:
       m_Calls: []
-  m_ReleasedB:
+  ReleasedB:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &824365935767288773
@@ -1709,37 +1687,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea94755cf7f74a7418ac65705e9dd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActiveHand: {fileID: 0}
-  simulator: {fileID: 0}
-  m_DisconnectDistance: 0
-  m_PickUp:
+  ActiveHand: {fileID: 0}
+  Simulator: {fileID: 0}
+  DisconnectDistance: 0
+  PickUpEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 824365935767288772}
-        m_MethodName: PickUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_Drop:
+      m_Calls: []
+  DropEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 824365935767288772}
-        m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &824365935767288782
 BoxCollider:
   m_ObjectHideFlags: 0

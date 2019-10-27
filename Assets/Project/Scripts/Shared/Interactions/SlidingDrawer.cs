@@ -5,51 +5,51 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class SlidingDrawer : MonoBehaviour
 {
-    Transform parent;
-    public Transform m_PointA;
-    public Transform m_PointB;
+    private Transform _parent;
+    public Transform PointA;
+    public Transform PointB;
 
-    private Vector3 m_offset;
+    private Vector3 _offset;
 
-    private Interactable m_Interactable;
+    private Interactable _interactable;
 
-    void Start()
+    private void Start()
     {
-        m_Interactable = GetComponent<Interactable>();
+        _interactable = GetComponent<Interactable>();
     }
 
-    
-    void Update()
+
+    private void Update()
     {
-        if( parent != null)
+        if( _parent != null)
         {
-            transform.position = ClosestPointOnLine(parent.position) - m_offset;
+            transform.position = ClosestPointOnLine(_parent.position) - _offset;
         }
     }
 
     public void PickUp()
     {
-        parent = m_Interactable.m_ActiveHand.transform;
+        _parent = _interactable.ActiveHand.transform;
 
-        m_offset = parent.position - transform.position;
+        _offset = _parent.position - transform.position;
     }
 
     public void Drop()
     {
-        m_Interactable.simulator.transform.position = transform.position + m_offset;
+        _interactable.Simulator.transform.position = transform.position + _offset;
 
-        parent = m_Interactable.simulator.transform;
+        _parent = _interactable.Simulator.transform;
     }
 
-    Vector3 ClosestPointOnLine(Vector3 point)
+    private Vector3 ClosestPointOnLine(Vector3 point)
     {
-        Vector3 vectorA = m_PointA.position + m_offset;
-        Vector3 vectorB = m_PointB.position + m_offset;
+        var vectorA = PointA.position + _offset;
+        var vectorB = PointB.position + _offset;
 
-        Vector3 vVector1 = point - vectorA;
-        Vector3 vVector2 = (vectorB - vectorA).normalized;
+        var vVector1 = point - vectorA;
+        var vVector2 = (vectorB - vectorA).normalized;
 
-        float distance = Vector3.Dot(vVector2, vVector1);
+        var distance = Vector3.Dot(vVector2, vVector1);
 
         if (distance <= 0)
             return vectorA;
@@ -57,9 +57,9 @@ public class SlidingDrawer : MonoBehaviour
         if (distance >= Vector3.Distance(vectorA, vectorB))
             return vectorB;
 
-        Vector3 vVector3 = vVector2 * distance;
+        var vVector3 = vVector2 * distance;
 
-        Vector3 vClosestPoint = vectorA + vVector3;
+        var vClosestPoint = vectorA + vVector3;
 
         return vClosestPoint;
     }

@@ -5,41 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class Room1Manager : MonoBehaviour
 {
-    private bool m_HandlePressed = false;
+    private bool _handlePressed = false;
 
-    private DescriptionManager m_DescriptionManager;
+    private DescriptionManager _descriptionManager;
 
     private void Awake()
     {
 
-        m_DescriptionManager = FindObjectOfType<DescriptionManager>();
+        _descriptionManager = FindObjectOfType<DescriptionManager>();
     }
 
     private void Start()
     {
-        Startimer();
-        m_DescriptionManager.SwitchDescription(ExpermentManager.m_ExpermentManager.m_CurrentLocomotionTechnique);
+        StartTimer();
+        _descriptionManager.SwitchDescription(ExperimentManager.ExperimentManagerVariable.CurrentLocomotionTechnique);
     }
 
-    public void HandleGrabed()
+    public void HandleGrapped()
     {
-        if (m_HandlePressed)
+        if (_handlePressed)
             return;
-        m_HandlePressed = true;
+        _handlePressed = true;
         LoadScene2();
         StopTimer();
     }
 
-    public void HandleDroped(GameObject gameObject)
+    public void HandleDropped(GameObject handle)
     {
-        DisableDoorhandle(gameObject);
+        DisableDoorHandle(gameObject);
     }
 
 
-    private void DisableDoorhandle(GameObject gameObject)
+    private void DisableDoorHandle(GameObject handle)
     {
-        Collider collider = gameObject.GetComponent<MeshCollider>();
-        StartCoroutine(DisableCollider(collider));
+        var handleCollider = handle.GetComponent<MeshCollider>();
+        StartCoroutine(DisableCollider(handleCollider));
     }
 
     private IEnumerator DisableCollider(Collider collider)
@@ -48,14 +48,14 @@ public class Room1Manager : MonoBehaviour
         collider.enabled = false;
     }
 
-    private void Startimer()
+    private void StartTimer()
     {
-        TimeManager.m_TimeManager.StartTimerRoom1();
+        TimeManager.TimeManagerVariable.StartTimerRoom1();
     }
 
     private void StopTimer()
     {
-        TimeManager.m_TimeManager.StopTimerRoom1();
+        TimeManager.TimeManagerVariable.StopTimerRoom1();
     }
 
     public void LoadScene2()

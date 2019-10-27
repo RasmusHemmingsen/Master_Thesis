@@ -4,57 +4,57 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
-    public static TimeManager m_TimeManager;
+    public static TimeManager TimeManagerVariable;
 
-    private float m_LastCheckpointTotal = 0f;
+    private float _lastCheckpointTotal = 0f;
 
-    private float m_Room1StartTime = 0f;
-    private float m_Room1Time;
+    private float _room1StartTime = 0f;
+    private float _room1Time;
 
-    private float m_Room2StartTime = 0f;
-    private float m_Room2FirstButton;
-    private float m_Room2SecondButton;
-    private float m_Room2LastSection;
-    private float m_Room2Time;
+    private float _room2StartTime = 0f;
+    private float _room2FirstButton;
+    private float _room2SecondButton;
+    private float _room2LastSection;
+    private float _room2Time;
 
-    private float m_Room3StartTime = 0f;
-    private float m_Room3GrapCube1;
-    private float m_Room3DeliverCube1;
-    private float m_Room3GrapCube2;
-    private float m_Room3DeliverCube2;
-    private float m_Room3GrapCube3;
-    private float m_Room3DeliverCube3;
-    private float m_Room3GrapCube4;
-    private float m_Room3DeliverCube4;
-    private float m_Room3GrapCube5;
-    private float m_Room3DeliverCube5;
-    private float m_Room3GrapCube6;
-    private float m_Room3DeliverCube6;
-    private float m_Room3GrapCube7;
-    private float m_Room3DeliverCube7;
-    private float m_Room3GrapCube8;
-    private float m_Room3DeliverCube8;
-    private float m_Room3Time;
+    private float _room3StartTime = 0f;
+    private float _room3GrapCube1;
+    private float _room3DeliverCube1;
+    private float _room3GrapCube2;
+    private float _room3DeliverCube2;
+    private float _room3GrapCube3;
+    private float _room3DeliverCube3;
+    private float _room3GrapCube4;
+    private float _room3DeliverCube4;
+    private float _room3GrapCube5;
+    private float _room3DeliverCube5;
+    private float _room3GrapCube6;
+    private float _room3DeliverCube6;
+    private float _room3GrapCube7;
+    private float _room3DeliverCube7;
+    private float _room3GrapCube8;
+    private float _room3DeliverCube8;
+    private float _room3Time;
 
     private void Awake()
     {
-        m_TimeManager = this;
+        TimeManagerVariable = this;
     }
 
     public void StartTimerRoom1()
     {
-            m_Room1StartTime = Time.time;
+            _room1StartTime = Time.time;
     }
 
     public void StopTimerRoom1()
     {
-        m_Room1Time = Time.time - m_Room1StartTime;
+        _room1Time = Time.time - _room1StartTime;
     }
 
     public void StartTimerRoom2()
     {
-            m_Room2StartTime = Time.time;
-            m_LastCheckpointTotal = m_Room2StartTime;
+            _room2StartTime = Time.time;
+            _lastCheckpointTotal = _room2StartTime;
     }
 
     public void StopTimerRoom2Button(int button)
@@ -64,98 +64,98 @@ public class TimeManager : MonoBehaviour
         switch(button)
         {
             case 1:
-                m_Room2FirstButton = time - m_LastCheckpointTotal;
+                _room2FirstButton = time - _lastCheckpointTotal;
                 break;
             case 2:
-                m_Room2SecondButton = time - m_LastCheckpointTotal;
+                _room2SecondButton = time - _lastCheckpointTotal;
                 break;
         }
 
-        m_LastCheckpointTotal = time;
+        _lastCheckpointTotal = time;
     }
 
     public void StopTimerRoom2()
     {
-        float time = Time.time;
+        var time = Time.time;
 
-        m_Room2Time = time - m_Room2StartTime;
-        m_Room2LastSection = time - m_LastCheckpointTotal;
+        _room2Time = time - _room2StartTime;
+        _room2LastSection = time - _lastCheckpointTotal;
     }
 
     public void StartTimerRoom3()
     {
-            m_Room3StartTime = Time.time;
-            m_LastCheckpointTotal = m_Room3StartTime;
+            _room3StartTime = Time.time;
+            _lastCheckpointTotal = _room3StartTime;
     }
 
     public void StopTimerRoom3Cube(int cube, bool grap)
     {
-        float time = Time.time;
+        var time = Time.time;
 
         switch (cube)
         {
             case 1:
                 if(grap)
-                    m_Room3GrapCube1 = time - m_LastCheckpointTotal;
+                    _room3GrapCube1 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube1 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube1 = time - _lastCheckpointTotal;
                 break;
             case 2:
                 if (grap)
-                    m_Room3GrapCube2 = time - m_LastCheckpointTotal;
+                    _room3GrapCube2 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube2 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube2 = time - _lastCheckpointTotal;
                 break;
             case 3:
                 if (grap)
-                    m_Room3GrapCube3 = time - m_LastCheckpointTotal;
+                    _room3GrapCube3 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube3 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube3 = time - _lastCheckpointTotal;
                 break;
             case 4:
                 if (grap)
-                    m_Room3GrapCube4 = time - m_LastCheckpointTotal;
+                    _room3GrapCube4 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube4 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube4 = time - _lastCheckpointTotal;
                 break;
             case 5:
                 if (grap)
-                    m_Room3GrapCube5 = time - m_LastCheckpointTotal;
+                    _room3GrapCube5 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube5 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube5 = time - _lastCheckpointTotal;
                 break;
             case 6:
                 if (grap)
-                    m_Room3GrapCube6 = time - m_LastCheckpointTotal;
+                    _room3GrapCube6 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube6 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube6 = time - _lastCheckpointTotal;
                 break;
             case 7:
                 if (grap)
-                    m_Room3GrapCube7 = time - m_LastCheckpointTotal;
+                    _room3GrapCube7 = time - _lastCheckpointTotal;
                 else
-                    m_Room3DeliverCube7 = time - m_LastCheckpointTotal;
+                    _room3DeliverCube7 = time - _lastCheckpointTotal;
                 break;
             case 8:
                 if (grap)
-                    m_Room3GrapCube8 = time - m_LastCheckpointTotal;
+                    _room3GrapCube8 = time - _lastCheckpointTotal;
                 else
                 {
-                    m_Room3DeliverCube8 = time - m_LastCheckpointTotal;
-                    m_Room3Time = time - m_Room3StartTime;
+                    _room3DeliverCube8 = time - _lastCheckpointTotal;
+                    _room3Time = time - _room3StartTime;
                 }
                     
                 break;
         }
 
-        m_LastCheckpointTotal = time;
+        _lastCheckpointTotal = time;
     }
 
     public List<float> GetRoomTimer1()
     {
-        List<float> list = new List<float>
+        var list = new List<float>
         {
-            m_Room1Time 
+            _room1Time 
         };
 
         return list;
@@ -163,12 +163,12 @@ public class TimeManager : MonoBehaviour
 
     public List<float> GetRoomTimer2()
     {
-        List<float> list = new List<float>
+        var list = new List<float>
         {
-            m_Room2Time,
-            m_Room2FirstButton,
-            m_Room2SecondButton,
-            m_Room2LastSection
+            _room2Time,
+            _room2FirstButton,
+            _room2SecondButton,
+            _room2LastSection
         };
 
         return list;
@@ -176,25 +176,25 @@ public class TimeManager : MonoBehaviour
 
     public List<float> GetRoomTimer3()
     {
-        List<float> list = new List<float>
+        var list = new List<float>
         {
-            m_Room3Time,
-            m_Room3GrapCube1,
-            m_Room3DeliverCube1,
-            m_Room3GrapCube2,
-            m_Room3DeliverCube2,
-            m_Room3GrapCube3,
-            m_Room3DeliverCube3,
-            m_Room3GrapCube4,
-            m_Room3DeliverCube4,
-            m_Room3GrapCube5,
-            m_Room3DeliverCube5,
-            m_Room3GrapCube6,
-            m_Room3DeliverCube6,
-            m_Room3GrapCube7,
-            m_Room3DeliverCube7,
-            m_Room3GrapCube8,
-            m_Room3DeliverCube8
+            _room3Time,
+            _room3GrapCube1,
+            _room3DeliverCube1,
+            _room3GrapCube2,
+            _room3DeliverCube2,
+            _room3GrapCube3,
+            _room3DeliverCube3,
+            _room3GrapCube4,
+            _room3DeliverCube4,
+            _room3GrapCube5,
+            _room3DeliverCube5,
+            _room3GrapCube6,
+            _room3DeliverCube6,
+            _room3GrapCube7,
+            _room3DeliverCube7,
+            _room3GrapCube8,
+            _room3DeliverCube8
         };
 
         return list;

@@ -6,83 +6,90 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Interactable))]
 public class ButtonClick : MonoBehaviour
 {
-    Transform parent;
-    public Transform m_PointA;
-    public Transform m_PointB;
+    private Transform _parent;
+    public Transform PointA;
+    public Transform PointB;
 
-    private Vector3 m_offset;
+    private Vector3 _offset;
 
-    private Interactable m_Interactable;
+    private Interactable _interactable;
 
-    public UnityEvent m_HitPointA;
-    public UnityEvent m_HitPointB;
-    public UnityEvent m_ReleasedA;
-    public UnityEvent m_ReleasedB;
+    public UnityEvent HitPointA;
+    public UnityEvent HitPointB;
+    public UnityEvent ReleasedA;
+    public UnityEvent ReleasedB;
 
 
-    private int m_State = 0;
-    private int m_PrevState = 0;
+    private int _state = 0;
+    private int _prevState = 0;
 
-    void Start()
+    private void Start()
     {
-        m_Interactable = GetComponent<Interactable>();
+        _interactable = GetComponent<Interactable>();
     }
 
 
-    void Update()
+    private void Update()
     {
-        if (parent != null)
+        if (_parent != null)
         {
-            transform.position = ClosestPointOnLine(parent.position) - m_offset;
+            transform.position = ClosestPointOnLine(_parent.position) - _offset;
         }
         else
         {
             transform.position = ClosestPointOnLine(transform.position);
         }
 
-        if (transform.position == m_PointA.position)
-            m_State = 1;
-        else if (transform.position == m_PointB.position)
-            m_State = 2;
+        if (transform.position == PointA.position)
+            _state = 1;
+        else if (transform.position == PointB.position)
+            _state = 2;
         else
-            m_State = 0;
+            _state = 0;
 
-        if (m_State == 1 && m_PrevState == 0)
-            m_HitPointA.Invoke();
-        else if (m_State == 2 && m_PrevState == 0)
-            m_HitPointB.Invoke();
-        else if (m_State == 0 && m_PrevState == 1)
-            m_ReleasedA.Invoke();
-        else if (m_State == 0 && m_PrevState == 2)
-            m_ReleasedB.Invoke();
+        switch (_state)
+        {
+            case 1 when _prevState == 0:
+                HitPointA.Invoke();
+                break;
+            case 2 when _prevState == 0:
+                HitPointB.Invoke();
+                break;
+            case 0 when _prevState == 1:
+                ReleasedA.Invoke();
+                break;
+            case 0 when _prevState == 2:
+                ReleasedB.Invoke();
+                break;
+        }
 
 
-        m_PrevState = m_State;
+        _prevState = _state;
     }
 
     public void PickUp()
     {
-        parent = m_Interactable.m_ActiveHand.transform;
+        _parent = _interactable.ActiveHand.transform;
 
-        m_offset = parent.position - transform.position;
+        _offset = _parent.position - transform.position;
     }
 
     public void Drop()
     {
-        m_Interactable.simulator.transform.position = transform.position + m_offset;
+        _interactable.Simulator.transform.position = transform.position + _offset;
 
-        parent = m_Interactable.simulator.transform;
+        _parent = _interactable.Simulator.transform;
     }
 
-    Vector3 ClosestPointOnLine(Vector3 point)
+    private Vector3 ClosestPointOnLine(Vector3 point)
     {
-        Vector3 vectorA = m_PointA.position + m_offset;
-        Vector3 vectorB = m_PointB.position + m_offset;
+        var vectorA = PointA.position + _offset;
+        var vectorB = PointB.position + _offset;
 
-        Vector3 vVector1 = point - vectorA;
-        Vector3 vVector2 = (vectorB - vectorA).normalized;
+        var vVector1 = point - vectorA;
+        var vVector2 = (vectorB - vectorA).normalized;
 
-        float distance = Vector3.Dot(vVector2, vVector1);
+        var distance = Vector3.Dot(vVector2, vVector1);
 
         if (distance <= 0)
             return vectorA;
@@ -90,9 +97,9 @@ public class ButtonClick : MonoBehaviour
         if (distance >= Vector3.Distance(vectorA, vectorB))
             return vectorB;
 
-        Vector3 vVector3 = vVector2 * distance;
+        var vVector3 = vVector2 * distance;
 
-        Vector3 vClosestPoint = vectorA + vVector3;
+        var vClosestPoint = vectorA + vVector3;
 
         return vClosestPoint;
     }

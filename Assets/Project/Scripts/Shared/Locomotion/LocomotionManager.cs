@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class LocomotionManager : MonoBehaviour
 {
-    public GameObject m_TeleportPointerPrefab;
+    public GameObject TeleportPointerPrefab;
 
-    private GameObject m_gameObjectLocomotion;
+    private GameObject _gameObjectLocomotion;
 
-    private GameObject m_TeleportPointer = null;
+    private GameObject _teleportPointer = null;
 
-    private int m_NumberOfRandomTechnique = 0;
+    private int _numberOfRandomTechnique = 0;
 
-    private int m_NumberOfTechniques = 0;
+    private int _numberOfTechniques = 0;
 
-    private List<LocomotionTechinique> m_UnusedLocomotionTechiniques = new List<LocomotionTechinique>();
+    private readonly List<LocomotionTechnique> _unusedLocomotionTechniques = new List<LocomotionTechnique>();
 
-    public enum LocomotionTechinique {
+    public enum LocomotionTechnique {
         BlinkStep,
         Teleport,
         DashStep,
@@ -34,142 +34,138 @@ public class LocomotionManager : MonoBehaviour
 
     private void Start()
     {
-        FillListOfLocomotionTecniques();
-        m_NumberOfTechniques = m_UnusedLocomotionTechiniques.Count;
+        FillListOfLocomotionTechniques();
+        _numberOfTechniques = _unusedLocomotionTechniques.Count;
     }
 
-    private void FillListOfLocomotionTecniques()
+    private void FillListOfLocomotionTechniques()
     {
-        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Armswing);
-        //m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Cybershoes);
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.DashStep);
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.SmoothLocomotion);
-        m_UnusedLocomotionTechiniques.Add(LocomotionTechinique.Teleport);
+        //_unusedLocomotionTechniques.Add(LocomotionTechnique.Armswing);
+        //_unusedLocomotionTechniques.Add(LocomotionTechnique.Cybershoes);
+        _unusedLocomotionTechniques.Add(LocomotionTechnique.DashStep);
+        _unusedLocomotionTechniques.Add(LocomotionTechnique.SmoothLocomotion);
+        _unusedLocomotionTechniques.Add(LocomotionTechnique.Teleport);
     }
 
     private void GetGameObjectsWithScripts()
     {
-        m_gameObjectLocomotion = GameObject.Find("Locomotion");
+        _gameObjectLocomotion = GameObject.Find("Locomotion");
     }
 
-    public LocomotionTechinique GetDummyLocomotionTechnique()
+    public LocomotionTechnique GetDummyLocomotionTechnique()
     {
         TurnOffAllTechniques();
         TurnOnBlinkStep();
-        return LocomotionTechinique.BlinkStep;
+        return LocomotionTechnique.BlinkStep;
 
     }
 
-    public LocomotionTechinique GetRandomLocomotionTechnique()
+    public LocomotionTechnique GetRandomLocomotionTechnique()
     {
         var random = new System.Random();
-        int randomNumber = random.Next(0, m_UnusedLocomotionTechiniques.Count);
+        var randomNumber = random.Next(0, _unusedLocomotionTechniques.Count);
 
         TurnOffAllTechniques();
 
-        m_NumberOfRandomTechnique += 1;
+        _numberOfRandomTechnique += 1;
 
-        if (m_NumberOfRandomTechnique > m_NumberOfTechniques)
-            return LocomotionTechinique.None;
+        if (_numberOfRandomTechnique > _numberOfTechniques)
+            return LocomotionTechnique.None;
 
-        LocomotionTechinique locomotionTechinique = m_UnusedLocomotionTechiniques[randomNumber];
+        var locomotionTechnique = _unusedLocomotionTechniques[randomNumber];
 
-        switch (locomotionTechinique)
+        switch (locomotionTechnique)
         {
-            case LocomotionTechinique.DashStep:
+            case LocomotionTechnique.DashStep:
                 TurnOnDashStep();
                 break;
-            case LocomotionTechinique.Armswing:
+            case LocomotionTechnique.Armswing:
                 TurnOnArmswing();
                 break;
-            case LocomotionTechinique.Teleport:
+            case LocomotionTechnique.Teleport:
                 TurnOnTeleport();
                 break;
-            case LocomotionTechinique.SmoothLocomotion:
+            case LocomotionTechnique.SmoothLocomotion:
                 TurnOnSmoothLocomotion();
                 break;
-            case LocomotionTechinique.Cybershoes:
+            case LocomotionTechnique.Cybershoes:
                 TurnOnCybershoes();
                 break;
         }
 
-        m_UnusedLocomotionTechiniques.RemoveAt(randomNumber);
+        _unusedLocomotionTechniques.RemoveAt(randomNumber);
 
-        return locomotionTechinique;
+        return locomotionTechnique;
     }
 
     private void TurnOnTeleport()
     {
-        m_gameObjectLocomotion.GetComponent<Teleporter>().enabled = true;
-        if (m_TeleportPointer == null)
-        {
-            m_TeleportPointer = Instantiate(m_TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            m_gameObjectLocomotion.GetComponent<Teleporter>().m_pointer = m_TeleportPointer;
-        }
+        _gameObjectLocomotion.GetComponent<Teleporter>().enabled = true;
+        if (_teleportPointer != null) return;
+        _teleportPointer = Instantiate(TeleportPointerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        _gameObjectLocomotion.GetComponent<Teleporter>().Pointer = _teleportPointer;
     }
 
     private void TurnOffTeleport()
     {
-        m_gameObjectLocomotion.GetComponent<Teleporter>().enabled = false;
-        if (m_TeleportPointer != null)
-        {
-            Destroy(m_TeleportPointer);
-            m_gameObjectLocomotion.GetComponent<Teleporter>().m_pointer = null;
-        }
+        _gameObjectLocomotion.GetComponent<Teleporter>().enabled = false;
+        if (_teleportPointer == null) return;
+        Destroy(_teleportPointer);
+        _gameObjectLocomotion.GetComponent<Teleporter>().Pointer = null;
     }
 
     private void TurnOnSmoothLocomotion()
     {
-        m_gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = true;
+        _gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = true;
     }
 
     private void TurnOffSmoothLocomotion()
     {
-        m_gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = false;
+        _gameObjectLocomotion.GetComponent<Smooth_locomotion>().enabled = false;
     }
 
     private void TurnOnArmswing()
     {
-        m_gameObjectLocomotion.GetComponent<Armswing>().enabled = true;
+        _gameObjectLocomotion.GetComponent<Armswing>().enabled = true;
     }
 
     private void TurnOffArmswing()
     {
-        m_gameObjectLocomotion.GetComponent<Armswing>().enabled = false;
+        _gameObjectLocomotion.GetComponent<Armswing>().enabled = false;
     }
 
     private void TurnOnCybershoes()
     {
-        m_gameObjectLocomotion.GetComponent<Cybershoes>().enabled = true;
+        _gameObjectLocomotion.GetComponent<Cybershoes>().enabled = true;
     }
 
     private void TurnOffCybershoes()
     {
-        m_gameObjectLocomotion.GetComponent<Cybershoes>().enabled = false;
+        _gameObjectLocomotion.GetComponent<Cybershoes>().enabled = false;
     }
 
     private void TurnOnDashStep()
     {
-        //m_gameObjectLocomotion.GetComponent<DashStep>().enabled = true;
-        m_gameObjectLocomotion.GetComponent<DashStep>().m_IsEnabled = true;
+        _gameObjectLocomotion.GetComponent<DashStep>().enabled = true;
+        _gameObjectLocomotion.GetComponent<DashStep>().IsEnabled = true;
     }
 
     private void TurnOffDashStep()
     {
-        //m_gameObjectLocomotion.GetComponent<DashStep>().enabled = false;
-        m_gameObjectLocomotion.GetComponent<DashStep>().m_IsEnabled = false;
+        _gameObjectLocomotion.GetComponent<DashStep>().enabled = false;
+        _gameObjectLocomotion.GetComponent<DashStep>().IsEnabled = false;
     }
 
     private void TurnOnBlinkStep()
     {
-        //m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = true;
-        m_gameObjectLocomotion.GetComponent<BlinkStep>().m_IsEnabled = true;
+        _gameObjectLocomotion.GetComponent<BlinkStep>().enabled = true;
+        _gameObjectLocomotion.GetComponent<BlinkStep>().IsEnabled = true;
     }
 
     private void TurnOffBlinkStep()
     {
-        //m_gameObjectLocomotion.GetComponent<BlinkStep>().enabled = false;
-        m_gameObjectLocomotion.GetComponent<BlinkStep>().m_IsEnabled = false;
+        _gameObjectLocomotion.GetComponent<BlinkStep>().enabled = false;
+        _gameObjectLocomotion.GetComponent<BlinkStep>().IsEnabled = false;
     }
 
     public void TurnOffAllTechniques()

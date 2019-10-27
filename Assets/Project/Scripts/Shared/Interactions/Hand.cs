@@ -4,21 +4,21 @@ using Valve.VR;
 
 public class Hand : MonoBehaviour
 {
-    public SteamVR_Action_Boolean m_GrabAction = null;
-    public SteamVR_Action_Vibration m_Haptic = null;
+    public SteamVR_Action_Boolean GrabAction = null;
+    public SteamVR_Action_Vibration Haptic = null;
 
-    private Interactable m_CurrentInteractable = null;
-    public List<Interactable> m_ContactInteractables = new List<Interactable>();
+    private Interactable _currentInteractable = null;
+    public List<Interactable> ContactInteractables = new List<Interactable>();
 
     private void Awake()
     {
         // Down 
-        m_GrabAction[SteamVR_Input_Sources.RightHand].onStateDown += Pickup;
-        m_GrabAction[SteamVR_Input_Sources.LeftHand].onStateDown += Pickup;
+        GrabAction[SteamVR_Input_Sources.RightHand].onStateDown += Pickup;
+        GrabAction[SteamVR_Input_Sources.LeftHand].onStateDown += Pickup;
 
         // Up
-        m_GrabAction[SteamVR_Input_Sources.RightHand].onStateUp += Drop;
-        m_GrabAction[SteamVR_Input_Sources.LeftHand].onStateUp += Drop;
+        GrabAction[SteamVR_Input_Sources.RightHand].onStateUp += Drop;
+        GrabAction[SteamVR_Input_Sources.LeftHand].onStateUp += Drop;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +26,7 @@ public class Hand : MonoBehaviour
         if (!other.gameObject.CompareTag("Interactable"))
             return;
 
-        m_ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());   
+        ContactInteractables.Add(other.gameObject.GetComponent<Interactable>());   
     }
 
     private void OnTriggerExit(Collider other)
@@ -34,27 +34,27 @@ public class Hand : MonoBehaviour
         if (!other.gameObject.CompareTag("Interactable"))
             return;
 
-        m_ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
+        ContactInteractables.Remove(other.gameObject.GetComponent<Interactable>());
     }
 
 
     public void Pickup(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
         // Get nearest
-        m_CurrentInteractable = GetNearestInteractable();
+        _currentInteractable = GetNearestInteractable();
 
         // Null check
-        if (!m_CurrentInteractable)
+        if (!_currentInteractable)
             return;
 
         // Already held, check
-        if (m_CurrentInteractable.m_ActiveHand)
-            m_CurrentInteractable.m_ActiveHand.Drop(action, source);
+        if (_currentInteractable.ActiveHand)
+            _currentInteractable.ActiveHand.Drop(action, source);
 
         // Set active hand
-        m_CurrentInteractable.m_ActiveHand = this;
+        _currentInteractable.ActiveHand = this;
 
-        m_CurrentInteractable.PickUp();
+        _currentInteractable.PickUp();
 
         Pulse(0.5f, 150, 60, source);
     }
@@ -62,26 +62,24 @@ public class Hand : MonoBehaviour
     public void Drop(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
         // Null check
-        if (!m_CurrentInteractable)
+        if (!_currentInteractable)
             return;
 
-        m_CurrentInteractable.Drop();
+        _currentInteractable.Drop();
 
-        m_CurrentInteractable = null;
+        _currentInteractable = null;
     }
 
     private Interactable GetNearestInteractable()
     {
         Interactable nearest = null;
-        float minDistance = float.MaxValue;
-        foreach (Interactable interactable in m_ContactInteractables)
+        var minDistance = float.MaxValue;
+        foreach (var interactable in ContactInteractables)
         {
-            float distance = (interactable.transform.position - transform.position).sqrMagnitude;
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                nearest = interactable;
-            }
+            var distance = (interactable.transform.position - transform.position).sqrMagnitude;
+            if (!(distance < minDistance)) continue;
+            minDistance = distance;
+            nearest = interactable;
         }
 
         return nearest;
@@ -89,6 +87,6 @@ public class Hand : MonoBehaviour
 
     private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
     {
-        m_Haptic.Execute(0, duration, frequency, amplitude, source);
+        Haptic.Execute(0, duration, frequency, amplitude, source);
     }
 }

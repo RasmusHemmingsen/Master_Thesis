@@ -4,37 +4,37 @@ using Valve.VR;
 
 public class PlayareaBound : MonoBehaviour
 {
-    public GameObject m_Camera;
-    public Transform m_Player;
+    public GameObject Camera;
+    public Transform Player;
 
-    public float m_PlayArea = 1f;
+    public float PlayArea = 1f;
 
-    private bool m_Isblack = false;
+    private bool _isblack = false;
 
-    private float m_FadeTime = 0.5f;
+    private const float FadeTime = 0.5f;
 
-    private float m_OffsetX = 3.5f;
-    private float m_OffsetZ = 3.5f;
+    private float _offsetX = 3.5f;
+    private float _offsetZ = 3.5f;
 
 
     void Start()
     {
-        m_PlayArea *= m_PlayArea;
+        PlayArea *= PlayArea;
         EnableNormalScreen();
     }
 
     void Update()
     {
         UpdateOffset();
-        float distance = Mathf.Pow(GetXValue(), 2f) + Mathf.Pow(GetZValue(), 2f);
-        if(distance > m_PlayArea)
+        var distance = Mathf.Pow(GetXValue(), 2f) + Mathf.Pow(GetZValue(), 2f);
+        if(distance > PlayArea)
         {
-            if(!m_Isblack)
+            if(!_isblack)
             {
                 EnableBlackScreen();
             }
         }
-        else if(m_Isblack)
+        else if(_isblack)
         {
             EnableNormalScreen();
         }
@@ -42,31 +42,31 @@ public class PlayareaBound : MonoBehaviour
 
     private void UpdateOffset()
     {
-        m_OffsetX = -m_Player.position.x;
-        m_OffsetZ = -m_Player.position.z;
+        _offsetX = -Player.position.x;
+        _offsetZ = -Player.position.z;
     }
 
     private float GetXValue()
     {
-        float xPosition = m_Camera.transform.position.x + m_OffsetX;
+        var xPosition = Camera.transform.position.x + _offsetX;
         return xPosition;
     }
 
     private float GetZValue()
     {
-        float zPosition = m_Camera.transform.position.z + m_OffsetZ;
+        var zPosition = Camera.transform.position.z + _offsetZ;
         return zPosition;
     }
 
     private void EnableBlackScreen()
     {
-        SteamVR_Fade.Start(Color.black, m_FadeTime, true); 
-        m_Isblack = true;
+        SteamVR_Fade.Start(Color.black, FadeTime, true); 
+        _isblack = true;
     }
 
     private void EnableNormalScreen()
     {
-        SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
-        m_Isblack = false;
+        SteamVR_Fade.Start(Color.clear, FadeTime, true);
+        _isblack = false;
     }
 }

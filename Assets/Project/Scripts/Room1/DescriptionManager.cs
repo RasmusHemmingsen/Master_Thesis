@@ -6,65 +6,65 @@ using UnityEngine.UI;
 public class DescriptionManager : MonoBehaviour
 {
 
-    public Text m_Text;
+    public Text Text;
 
-    public void SwitchDescription(LocomotionManager.LocomotionTechinique techinique)
+    public void SwitchDescription(LocomotionManager.LocomotionTechnique technique)
     {
-        switch (techinique)
+        switch (technique)
         {
-            case LocomotionManager.LocomotionTechinique.SmoothLocomotion:
+            case LocomotionManager.LocomotionTechnique.SmoothLocomotion:
                 SetToSmoothLocomotionDescription();
                 break;
-            case LocomotionManager.LocomotionTechinique.Teleport:
+            case LocomotionManager.LocomotionTechnique.Teleport:
                 SetToTeleportDescription();
                 break;
-            case LocomotionManager.LocomotionTechinique.DashStep:
+            case LocomotionManager.LocomotionTechnique.DashStep:
                 SetToDashStepDescription();
                 break;
-            case LocomotionManager.LocomotionTechinique.Armswing:
+            case LocomotionManager.LocomotionTechnique.Armswing:
                 SetToArmswingDescription();
                 break;
-            case LocomotionManager.LocomotionTechinique.Cybershoes:
+            case LocomotionManager.LocomotionTechnique.Cybershoes:
                 SetToCybershoesDescription();
                 break;
-            case LocomotionManager.LocomotionTechinique.BlinkStep:
+            case LocomotionManager.LocomotionTechnique.BlinkStep:
                 SetToBlinkStepDescription();
                 break;
             default:
-                m_Text.text = "";
+                Text.text = "";
                 break;
         }
     }
 
     private void SetToTeleportDescription()
     {
-        m_Text.text = "Teleport \n";
+        Text.text = "Teleport \n";
     }
 
     private void SetToDashStepDescription()
     {
-        m_Text.text = "Dash Step \n";
+        Text.text = "Dash Step \n";
     }
 
     private void SetToBlinkStepDescription()
     {
-        m_Text.text = "Blink Step \n";
+        Text.text = "Blink Step \n";
     }
 
     private void SetToArmswingDescription()
     {
-        m_Text.text = "Armswing \n";
+        Text.text = "Armswing \n";
     }
 
     private void SetToCybershoesDescription()
     {
-        m_Text.text = "Cybershoes \n";
+        Text.text = "Cybershoes \n";
 
     }
 
     private void SetToSmoothLocomotionDescription()
     {
-        m_Text.text = "Smooth locomotion \n";
+        Text.text = "Smooth locomotion \n";
     }
 
 }

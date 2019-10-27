@@ -5,22 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(Interactable))]
 public class Cube : MonoBehaviour
 {
-    public Room3Manager m_RoomManager;
-    private Interactable m_Interactable;
+    public Room3Manager RoomManager;
+    private Interactable _interactable;
 
     private void Start()
     {
-        m_Interactable = gameObject.GetComponent<Interactable>();
+        _interactable = gameObject.GetComponent<Interactable>();
     }
 
     public void PickUp(int cube)
     {
-        if (m_RoomManager.IsCurrentCube(gameObject))
+        if (RoomManager.IsCurrentCube(gameObject))
         {
-            TimeManager.m_TimeManager.StopTimerRoom3Cube(cube, true);
-            m_RoomManager.HighlightTable();
+            TimeManager.TimeManagerVariable.StopTimerRoom3Cube(cube, true);
+            RoomManager.HighlightTable();
         }
 
-        m_Interactable.DefaultPickUp();
+        _interactable.DefaultPickUp();
     }
 }

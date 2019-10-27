@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public Animator m_Animator;
+    public Animator Animator;
 
     public void StartOpenDoorAnimation()
     {
-        m_Animator.SetBool("HandleTriggered", true);
+        Animator.SetBool("HandleTriggered", true);
     }
 
     public void StartCloseDoorAnimation()
     {
-        m_Animator.SetBool("CloseDoor", true);
+        Animator.SetBool("CloseDoor", true);
     }
 }

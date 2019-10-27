@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    public int m_Scene;
+    public int Scene;
 
-    private bool m_Loaded;
+    private bool _loaded;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,11 +16,9 @@ public class LoadScene : MonoBehaviour
 
     public void LoadNewScene()
     {
-        if (!m_Loaded)
-        {
-            SceneManager.LoadSceneAsync(m_Scene, LoadSceneMode.Additive);
+        if (_loaded) return;
+        SceneManager.LoadSceneAsync(Scene, LoadSceneMode.Additive);
 
-            m_Loaded = true;
-        }
+        _loaded = true;
     }
 }

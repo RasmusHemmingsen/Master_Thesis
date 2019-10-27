@@ -5,96 +5,88 @@ using UnityEngine.SceneManagement;
 
 public class Room2Manager : MonoBehaviour
 {
-    public GameObject m_WallToRoom1;
-    public GameObject m_WallToRoom3;
-    public GameObject m_Button1;
-    public GameObject m_Button2;
+    public GameObject WallToRoom1;
+    public GameObject WallToRoom3;
+    public GameObject Button1;
+    public GameObject Button2;
     
-    private bool m_FirstButtonPressed = false;
-    private bool m_SecondButtonPressed = false;
+    private bool _firstButtonPressed = false;
+    private bool _secondButtonPressed = false;
 
     private void Start()
     {
         HighlightButton1();
-        StartCoroutine(Startimer());
+        StartCoroutine(StartTimer());
     }
     
-    private IEnumerator Startimer()
+    private IEnumerator StartTimer()
     {
         yield return new WaitForSeconds(1);
-        TimeManager.m_TimeManager.StartTimerRoom2();
-        DistanceManager.m_DistanceManager.SetActiveRoomForDistance(2);
+        TimeManager.TimeManagerVariable.StartTimerRoom2();
+        DistanceManager.DistanceManagerVariable.SetActiveRoomForDistance(2);
 
     }
 
-    private void StopTimerBotton(int button)
+    private void StopTimerButton(int button)
     {
-        TimeManager.m_TimeManager.StopTimerRoom2Button(button);
+        TimeManager.TimeManagerVariable.StopTimerRoom2Button(button);
     }
 
     public void Button1Pressed()
     {
-        if (!m_FirstButtonPressed)
-        {
-            RemoveHighlightFromButton1();
-            CloseForRoom1();
-            HighlightButton2();
-            StopTimerBotton(1);
-            m_FirstButtonPressed = true;
-        }
+        if (_firstButtonPressed) return;
+        RemoveHighlightFromButton1();
+        CloseForRoom1();
+        HighlightButton2();
+        StopTimerButton(1);
+        _firstButtonPressed = true;
     }
 
     public void Button2Pressed()
     {
-        if (!m_SecondButtonPressed && m_FirstButtonPressed)
-        {
-            OpenForRoom3();
-            StopTimerBotton(2);
-            RemoveHighlightFromButton2();
-            m_SecondButtonPressed = true;
-        }
+        if (_secondButtonPressed || !_firstButtonPressed) return;
+        OpenForRoom3();
+        StopTimerButton(2);
+        RemoveHighlightFromButton2();
+        _secondButtonPressed = true;
     }
 
-    public bool BothButtonsPressed()
+    public bool IsBothButtonsPressed()
     {
-        if (m_FirstButtonPressed && m_SecondButtonPressed)
-            return true;
-        return false;
+        return _firstButtonPressed && _secondButtonPressed;
     }
 
     public void HighlightButton1()
     {
-        ExpermentManager.m_ExpermentManager.HighlightButton(m_Button1.transform.GetChild(0).gameObject, m_Button1.transform.GetChild(1).gameObject);
+        ExperimentManager.ExperimentManagerVariable.HighlightButton(Button1.transform.GetChild(0).gameObject, Button1.transform.GetChild(1).gameObject);
     }
 
     private void RemoveHighlightFromButton1()
     {
-        ExpermentManager.m_ExpermentManager.RemoveHighligtFromButton(m_Button1.transform.GetChild(0).gameObject, m_Button1.transform.GetChild(1).gameObject);
+        ExperimentManager.ExperimentManagerVariable.RemoveHighlightFromButton(Button1.transform.GetChild(0).gameObject, Button1.transform.GetChild(1).gameObject);
     }
 
     private void HighlightButton2()
     {
-        ExpermentManager.m_ExpermentManager.HighlightButton(m_Button2.transform.GetChild(0).gameObject, m_Button2.transform.GetChild(1).gameObject);
+        ExperimentManager.ExperimentManagerVariable.HighlightButton(Button2.transform.GetChild(0).gameObject, Button2.transform.GetChild(1).gameObject);
     }
 
     private void RemoveHighlightFromButton2()
     {
-        ExpermentManager.m_ExpermentManager.RemoveHighligtFromButton(m_Button2.transform.GetChild(0).gameObject, m_Button2.transform.GetChild(1).gameObject);
+        ExperimentManager.ExperimentManagerVariable.RemoveHighlightFromButton(Button2.transform.GetChild(0).gameObject, Button2.transform.GetChild(1).gameObject);
     }
 
     private void OpenForRoom3()
     {
-        if (m_FirstButtonPressed)
-        {
-            DisableWallToRoom3();
-            LoadScene3();
-        }
+        if (!_firstButtonPressed) return;
+        DisableWallToRoom3();
+        LoadScene3();
     }
 
     private void DisableWallToRoom3()
     {
-        m_WallToRoom3.GetComponent<MeshRenderer>().enabled = false;
-        m_WallToRoom3.GetComponent<BoxCollider>().enabled = false;
+        WallToRoom3.GetComponent<MeshRenderer>().enabled = false;
+        WallToRoom3.GetComponent<BoxCollider>().enabled = false;
 
     }
 
@@ -111,13 +103,13 @@ public class Room2Manager : MonoBehaviour
 
     private void EnableWallToRoom1()
     {
-        m_WallToRoom1.GetComponent<MeshRenderer>().enabled = true;
-        m_WallToRoom1.GetComponent<BoxCollider>().enabled = true;
+        WallToRoom1.GetComponent<MeshRenderer>().enabled = true;
+        WallToRoom1.GetComponent<BoxCollider>().enabled = true;
 
     }
 
     private void UnloadScene1()
     {
-        ExpermentManager.m_ExpermentManager.UnloadScene(1);
+        ExperimentManager.ExperimentManagerVariable.UnloadScene(1);
     }
 }

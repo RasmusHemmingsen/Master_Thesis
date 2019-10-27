@@ -6,7 +6,7 @@ public class Statue : MonoBehaviour
 {
     public void Pickup()
     {
-        ExpermentManager.m_ExpermentManager.StartTestWithNewTechnique();
+        ExperimentManager.ExperimentManagerVariable.StartTestWithNewTechnique();
     }
 
     public void Drop()

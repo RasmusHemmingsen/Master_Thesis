@@ -5,35 +5,35 @@ using Valve.VR;
 
 public class BlinkStep : MonoBehaviour
 {
-    public SteamVR_Action_Boolean m_BlinkAction = null;
-    public GameObject m_Player;
-    public Transform m_Camera;
+    public SteamVR_Action_Boolean BlinkAction = null;
+    public GameObject Player;
+    public Transform Camera;
 
-    private SteamVR_Behaviour_Pose m_Pose = null;
-    private readonly float m_FadeTime = 0.2f;
-    public float m_BlinkRange = 1.5f;
-    public bool m_IsEnabled = false;
-    private bool m_IsBlinking = false;
+    private SteamVR_Behaviour_Pose _pose = null;
+    private const float FadeTime = 0.2f;
+    public float BlinkRange = 1.5f;
+    public bool IsEnabled = false;
+    private bool _isBlinking = false;
 
     private void Awake()
     {
-        m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
+        _pose = GetComponent<SteamVR_Behaviour_Pose>();
 
-        m_BlinkAction[SteamVR_Input_Sources.Any].onStateUp += TryBlink;
+        BlinkAction[SteamVR_Input_Sources.Any].onStateUp += TryBlink;
     }
 
     private void TryBlink(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        if (!m_IsEnabled || m_IsBlinking)
+        if (!IsEnabled || _isBlinking)
             return;
 
-        Vector3 direction = m_Camera.forward;
+        var direction = Camera.forward;
         direction.y = 0;
-        Vector3 rayPosition = m_Player.transform.position;
+        var rayPosition = Player.transform.position;
         rayPosition.y = 1;
 
-        Ray ray = new Ray(rayPosition, direction);
-        if (!Physics.Raycast(ray, out _, m_BlinkRange))
+        var ray = new Ray(rayPosition, direction);
+        if (!Physics.Raycast(ray, out _, BlinkRange))
         {
                 StartCoroutine(DoBlink(direction));
         }
@@ -42,19 +42,19 @@ public class BlinkStep : MonoBehaviour
     private IEnumerator DoBlink(Vector3 direction)
     {
         // Flag 
-        m_IsBlinking = true;
+        _isBlinking = true;
 
         // Fade to black
-        SteamVR_Fade.Start(Color.black, m_FadeTime, true);
+        SteamVR_Fade.Start(Color.black, FadeTime, true);
 
         // Apply translation 
-        yield return new WaitForSeconds(m_FadeTime);
-        m_Player.transform.position += (m_BlinkRange * direction);
+        yield return new WaitForSeconds(FadeTime);
+        Player.transform.position += (BlinkRange * direction);
 
         // Fade to clear
-        SteamVR_Fade.Start(Color.clear, m_FadeTime, true);
+        SteamVR_Fade.Start(Color.clear, FadeTime, true);
 
         // De-flag
-        m_IsBlinking = false;
+        _isBlinking = false;
     }
 }

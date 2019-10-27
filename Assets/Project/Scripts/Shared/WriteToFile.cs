@@ -7,38 +7,38 @@ using UnityEngine;
 
 public class WriteToFile : MonoBehaviour
 {
-    private string m_DirectoryPath = "ExperimentResults";
-    private string m_FilenameTime;
-    private string m_FilenameDistance;
-    private string m_WholePathTime;
+    private const string DirectoryPath = "ExperimentResults";
+    private string _filenameTime;
+    private string _filenameDistance;
+    private string _wholePathTime;
 
     private void Start()
     {
-        m_FilenameTime = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + " Time.txt";
-        m_WholePathTime = m_DirectoryPath + "/" + m_FilenameTime;
-        m_FilenameDistance = m_DirectoryPath + "/Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US"));
+        _filenameTime = "Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US")) + " Time.txt";
+        _wholePathTime = DirectoryPath + "/" + _filenameTime;
+        _filenameDistance = DirectoryPath + "/Experiment " + DateTime.Now.ToString("yy-MM-dd-hh.mm", CultureInfo.CreateSpecificCulture("en-US"));
     }
 
 
-    public void WriteAllDataToFile(LocomotionManager.LocomotionTechinique techinique)
+    public void WriteAllDataToFile(LocomotionManager.LocomotionTechnique technique)
     {
-        string filenameDistanceRoom1 = m_FilenameDistance + "Room_1_" + techinique + "Distance.csv";
-        string filenameDistanceRoom2 = m_FilenameDistance + "Room_2_" + techinique + "Distance.csv";
-        string filenameDistanceRoom3 = m_FilenameDistance + "Room_3_" + techinique + "Distance.csv";
+        var filenameDistanceRoom1 = _filenameDistance + "Room_1_" + technique + "Distance.csv";
+        var filenameDistanceRoom2 = _filenameDistance + "Room_2_" + technique + "Distance.csv";
+        var filenameDistanceRoom3 = _filenameDistance + "Room_3_" + technique + "Distance.csv";
 
-        WriteDataToFile(PepareTimeDataForWiriteTofile(techinique), m_WholePathTime);
-        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom1(), filenameDistanceRoom1);
-        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom2(), filenameDistanceRoom2);
-        WriteDataToFile(DistanceManager.m_DistanceManager.GetDistanceDataRoom3(), filenameDistanceRoom3);
+        WriteDataToFile(PrepareTimeDataForWriteToFile(technique), _wholePathTime);
+        WriteDataToFile(DistanceManager.DistanceManagerVariable.GetDistanceDataRoom1(), filenameDistanceRoom1);
+        WriteDataToFile(DistanceManager.DistanceManagerVariable.GetDistanceDataRoom2(), filenameDistanceRoom2);
+        WriteDataToFile(DistanceManager.DistanceManagerVariable.GetDistanceDataRoom3(), filenameDistanceRoom3);
     }
 
-    private string PepareTimeDataForWiriteTofile(LocomotionManager.LocomotionTechinique technique)
+    private string PrepareTimeDataForWriteToFile(LocomotionManager.LocomotionTechnique technique)
     {
-        List<float> ListOfRoom1Time = TimeManager.m_TimeManager.GetRoomTimer1();
-        List<float> ListOfRoom2Time = TimeManager.m_TimeManager.GetRoomTimer2();
-        List<float> ListOfRoom3Time = TimeManager.m_TimeManager.GetRoomTimer3();
+        var ListOfRoom1Time = TimeManager.TimeManagerVariable.GetRoomTimer1();
+        var ListOfRoom2Time = TimeManager.TimeManagerVariable.GetRoomTimer2();
+        var ListOfRoom3Time = TimeManager.TimeManagerVariable.GetRoomTimer3();
 
-        string data = technique + "\n" +
+        var data = technique + "\n" +
             "Time total for room 1: " + ListOfRoom1Time[0] + "\n\n" +
             "Time first button room 2: " + ListOfRoom2Time[1] + "\n" +
             "Time second button room 2: " + ListOfRoom2Time[2] + "\n" +
@@ -66,18 +66,16 @@ public class WriteToFile : MonoBehaviour
 
     private void WriteDataToFile(string data, string path)
     {
-        if (!System.IO.Directory.Exists(m_DirectoryPath))
+        if (!Directory.Exists(DirectoryPath))
         {
-            System.IO.Directory.CreateDirectory(m_DirectoryPath);
+            Directory.CreateDirectory(DirectoryPath);
         }
 
-        using (FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
-        {
-            StreamWriter sw = new StreamWriter(fileStream);
-            long endPoint = fileStream.Length;
-            fileStream.Seek(endPoint, SeekOrigin.Begin);
-            sw.WriteLine(data);
-            sw.Flush();
-        }
+        var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+        var sw = new StreamWriter(fileStream);
+        var endPoint = fileStream.Length;
+        fileStream.Seek(endPoint, SeekOrigin.Begin);
+        sw.WriteLine(data);
+        sw.Flush();
     }
 }

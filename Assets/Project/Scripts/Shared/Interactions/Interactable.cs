@@ -7,48 +7,44 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     [HideInInspector]
-    public Hand m_ActiveHand;
+    public Hand ActiveHand;
 
     [HideInInspector]
-    public Rigidbody simulator;
+    public Rigidbody Simulator;
 
-    public float m_DisconnectDistance = 0f;
+    public float DisconnectDistance = 0f;
 
-    public UnityEvent m_PickUp;
-    public UnityEvent m_Drop;
+    public UnityEvent PickUpEvent;
+    public UnityEvent DropEvent;
 
-    private Transform m_OldParent;
+    private Transform _oldParent;
 
     private void Start()
     {
-        simulator = new GameObject().AddComponent<Rigidbody>();
-        simulator.name = "simulator";
-        simulator.transform.parent = transform.parent;
-        simulator.useGravity = false;
+        Simulator = new GameObject().AddComponent<Rigidbody>();
+        Simulator.name = "simulator";
+        Simulator.transform.parent = transform.parent;
+        Simulator.useGravity = false;
     }
 
     private void Update()
     {
-        if(m_ActiveHand != null)
-        {
-            simulator.velocity = (m_ActiveHand.transform.position - simulator.position) * 50f;
+        if (ActiveHand == null) return;
+        Simulator.velocity = (ActiveHand.transform.position - Simulator.position) * 50f;
 
-            if (m_DisconnectDistance > 0f)
-            {
-                if(!GetComponent<Collider>().bounds.Contains(m_ActiveHand.transform.position) ||
-                    Vector3.Distance(GetComponent<Collider>().bounds.ClosestPoint(m_ActiveHand.transform.position),
-                    m_ActiveHand.transform.position) > m_DisconnectDistance)
-                {
-                    Drop();
-                }
-            }
+        if (!(DisconnectDistance > 0f)) return;
+        if(!GetComponent<Collider>().bounds.Contains(ActiveHand.transform.position) ||
+           Vector3.Distance(GetComponent<Collider>().bounds.ClosestPoint(ActiveHand.transform.position),
+               ActiveHand.transform.position) > DisconnectDistance)
+        {
+            Drop();
         }
     }
 
     public void PickUp()
     {
-        m_PickUp.Invoke();
-        if (m_PickUp.GetPersistentEventCount() == 0)
+        PickUpEvent.Invoke();
+        if (PickUpEvent.GetPersistentEventCount() == 0)
         {
             DefaultPickUp();
         }
@@ -56,18 +52,18 @@ public class Interactable : MonoBehaviour
 
     public void Drop()
     {
-        m_Drop.Invoke();
-        if (m_Drop.GetPersistentEventCount() == 0)
+        DropEvent.Invoke();
+        if (DropEvent.GetPersistentEventCount() == 0)
         {
             DefaultDrop();
         }
-        m_ActiveHand = null;
+        ActiveHand = null;
     }
 
     public void DefaultPickUp()
     {
-        m_OldParent = transform.parent;
-        transform.parent = m_ActiveHand.transform;
+        _oldParent = transform.parent;
+        transform.parent = ActiveHand.transform;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         GetComponent<Rigidbody>().isKinematic = true;
@@ -75,9 +71,9 @@ public class Interactable : MonoBehaviour
     
     public void DefaultDrop()
     {
-        transform.parent = m_OldParent;
+        transform.parent = _oldParent;
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().velocity = simulator.velocity;
-        m_ActiveHand = null;     
+        GetComponent<Rigidbody>().velocity = Simulator.velocity;
+        ActiveHand = null;     
     }
 }

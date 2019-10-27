@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class DistanceManager : MonoBehaviour
 {
-    public static DistanceManager m_DistanceManager;
+    public static DistanceManager DistanceManagerVariable;
 
-    public Transform m_Player;
+    public Transform Player;
 
-    private int m_RoomActiveForDistance = 0;
+    private int _roomActiveForDistance = 0;
 
-    private string m_Room1DistanceData = "";
-    private string m_Room2DistanceData = "";
-    private string m_Room3DistanceData = "";
+    private string _room1DistanceData = "";
+    private string _room2DistanceData = "";
+    private string _room3DistanceData = "";
 
 
     private void Awake()
     {
-        m_DistanceManager = this;
+        DistanceManagerVariable = this;
     }
 
     private void Start()
@@ -27,21 +27,21 @@ public class DistanceManager : MonoBehaviour
 
     public void SetActiveRoomForDistance(int value)
     {
-        m_RoomActiveForDistance = value;
+        _roomActiveForDistance = value;
     }
 
     public void ResetDistanceData()
     {
-        m_Room1DistanceData = "";
-        m_Room2DistanceData = "";
-        m_Room3DistanceData = "";
-        m_RoomActiveForDistance = 0;
+        _room1DistanceData = "";
+        _room2DistanceData = "";
+        _room3DistanceData = "";
+        _roomActiveForDistance = 0;
     }
 
     private void SendDistanceData()
     {
-        Vector2 position = new Vector2(m_Player.position.x, m_Player.position.z);
-        switch (m_RoomActiveForDistance)
+        var position = new Vector2(Player.position.x, Player.position.z);
+        switch (_roomActiveForDistance)
         {
             case 3:
                 WriteDistanceDataToRoom3(position);
@@ -57,36 +57,36 @@ public class DistanceManager : MonoBehaviour
 
     public void WriteDistanceDataToRoom1(Vector2 data)
     {
-        m_Room1DistanceData += data.x.ToString() + ", " + data.y.ToString() + "\n";
+        _room1DistanceData += data.x + ", " + data.y + "\n";
     }
 
     public void WriteDistanceDataToRoom2(Vector2 data)
     {
-        m_Room2DistanceData += data.x.ToString() + ", " + data.y.ToString() + "\n";
+        _room2DistanceData += data.x + ", " + data.y + "\n";
     }
 
     public void WriteDistanceDataToRoom3(Vector2 data)
     {
-        m_Room3DistanceData += data.x.ToString() + ", " + data.y.ToString() + "\n";
+        _room3DistanceData += data.x + ", " + data.y + "\n";
     }
 
     public int GetActiveRoom()
     {
-        return m_RoomActiveForDistance;
+        return _roomActiveForDistance;
     }
 
     public string GetDistanceDataRoom1()
     {
-        return m_Room1DistanceData;
+        return _room1DistanceData;
     }
 
     public string GetDistanceDataRoom2()
     {
-        return m_Room2DistanceData;
+        return _room2DistanceData;
     }
 
     public string GetDistanceDataRoom3()
     {
-        return m_Room3DistanceData;
+        return _room3DistanceData;
     }
 }

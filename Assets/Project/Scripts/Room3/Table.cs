@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    public Room3Manager m_RoomManager;
+    public Room3Manager RoomManager;
 
-    private float m_TableHight = 1f;
+    private const float TableHeight = 1f;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (m_RoomManager.IsCurrentCube(other.gameObject) && other.transform.position.y >= m_TableHight && !other.transform.parent.CompareTag("Controller"))
+        if (RoomManager.IsCurrentCube(other.gameObject) && other.transform.position.y >= TableHeight && !other.transform.parent.CompareTag("Controller"))
         {
-            m_RoomManager.CurrentCubePlacedCorrectly();
+            RoomManager.CurrentCubePlacedCorrectly();
         }
     }
 }

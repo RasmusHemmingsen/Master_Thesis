@@ -467,10 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea94755cf7f74a7418ac65705e9dd985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActiveHand: {fileID: 0}
-  simulator: {fileID: 0}
-  m_DisconnectDistance: 0
-  m_PickUp:
+  ActiveHand: {fileID: 0}
+  Simulator: {fileID: 0}
+  DisconnectDistance: 0
+  PickUpEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1256503986}
@@ -484,7 +484,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_Drop:
+  DropEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1256503986}

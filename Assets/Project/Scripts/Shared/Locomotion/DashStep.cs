@@ -5,39 +5,39 @@ using Valve.VR;
 
 public class DashStep : MonoBehaviour
 {
-    public SteamVR_Action_Boolean m_DashAction = null;
-    public GameObject m_Player;
-    public Transform m_Camera;
+    public SteamVR_Action_Boolean DashAction = null;
+    public GameObject Player;
+    public Transform Camera;
 
-    private SteamVR_Behaviour_Pose m_Pose = null;
+    private SteamVR_Behaviour_Pose _pose = null;
 
-    public float m_DashRange = 1f;
-    public float m_DashTime = 0.1f;
-    public bool m_IsEnabled = false;
-    private bool m_IsDashing = false;
+    public float DashRange = 1f;
+    public float DashTime = 0.1f;
+    public bool IsEnabled = false;
+    private bool _isDashing = false;
 
     [SerializeField]
-    private Animator maskAnimator;
+    private Animator _maskAnimator;
 
     private void Awake()
     {
-        m_Pose = GetComponent<SteamVR_Behaviour_Pose>();
+        _pose = GetComponent<SteamVR_Behaviour_Pose>();
 
-        m_DashAction[SteamVR_Input_Sources.Any].onStateUp += TryDash;
+        DashAction[SteamVR_Input_Sources.Any].onStateUp += TryDash;
     }
 
     private void TryDash(SteamVR_Action_Boolean action, SteamVR_Input_Sources source)
     {
-        if (!m_IsEnabled || m_IsDashing)
+        if (!IsEnabled || _isDashing)
             return;
 
-        Vector3 direction = m_Camera.forward;
+        var direction = Camera.forward;
         direction.y = 0;
-        Vector3 rayPosition = m_Player.transform.position;
+        var rayPosition = Player.transform.position;
         rayPosition.y = 1;
 
-        Ray ray = new Ray(rayPosition, direction);
-        if (!Physics.Raycast(ray, out _, m_DashRange))
+        var ray = new Ray(rayPosition, direction);
+        if (!Physics.Raycast(ray, out _, DashRange))
         {
                 StartCoroutine(DoDash(direction));
         }
@@ -45,30 +45,30 @@ public class DashStep : MonoBehaviour
 
     private IEnumerator DoDash(Vector3 direction)
     {
-        m_IsDashing = true;
+        _isDashing = true;
 
-        if (maskAnimator != null)
-            maskAnimator.SetBool("Mask", true);
+        if (_maskAnimator != null)
+            _maskAnimator.SetBool("Mask", true);
 
         yield return new WaitForSeconds(0.1f);
 
-        float elapsed = 0f;
+        var elapsed = 0f;
 
-        Vector3 startPoint = m_Player.transform.position;
+        var startPoint = Player.transform.position;
 
-        while (elapsed < m_DashTime)
+        while (elapsed < DashTime)
         {
             elapsed += Time.deltaTime;
-            float elapsedPct = elapsed / m_DashTime;
+            var elapsedPct = elapsed / DashTime;
 
-            m_Player.transform.position = Vector3.Lerp(startPoint, startPoint + (m_DashRange * direction), elapsedPct);
+            Player.transform.position = Vector3.Lerp(startPoint, startPoint + (DashRange * direction), elapsedPct);
             yield return null;
         }
 
-        if (maskAnimator != null)
-            maskAnimator.SetBool("Mask", false);
+        if (_maskAnimator != null)
+            _maskAnimator.SetBool("Mask", false);
 
-        m_IsDashing = false;
+        _isDashing = false;
     }
 
 }

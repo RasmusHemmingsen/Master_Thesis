@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class UnloadScene : MonoBehaviour
 {
-    public int m_Scene;
+    public int Scene;
 
-    private bool m_Unloaded;
+    private bool _unloaded;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_Unloaded)
-        {
-            m_Unloaded = true;
+        if (!_unloaded) return;
+        _unloaded = true;
 
-            ExpermentManager.m_ExpermentManager.UnloadScene(m_Scene);
-        }
+        ExperimentManager.ExperimentManagerVariable.UnloadScene(Scene);
     }
 }
