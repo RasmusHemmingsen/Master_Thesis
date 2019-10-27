@@ -175,7 +175,7 @@ public class ExperimentManager : MonoBehaviour
             CurrentLocomotionTechnique = _locomotionManager.GetRandomLocomotionTechnique();
 
         if (CurrentLocomotionTechnique == LocomotionManager.LocomotionTechnique.None)
-            Application.Quit();
+            QuitGame();
         StartCoroutine(StartTest());
     }
 
@@ -198,5 +198,16 @@ public class ExperimentManager : MonoBehaviour
     {
         Player.transform.position = PlayerStartDefaultPosition;
         Player.transform.rotation = PlayerStartDefaultRotation;
+    }
+
+    private void QuitGame()
+    {
+        #if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }

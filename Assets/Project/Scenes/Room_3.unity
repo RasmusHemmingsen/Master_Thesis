@@ -2303,7 +2303,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f498407faea49a46b2986a6b48a5a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListOfCubes: []
+  ListOfCubes:
+  - {fileID: 391409597}
+  - {fileID: 704986580}
+  - {fileID: 333547171}
+  - {fileID: 2032038859}
+  - {fileID: 953147342}
+  - {fileID: 2096372830}
+  - {fileID: 1755341640}
+  - {fileID: 2107368098}
   Handle: {fileID: 1625472186}
   Table: {fileID: 1190087889}
 --- !u!1 &1442686293
@@ -2469,6 +2477,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1353168808}
         m_MethodName: HandlePressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1625472190}
+        m_MethodName: StartOpenDoorAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
