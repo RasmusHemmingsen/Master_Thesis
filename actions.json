@@ -50,9 +50,38 @@
       "type": "vibration"
     },
     {
-      "name": "/actions/mixedreality/in/ExternalCamera",
+      "name": "/actions/Master_Thesis/in/Teleport",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/in/Move",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/in/TouchpadPosition",
+      "type": "vector2",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/in/Pose",
       "type": "pose",
-      "requirement": "optional"
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/in/Grip",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/in/Trigger",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/Master_Thesis/out/Haptic",
+      "type": "vibration"
     }
   ],
   "action_sets": [
@@ -61,8 +90,8 @@
       "usage": "single"
     },
     {
-      "name": "/actions/mixedreality",
-      "usage": "single"
+      "name": "/actions/Master_Thesis",
+      "usage": "leftright"
     }
   ],
   "default_bindings": [

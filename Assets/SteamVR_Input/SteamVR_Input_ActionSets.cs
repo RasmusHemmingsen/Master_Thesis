@@ -19,7 +19,7 @@ namespace Valve.VR
         
         private static SteamVR_Input_ActionSet_default p__default;
         
-        private static SteamVR_Input_ActionSet_mixedreality p_mixedreality;
+        private static SteamVR_Input_ActionSet_Master_Thesis p_Master_Thesis;
         
         public static SteamVR_Input_ActionSet_default _default
         {
@@ -29,21 +29,21 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Input_ActionSet_mixedreality mixedreality
+        public static SteamVR_Input_ActionSet_Master_Thesis Master_Thesis
         {
             get
             {
-                return SteamVR_Actions.p_mixedreality.GetCopy<SteamVR_Input_ActionSet_mixedreality>();
+                return SteamVR_Actions.p_Master_Thesis.GetCopy<SteamVR_Input_ActionSet_Master_Thesis>();
             }
         }
         
         private static void StartPreInitActionSets()
         {
             SteamVR_Actions.p__default = ((SteamVR_Input_ActionSet_default)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_default>("/actions/default")));
-            SteamVR_Actions.p_mixedreality = ((SteamVR_Input_ActionSet_mixedreality)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_mixedreality>("/actions/mixedreality")));
+            SteamVR_Actions.p_Master_Thesis = ((SteamVR_Input_ActionSet_Master_Thesis)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_Master_Thesis>("/actions/Master_Thesis")));
             Valve.VR.SteamVR_Input.actionSets = new Valve.VR.SteamVR_ActionSet[] {
                     SteamVR_Actions._default,
-                    SteamVR_Actions.mixedreality};
+                    SteamVR_Actions.Master_Thesis};
         }
     }
 }

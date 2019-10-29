@@ -39,7 +39,19 @@ namespace Valve.VR
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
-        private static SteamVR_Action_Pose p_mixedreality_ExternalCamera;
+        private static SteamVR_Action_Boolean p_master_Thesis_Teleport;
+        
+        private static SteamVR_Action_Boolean p_master_Thesis_Move;
+        
+        private static SteamVR_Action_Vector2 p_master_Thesis_TouchpadPosition;
+        
+        private static SteamVR_Action_Pose p_master_Thesis_Pose;
+        
+        private static SteamVR_Action_Boolean p_master_Thesis_Grip;
+        
+        private static SteamVR_Action_Boolean p_master_Thesis_Trigger;
+        
+        private static SteamVR_Action_Vibration p_master_Thesis_Haptic;
         
         public static SteamVR_Action_Boolean default_InteractUI
         {
@@ -129,11 +141,59 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Pose mixedreality_ExternalCamera
+        public static SteamVR_Action_Boolean master_Thesis_Teleport
         {
             get
             {
-                return SteamVR_Actions.p_mixedreality_ExternalCamera.GetCopy<SteamVR_Action_Pose>();
+                return SteamVR_Actions.p_master_Thesis_Teleport.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean master_Thesis_Move
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_Move.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 master_Thesis_TouchpadPosition
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_TouchpadPosition.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Pose master_Thesis_Pose
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_Pose.GetCopy<SteamVR_Action_Pose>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean master_Thesis_Grip
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_Grip.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean master_Thesis_Trigger
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_Trigger.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vibration master_Thesis_Haptic
+        {
+            get
+            {
+                return SteamVR_Actions.p_master_Thesis_Haptic.GetCopy<SteamVR_Action_Vibration>();
             }
         }
         
@@ -151,7 +211,13 @@ namespace Valve.VR
                     SteamVR_Actions.default_HeadsetOnHead,
                     SteamVR_Actions.default_TouchpadPosition,
                     SteamVR_Actions.default_Haptic,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.master_Thesis_Teleport,
+                    SteamVR_Actions.master_Thesis_Move,
+                    SteamVR_Actions.master_Thesis_TouchpadPosition,
+                    SteamVR_Actions.master_Thesis_Pose,
+                    SteamVR_Actions.master_Thesis_Grip,
+                    SteamVR_Actions.master_Thesis_Trigger,
+                    SteamVR_Actions.master_Thesis_Haptic};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -163,24 +229,36 @@ namespace Valve.VR
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.default_HeadsetOnHead,
                     SteamVR_Actions.default_TouchpadPosition,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.master_Thesis_Teleport,
+                    SteamVR_Actions.master_Thesis_Move,
+                    SteamVR_Actions.master_Thesis_TouchpadPosition,
+                    SteamVR_Actions.master_Thesis_Pose,
+                    SteamVR_Actions.master_Thesis_Grip,
+                    SteamVR_Actions.master_Thesis_Trigger};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.master_Thesis_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
-                    SteamVR_Actions.default_Haptic};
+                    SteamVR_Actions.default_Haptic,
+                    SteamVR_Actions.master_Thesis_Haptic};
             Valve.VR.SteamVR_Input.actionsPose = new Valve.VR.SteamVR_Action_Pose[] {
                     SteamVR_Actions.default_Pose,
-                    SteamVR_Actions.mixedreality_ExternalCamera};
+                    SteamVR_Actions.master_Thesis_Pose};
             Valve.VR.SteamVR_Input.actionsBoolean = new Valve.VR.SteamVR_Action_Boolean[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
                     SteamVR_Actions.default_GrabPinch,
                     SteamVR_Actions.default_GrabGrip,
-                    SteamVR_Actions.default_HeadsetOnHead};
+                    SteamVR_Actions.default_HeadsetOnHead,
+                    SteamVR_Actions.master_Thesis_Teleport,
+                    SteamVR_Actions.master_Thesis_Move,
+                    SteamVR_Actions.master_Thesis_Grip,
+                    SteamVR_Actions.master_Thesis_Trigger};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
-                    SteamVR_Actions.default_TouchpadPosition};
+                    SteamVR_Actions.default_TouchpadPosition,
+                    SteamVR_Actions.master_Thesis_TouchpadPosition};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
                     SteamVR_Actions.default_SkeletonLeftHand,
@@ -192,7 +270,12 @@ namespace Valve.VR
                     SteamVR_Actions.default_GrabGrip,
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.default_HeadsetOnHead,
-                    SteamVR_Actions.default_TouchpadPosition};
+                    SteamVR_Actions.default_TouchpadPosition,
+                    SteamVR_Actions.master_Thesis_Teleport,
+                    SteamVR_Actions.master_Thesis_Move,
+                    SteamVR_Actions.master_Thesis_TouchpadPosition,
+                    SteamVR_Actions.master_Thesis_Grip,
+                    SteamVR_Actions.master_Thesis_Trigger};
         }
         
         private static void PreInitActions()
@@ -208,7 +291,13 @@ namespace Valve.VR
             SteamVR_Actions.p_default_HeadsetOnHead = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/HeadsetOnHead")));
             SteamVR_Actions.p_default_TouchpadPosition = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/default/in/TouchpadPosition")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
-            SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
+            SteamVR_Actions.p_master_Thesis_Teleport = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Master_Thesis/in/Teleport")));
+            SteamVR_Actions.p_master_Thesis_Move = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Master_Thesis/in/Move")));
+            SteamVR_Actions.p_master_Thesis_TouchpadPosition = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/Master_Thesis/in/TouchpadPosition")));
+            SteamVR_Actions.p_master_Thesis_Pose = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/Master_Thesis/in/Pose")));
+            SteamVR_Actions.p_master_Thesis_Grip = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Master_Thesis/in/Grip")));
+            SteamVR_Actions.p_master_Thesis_Trigger = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/Master_Thesis/in/Trigger")));
+            SteamVR_Actions.p_master_Thesis_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/Master_Thesis/out/Haptic")));
         }
     }
 }

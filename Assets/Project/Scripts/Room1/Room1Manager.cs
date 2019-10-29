@@ -32,7 +32,7 @@ public class Room1Manager : MonoBehaviour
 
     public void HandleDropped(GameObject handle)
     {
-        DisableDoorHandle(gameObject);
+        DisableDoorHandle(handle);
     }
 
 

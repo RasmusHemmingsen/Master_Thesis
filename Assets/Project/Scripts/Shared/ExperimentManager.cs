@@ -8,6 +8,8 @@ public class ExperimentManager : MonoBehaviour
     public static ExperimentManager ExperimentManagerVariable;
     public GameObject Player;
 
+    public SteamVR_ActionSet ActionSet;
+
     public Vector3 PlayerStartTestPosition = new Vector3(-3.5f, 1f, -3f);
     public Quaternion PlayerStartTestRotation = new Quaternion(0, -90, 0, 1);
 
@@ -36,7 +38,9 @@ public class ExperimentManager : MonoBehaviour
 
         _locomotionManager = FindObjectOfType<LocomotionManager>();
         _switchShader = FindObjectOfType<SwitchShader>();
-        _writeToFile = gameObject.AddComponent<WriteToFile>();         
+        _writeToFile = gameObject.AddComponent<WriteToFile>();  
+
+        ActionSet.Activate(SteamVR_Input_Sources.Any, 0, true);       
 
         _gameStart = true;
     }
