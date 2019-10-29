@@ -8,6 +8,13 @@ public class DistanceManager : MonoBehaviour
 
     public Transform Player;
 
+    public float XoffsetRoom1 = 3.5f;
+    public float ZoffsetRoom1 = 3f;
+    public float XoffsetRoom2 = 3f;
+    public float ZoffsetRoom2 = -4f;
+    public float XoffsetRoom3 = -42.5f;
+    public float ZoffsetRoom3 = -55f;
+
     private int _roomActiveForDistance = 0;
 
     private string _room1DistanceData = "";
@@ -57,17 +64,26 @@ public class DistanceManager : MonoBehaviour
 
     public void WriteDistanceDataToRoom1(Vector2 data)
     {
-        _room1DistanceData += data.x + ", " + data.y + "\n";
+        var xData = data.x + XoffsetRoom1;
+        var zData = data.y + ZoffsetRoom1;
+
+        _room1DistanceData += xData + ", " + zData + "\n";
     }
 
     public void WriteDistanceDataToRoom2(Vector2 data)
     {
-        _room2DistanceData += data.x + ", " + data.y + "\n";
+        var xData = data.x + XoffsetRoom2;
+        var zData = data.y + ZoffsetRoom2;
+
+        _room2DistanceData += xData + ", " + zData + "\n";
     }
 
     public void WriteDistanceDataToRoom3(Vector2 data)
     {
-        _room3DistanceData += data.x + ", " + data.y + "\n";
+        var xData = data.x + XoffsetRoom3;
+        var zData = data.y + ZoffsetRoom3;
+
+        _room3DistanceData += xData + ", " + zData + "\n";
     }
 
     public int GetActiveRoom()
