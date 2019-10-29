@@ -42,10 +42,10 @@ public class Room1Manager : MonoBehaviour
         StartCoroutine(DisableCollider(handleCollider));
     }
 
-    private IEnumerator DisableCollider(Collider collider)
+    private IEnumerator DisableCollider(Collider col)
     {
         yield return new WaitForSeconds(1f);
-        collider.enabled = false;
+        col.enabled = false;
     }
 
     private void StartTimer()
