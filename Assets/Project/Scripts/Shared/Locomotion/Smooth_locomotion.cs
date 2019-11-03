@@ -5,7 +5,7 @@ using Valve.VR;
 
 public class Smooth_locomotion : MonoBehaviour
 {
-    public float Gravity = 98.0f;
+
     public float Sensitivity = 0.1f;
     public float MaxSpeed = 1.0f;
     public float RotateIncrement = 90;
@@ -80,8 +80,6 @@ public class Smooth_locomotion : MonoBehaviour
 
         var finalPosition = new Vector3(movement.x + Player.position.x, Player.position.y, movement.z + Player.position.z);
         Player.position = finalPosition;
-        // Apply
-        //_characterController.Move(movement );
     }
 
     private void SnapRotation()
