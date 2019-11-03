@@ -78,7 +78,8 @@ public class DescriptionManager : MonoBehaviour
         Text.text = "Smooth locomotion \n" +
             "To use this technique hold the left touchpad \n" +
             "and you will walk in the direction you are looking, \n" + 
-            "this can be used to go backwards too if the touchpad is pressed under the lower half";
+            "this can be used to go backwards too if the touchpad is pressed under the lower half" +
+            "If the button on the side of the controller is pressed, you rotate 90 degrees";
     }
 
 }
