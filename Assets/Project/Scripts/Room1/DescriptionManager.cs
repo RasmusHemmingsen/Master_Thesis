@@ -61,9 +61,9 @@ public class DescriptionManager : MonoBehaviour
     private void SetToArmswingDescription()
     {
         Text.text = "Armswing \n" +
-            "To use this technique press the button on the side of the controller \n" +
+            "To use this technique hold the button on the side of the controller \n" +
             "and swing controller forwards and backwards to move in the direction \n" +
-            "you are looking. This works independently for each controller";
+            "you are looking.";
     }
 
     private void SetToCybershoesDescription()
@@ -78,7 +78,7 @@ public class DescriptionManager : MonoBehaviour
         Text.text = "Smooth locomotion \n" +
             "To use this technique hold the left touchpad \n" +
             "and you will walk in the direction you are looking, \n" + 
-            "this can be used to go backwards too if the touchpad is pressed un the lower half";
+            "this can be used to go backwards too if the touchpad is pressed under the lower half";
     }
 
 }
