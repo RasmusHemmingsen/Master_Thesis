@@ -74,14 +74,13 @@ public class Smooth_locomotion : MonoBehaviour
             _speed = Mathf.Clamp(_speed, -MaxSpeed, MaxSpeed);
 
             // Orientation
-            movement += orientation * (_speed * Vector3.forward);
+            movement += orientation * (_speed * Vector3.forward) * Time.deltaTime;
         }
 
-        // Gravity
-        movement.y -= Gravity * Time.deltaTime;
-
+        var finalPosition = new Vector3(movement.x + Player.position.x, Player.position.y, movement.z + Player.position.z);
+        Player.position = finalPosition;
         // Apply
-        _characterController.Move(movement * Time.deltaTime);
+        //_characterController.Move(movement );
     }
 
     private void SnapRotation()
