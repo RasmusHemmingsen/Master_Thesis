@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JGVR.Locomotion;
 using UnityEngine;
 
 public class LocomotionManager : MonoBehaviour
@@ -40,7 +41,7 @@ public class LocomotionManager : MonoBehaviour
 
     private void FillListOfLocomotionTechniques()
     {
-        //_unusedLocomotionTechniques.Add(LocomotionTechnique.Armswing);
+        _unusedLocomotionTechniques.Add(LocomotionTechnique.Armswing);
         //_unusedLocomotionTechniques.Add(LocomotionTechnique.Cybershoes);
         _unusedLocomotionTechniques.Add(LocomotionTechnique.DashStep);
         _unusedLocomotionTechniques.Add(LocomotionTechnique.SmoothLocomotion);
@@ -126,12 +127,12 @@ public class LocomotionManager : MonoBehaviour
 
     private void TurnOnArmswing()
     {
-        _gameObjectLocomotion.GetComponent<Armswing>().enabled = true;
+        _gameObjectLocomotion.GetComponent<ArmSwingLocomotionController>().enabled = true;
     }
 
     private void TurnOffArmswing()
     {
-        _gameObjectLocomotion.GetComponent<Armswing>().enabled = false;
+        _gameObjectLocomotion.GetComponent<ArmSwingLocomotionController>().enabled = false;
     }
 
     private void TurnOnCybershoes()
@@ -174,7 +175,7 @@ public class LocomotionManager : MonoBehaviour
         TurnOffCybershoes();
         TurnOffSmoothLocomotion();
         TurnOffTeleport();
-        //TurnOffArmswing();
+        TurnOffArmswing();
         TurnOffBlinkStep();
     }
 

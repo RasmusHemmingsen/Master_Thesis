@@ -122,7 +122,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!43 &680888043
+--- !u!21 &832133935
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!43 &1005959699
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,40 +394,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21630369071f1fe46b019420357ed370, type: 3}
---- !u!21 &1298303338
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1349171188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,6 +693,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 4467908566884917730}
+  XoffsetRoom1: 3.5
+  ZoffsetRoom1: 3
+  XoffsetRoom2: 3
+  ZoffsetRoom2: -4
+  XoffsetRoom3: -42.5
+  ZoffsetRoom3: -55
 --- !u!114 &1803524188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,12 +849,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1298303338}
+      objectReference: {fileID: 832133935}
     - target: {fileID: 655459897086141401, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 680888043}
+      objectReference: {fileID: 1005959699}
     - target: {fileID: 655459897087138699, guid: 73c54063566a1544486433036b5de126,
         type: 3}
       propertyPath: m_Layer
@@ -1032,6 +1038,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4467908566884917718}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4467908566884917720 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 655459897087292694, guid: 73c54063566a1544486433036b5de126,
+    type: 3}
+  m_PrefabInstance: {fileID: 4467908566884917718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f862319a89c5974098a15e2f80f83b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4467908566884917721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 655459897087292698, guid: 73c54063566a1544486433036b5de126,
+    type: 3}
+  m_PrefabInstance: {fileID: 4467908566884917718}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f862319a89c5974098a15e2f80f83b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4467908566884917724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7048305302766973117, guid: 73c54063566a1544486433036b5de126,
@@ -1069,6 +1099,34 @@ MonoBehaviour:
   Camera: {fileID: 1864489286}
   BlinkRange: 1.25
   IsEnabled: 0
+--- !u!114 &4467908566884917727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467908566884917724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995d9215f147e644e99f6668700732a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hmd: {fileID: 1864489286}
+  _controllerLeftHand: {fileID: 4467908566884917721}
+  _controllerRightHand: {fileID: 4467908566884917720}
+  _playArea: {fileID: 4467908566884917730}
+  _useLeftHandActivation: 1
+  _useRightHandActivation: 1
+  _activateButton:
+    actionPath: /actions/Master_Thesis/in/Grip
+    needsReinit: 0
+  _controlOptions: 0
+  _directionMethod: 0
+  _speedScale: 1
+  _maxSpeed: 4
+  _deceleration: 0.1
+  _smartDecoupleThreshold: 30
+  _sensitivity: 0.02
 --- !u!114 &4467908566884917728
 MonoBehaviour:
   m_ObjectHideFlags: 0
