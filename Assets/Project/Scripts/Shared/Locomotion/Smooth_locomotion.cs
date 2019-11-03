@@ -35,6 +35,7 @@ public class Smooth_locomotion : MonoBehaviour
     {
         //HandleHeight();
         CalculateMovement();
+        SnapRotation();
     }
 
     private void HandleHeight()
