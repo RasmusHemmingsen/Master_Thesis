@@ -10,10 +10,10 @@ public class DistanceManager : MonoBehaviour
 
     public float XoffsetRoom1 = 3.5f;
     public float ZoffsetRoom1 = 3f;
-    public float XoffsetRoom2 = 2.9f;
-    public float ZoffsetRoom2 = -4f;
-    public float XoffsetRoom3 = -35f;
-    public float ZoffsetRoom3 = -54f;
+    public float XoffsetRoom2 = 3.5f;
+    public float ZoffsetRoom2 = -3.5f;
+    public float XoffsetRoom3 = -25f;
+    public float ZoffsetRoom3 = -53f;
 
     private int _roomActiveForDistance = 0;
 
