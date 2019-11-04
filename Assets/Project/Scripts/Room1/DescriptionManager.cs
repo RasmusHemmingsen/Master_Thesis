@@ -39,7 +39,7 @@ public class DescriptionManager : MonoBehaviour
     private void SetToTeleportDescription()
     {
         Text.text = "Teleport \n" +
-            "To use this technique point the right controller against the ground \n" +
+            "To use this technique, point the right controller against the ground \n" +
             "then a purple object appears and if you press on the touchpad \n" +
             "on the right controller and you will teleport to the object.\n " +
             GetDescriptionOfRoom1();
@@ -48,7 +48,7 @@ public class DescriptionManager : MonoBehaviour
     private void SetToDashStepDescription()
     {
         Text.text = "Dash Step \n" + 
-            "To use this technique press the left touchpad \n" + 
+            "To use this technique, press the left touchpad \n" + 
             "and you will dash a step in the direction you are looking.\n " +
             GetDescriptionOfRoom1(); 
     }
@@ -56,7 +56,7 @@ public class DescriptionManager : MonoBehaviour
     private void SetToBlinkStepDescription()
     {
         Text.text = "Blink Step \n" +
-            "To use this technique press the left touchpad \n" +
+            "To use this technique, press the left touchpad \n" +
             "and you will blink a step in the direction you are looking.\n " +
             GetDescriptionOfRoom1(); 
     }
@@ -64,7 +64,7 @@ public class DescriptionManager : MonoBehaviour
     private void SetToArmswingDescription()
     {
         Text.text = "Armswing \n" +
-            "To use this technique hold the button on the side of the controller \n" +
+            "To use this technique, hold the button on the side of the controller \n" +
             "and swing controller forwards and backwards to move in the direction \n" +
             "you are looking.\n " + 
             GetDescriptionOfRoom1();
@@ -73,7 +73,7 @@ public class DescriptionManager : MonoBehaviour
     private void SetToCybershoesDescription()
     {
         Text.text = "Cybershoes \n" +
-            "To use this technique move your feet forward and backward like normal walking.\n " +
+            "To use this technique, move your feet forward and backward like normal walking.\n " +
             GetDescriptionOfRoom1();
 
     }
@@ -81,9 +81,9 @@ public class DescriptionManager : MonoBehaviour
     private void SetToSmoothLocomotionDescription()
     {
         Text.text = "Smooth locomotion \n" +
-            "To use this technique hold the left touchpad \n" +
+            "To use this technique, hold the left touchpad \n" +
             "and you will walk in the direction you are looking, \n" + 
-            "this can be used to go backwards if you press under the lower half of the touchpad \n" +
+            "this can be used to go backwards if you press under the lower half of the touchpad. \n" +
             "If the button on the side of the controller is pressed, you rotate 90 degrees.\n " +
             GetDescriptionOfRoom1();
     }
