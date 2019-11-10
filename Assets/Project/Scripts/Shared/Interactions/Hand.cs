@@ -8,10 +8,12 @@ public class Hand : MonoBehaviour
     public SteamVR_Action_Vibration Haptic = null;
 
     private Interactable _currentInteractable = null;
-    public List<Interactable> ContactInteractables = new List<Interactable>();
+    public List<Interactable> ContactInteractables;
 
     private void Awake()
     {
+        ResetContactInteractables();
+
         // Down 
         GrabAction[SteamVR_Input_Sources.RightHand].onStateDown += Pickup;
         GrabAction[SteamVR_Input_Sources.LeftHand].onStateDown += Pickup;
@@ -88,5 +90,10 @@ public class Hand : MonoBehaviour
     private void Pulse(float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
     {
         Haptic.Execute(0, duration, frequency, amplitude, source);
+    }
+
+    public void ResetContactInteractables()
+    {
+        ContactInteractables = new List<Interactable>();
     }
 }

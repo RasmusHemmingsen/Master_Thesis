@@ -59,6 +59,7 @@ public class ExperimentManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            GetComponent<Hand>().ResetContactInteractables();
             switch (DistanceManager.DistanceManagerVariable.GetActiveRoom())
             {
                 case 3:
