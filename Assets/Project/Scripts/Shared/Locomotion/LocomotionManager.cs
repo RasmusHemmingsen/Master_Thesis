@@ -75,6 +75,13 @@ public class LocomotionManager : MonoBehaviour
 
         var locomotionTechnique = _unusedLocomotionTechniques[randomNumber];
 
+        _unusedLocomotionTechniques.RemoveAt(randomNumber);
+
+        return locomotionTechnique;
+    }
+
+    public void TurnOnLocomotionTechnique(LocomotionTechnique locomotionTechnique)
+    {
         switch (locomotionTechnique)
         {
             case LocomotionTechnique.DashStep:
@@ -92,11 +99,9 @@ public class LocomotionManager : MonoBehaviour
             case LocomotionTechnique.Cybershoes:
                 TurnOnCybershoes();
                 break;
+            default:
+                break;
         }
-
-        _unusedLocomotionTechniques.RemoveAt(randomNumber);
-
-        return locomotionTechnique;
     }
 
     private void TurnOnTeleport()

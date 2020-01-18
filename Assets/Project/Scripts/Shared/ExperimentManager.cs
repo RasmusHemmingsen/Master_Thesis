@@ -159,28 +159,28 @@ public class ExperimentManager : MonoBehaviour
     {
         DistanceManager.DistanceManagerVariable.SetActiveRoomForDistance(0);
         SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
-        _locomotionManager.TurnOffAllTechniques();
-        if (!_first)
-        {
-            _writeToFile.WriteAllDataToFile(CurrentLocomotionTechnique);
-            UnloadScene(3);
-        }
-        SetPlayerToDefaultStartPosition();
-    }
-
-    public void StartTestWithNewTechnique()
-    {
-        DistanceManager.DistanceManagerVariable.ResetDistanceData();
         if (_first)
         {
             CurrentLocomotionTechnique = _locomotionManager.GetDummyLocomotionTechnique();
             _first = false;
         }
         else
+        {
+            _writeToFile.WriteAllDataToFile(CurrentLocomotionTechnique);
+            UnloadScene(3);
             CurrentLocomotionTechnique = _locomotionManager.GetRandomLocomotionTechnique();
-
+        }
+            
         if (CurrentLocomotionTechnique == LocomotionManager.LocomotionTechnique.None)
             QuitGame();
+
+        SetPlayerToDefaultStartPosition();
+    }
+
+    public void StartTestWithNewTechnique()
+    {
+        DistanceManager.DistanceManagerVariable.ResetDistanceData();
+        _locomotionManager.TurnOnLocomotionTechnique(CurrentLocomotionTechnique);
         StartCoroutine(StartTest());
     }
 

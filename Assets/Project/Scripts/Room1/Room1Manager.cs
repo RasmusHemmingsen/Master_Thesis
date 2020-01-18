@@ -7,18 +7,13 @@ public class Room1Manager : MonoBehaviour
 {
     private bool _handlePressed = false;
 
+    [SerializeField]
     private DescriptionManager _descriptionManager;
-
-    private void Awake()
-    {
-
-        _descriptionManager = FindObjectOfType<DescriptionManager>();
-    }
 
     private void Start()
     {
         StartTimer();
-        _descriptionManager.SwitchDescription(ExperimentManager.ExperimentManagerVariable.CurrentLocomotionTechnique);
+        _descriptionManager.SwitchDescription(ExperimentManager.ExperimentManagerVariable.CurrentLocomotionTechnique, false);
     }
 
     public void HandleGrapped()
