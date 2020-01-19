@@ -56,7 +56,6 @@ public class LocomotionManager : MonoBehaviour
     public LocomotionTechnique GetDummyLocomotionTechnique()
     {
         TurnOffAllTechniques();
-        TurnOnBlinkStep();
         return LocomotionTechnique.BlinkStep;
 
     }
@@ -98,6 +97,9 @@ public class LocomotionManager : MonoBehaviour
                 break;
             case LocomotionTechnique.Cybershoes:
                 TurnOnCybershoes();
+                break;
+            case LocomotionTechnique.BlinkStep:
+                TurnOnBlinkStep();
                 break;
             default:
                 break;
