@@ -77,7 +77,7 @@ public class Room3Manager : MonoBehaviour
 
         if(_nextCube != null)
         {
-            DestroyGameObject(_currentCube);
+            StartCoroutine(DestroyGameObject(_currentCube));
             _currentCube = _nextCube;
             _nextCube = GetNextCubeIfThereIsOne();
         }
@@ -86,8 +86,9 @@ public class Room3Manager : MonoBehaviour
         StartCoroutine(AddInteracableTagToCube(_currentCube));
     }
 
-    private void DestroyGameObject(GameObject gameObject)
+    private IEnumerator DestroyGameObject(GameObject gameObject)
     {
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 
