@@ -9,6 +9,7 @@ public class ExperimentManager : MonoBehaviour
     public GameObject Player;
 
     public SteamVR_ActionSet ActionSet;
+    public bool isDemo;
 
     public Vector3 PlayerStartTestPosition = new Vector3(-3.5f, 1f, -3f);
     public Quaternion PlayerStartTestRotation = new Quaternion(0, -90, 0, 1);
@@ -173,6 +174,13 @@ public class ExperimentManager : MonoBehaviour
             
         if (CurrentLocomotionTechnique == LocomotionManager.LocomotionTechnique.None)
             QuitGame();
+
+        // for demo purposes
+        if (isDemo)
+        {
+            CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.Teleport;
+        }
+        
 
         SetPlayerToDefaultStartPosition();
     }
