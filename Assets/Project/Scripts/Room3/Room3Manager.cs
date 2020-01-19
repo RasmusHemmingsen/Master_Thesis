@@ -73,26 +73,27 @@ public class Room3Manager : MonoBehaviour
             ExperimentManager.ExperimentManagerVariable.GotoDefaultRoom(); 
         }
 
-        RemoveTagFromCurrentCube();
-
         if(_nextCube != null)
         {
+            StartCoroutine(RemoveTagFromCube(_currentCube));
             _currentCube = _nextCube;
             _nextCube = GetNextCubeIfThereIsOne();
         }
 
         HighlightCurrentCube();
-        AddInteracableTagToCurrentCube();
+        StartCoroutine(AddInteracableTagToCube(_currentCube));
     }
 
-    private void RemoveTagFromCurrentCube()
+    private IEnumerator RemoveTagFromCube(GameObject cube)
     {
-        _currentCube.tag = "Untagged";
+        yield return null;
+       cube.tag = "Untagged";
     }
 
-    private void AddInteracableTagToCurrentCube()
+    private IEnumerator AddInteracableTagToCube(GameObject cube)
     {
-        _currentCube.tag = "Interactable";
+        yield return null;
+        cube.tag = "Interactable";
     }
 
     private GameObject GetNextCubeIfThereIsOne()
