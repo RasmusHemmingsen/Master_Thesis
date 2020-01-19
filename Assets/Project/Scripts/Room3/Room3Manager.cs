@@ -73,6 +73,8 @@ public class Room3Manager : MonoBehaviour
             ExperimentManager.ExperimentManagerVariable.GotoDefaultRoom(); 
         }
 
+        RemoveTagFromCurrentCube();
+
         if(_nextCube != null)
         {
             _currentCube = _nextCube;
@@ -80,6 +82,17 @@ public class Room3Manager : MonoBehaviour
         }
 
         HighlightCurrentCube();
+        AddInteracableTagToCurrentCube();
+    }
+
+    private void RemoveTagFromCurrentCube()
+    {
+        _currentCube.tag = "Untagged";
+    }
+
+    private void AddInteracableTagToCurrentCube()
+    {
+        _currentCube.tag = "Interactable";
     }
 
     private GameObject GetNextCubeIfThereIsOne()
