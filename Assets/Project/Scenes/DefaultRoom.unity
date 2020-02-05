@@ -1092,6 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33034cd2961598745bf3700436bddbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropDownValue: 1
 --- !u!1 &1291350170
 GameObject:
   m_ObjectHideFlags: 0

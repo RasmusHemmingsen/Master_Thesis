@@ -19,6 +19,9 @@ EditorBuildSettings:
     guid: f6f6d9e37607dac46be2045f886b0827
   - enabled: 1
     path: Assets/Project/Scenes/DefaultRoom.unity
+    guid: 5daaa469ba771774f9726935fa99d278
+  - enabled: 1
+    path: Assets/Project/Scenes/DemoDefaultRoom.unity
     guid: 1c875d6cf653e634dac98e37265d1118
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c6e862ef77ac0b24eb734ec1156c291f,

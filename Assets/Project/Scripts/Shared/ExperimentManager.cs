@@ -48,7 +48,10 @@ public class ExperimentManager : MonoBehaviour
 
     private void Start()
     {
-        GotoDefaultRoom();
+        if (isDemo)
+            GotoDemoDefaultRoom();
+        else
+            GotoDefaultRoom();
     }
 
     private void Update()
@@ -174,12 +177,6 @@ public class ExperimentManager : MonoBehaviour
             
         if (CurrentLocomotionTechnique == LocomotionManager.LocomotionTechnique.None)
             QuitGame();
-
-        // for demo purposes
-        if (isDemo)
-        {
-            CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.Teleport;
-        }
         
 
         SetPlayerToDefaultStartPosition();
@@ -222,5 +219,60 @@ public class ExperimentManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+
+
+    // for demo purposes
+    public void GotoDemoDefaultRoom()
+    {
+        DistanceManager.DistanceManagerVariable.SetActiveRoomForDistance(0);
+        SceneManager.LoadSceneAsync(5, LoadSceneMode.Additive);
+        if (_first)
+        {
+            _first = false;
+        }
+        else
+        {
+            UnloadScene(3);
+        }
+
+        SetPlayerToDefaultStartPosition();
+    }
+
+    // For Demo purposes
+    public void StartDemoWithTechnique(int technique)
+    {
+        switch (technique)
+        {
+            case 1:
+                CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.Armswing;
+                break;
+            case 2:
+                CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.DashStep;
+                break;
+            case 3:
+                CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.SmoothLocomotion;
+                break;
+            case 4:
+                CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.Teleport;
+                break;
+            default:
+                CurrentLocomotionTechnique = LocomotionManager.LocomotionTechnique.BlinkStep;
+                break;
+        }
+        DistanceManager.DistanceManagerVariable.ResetDistanceData();
+        _locomotionManager.TurnOnLocomotionTechnique(CurrentLocomotionTechnique);
+        StartCoroutine(StartDemo());
+    }
+
+    // For Demo purposes
+    private IEnumerator StartDemo()
+    {
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        yield return new WaitForSeconds(0.5f);
+        SetPlayerToTestStartPosition();
+        DistanceManager.DistanceManagerVariable.SetActiveRoomForDistance(1);
+        UnloadScene(5);
     }
 }
