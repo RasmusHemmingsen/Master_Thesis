@@ -70,7 +70,10 @@ public class Room3Manager : MonoBehaviour
 
         if (_numberOfCubesCorrectPlaced >= _cubeListSize)
         {
-            ExperimentManager.ExperimentManagerVariable.GotoDefaultRoom(); 
+            if(ExperimentManager.ExperimentManagerVariable.isDemo)
+                ExperimentManager.ExperimentManagerVariable.GotoDemoDefaultRoom();
+            else
+                ExperimentManager.ExperimentManagerVariable.GotoDefaultRoom(); 
         }
 
        
